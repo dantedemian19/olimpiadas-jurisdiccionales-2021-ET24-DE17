@@ -1,0 +1,62 @@
+{
+  "generator-jhipster-blueprint": {
+    "promptValues": {
+      "githubName": "amanganiello90",
+      "authorName": "Angelo Manganiello",
+      "authorEmail": "angelo.mang@libero.it",
+      "authorUrl": "https://github.com/amanganiello90"
+    }
+  },
+  "generator-jhipster": {
+    "blueprints": [
+      {
+        "name": "generator-jhipster-nodejs",
+        "version": "2.0.0"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nodejs",
+        "version": "2.0.0"
+      }
+    ],
+    "applicationType": "monolith",
+    "baseName": "prueba",
+    "jhipsterVersion": "7.0.1",
+    "skipClient": false,
+    "skipServer": false,
+    "skipUserManagement": false,
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "testFrameworks": [],
+    "pages": [],
+    "creationTimestamp": 1632688834221,
+    "serverPort": "8081",
+    "packageName": "com.jhipster.node",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "authenticationType": "jwt",
+    "clientFramework": "react",
+    "withAdminUi": true,
+    "clientTheme": "journal",
+    "clientThemeVariant": "dark",
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "packageFolder": "com/jhipster/node",
+    "jwtSecretKey": "OTdjZjE3MTYzMWMxZDVkZjgyMjA5MmQzOWQzOTgwYmZmYWRhOGQ2YzdkNDY4OTkyNTc2ODVhZjg1MjE3ZDM0MWQ5OTljYjM5ODQwZDY5YmVlNTllMWQxMGMyYjdjMmRkZjE4NmUyNzQ5OWQwY2UxMTVlNDdjNWZiNTcyZmRhMmE=",
+    "serviceDiscoveryType": false,
+    "websocket": false,
+    "searchEngine": false,
+    "messageBroker": false,
+    "enableHibernateCache": false,
+    "clientPackageManager": "npm",
+    "languages": ["es"],
+    "cacheProvider": "ehcache",
+    "buildTool": "maven",
+    "reactive": false
+  }
+}
