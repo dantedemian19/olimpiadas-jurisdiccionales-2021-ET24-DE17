@@ -62,7 +62,7 @@ const Footer = props => (
           </li>
         </ul>
         <div className="copyright">
-          <p>&copy;Derechos reservados - Escuela Técnica Nº24 D.E.17 &ldquo;Defensa de Buenos Aires&ldquo; 2021</p>
+          <p>&copy;Derechos reservados - DAMAAGMA 2021</p>
         </div>
       </Col>
     </Row>
