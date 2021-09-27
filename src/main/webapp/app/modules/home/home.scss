@@ -1,7 +1,12 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-.container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+.container,
+.container-fluid,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
@@ -10,14 +15,14 @@ Main page styles
   background: url(../../../content/images/banner2.jpg) no-repeat 50%;
   background-position: center;
   background-size: cover;
-  height: calc(91vh + 5.5px);
+  height: calc(100vh + 13px);
 }
 
 .card-home {
   width: 400px;
   position: absolute;
   left: 100px;
-  top: 275px;
+  top: 350px;
   padding: 15px;
   border-radius: 15px;
 }
@@ -29,12 +34,12 @@ Main page styles
   align-items: center;
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 45px;
 }
 
 .parrafo {
   color: #202225;
-  width: 75%;
+  // width: 75%;
   margin-top: 15px;
   font-size: 18px;
 }
@@ -71,4 +76,37 @@ Main page styles
   justify-content: center;
   position: relative;
   top: 12px;
+}
+
+.cuerpo {
+  width: 95%;
+  // background-color: rebeccapurple;
+  margin: 25px 2.5%;
+  padding: 25px;
+}
+
+.estadistica {
+  display: flex;
+  flex-direction: row;
+
+  &>.escala-covid {
+    background: url(../../../content/images/estadistica-covid.png) no-repeat 50%;
+    background-size: cover;
+    width: 50%;
+    height: 400px;
+  }
+
+  &>.datos {
+    max-width: 50%;
+    padding: 15px 25px;
+    // background-color: red;
+
+    &>.ver-mas {
+      font-size: 20px;
+      margin: 0 42%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
