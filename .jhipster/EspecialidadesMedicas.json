@@ -1,0 +1,21 @@
+{
+  "name": "EspecialidadesMedicas",
+  "fields": [
+    {
+      "fieldName": "especialidad",
+      "fieldType": "EspecialidadesTipo",
+      "fieldValues": "CLINICO,DERMATOLOGIA,GINECOLOGIA,EMERGENCIAS,OFTALMOLOGIA,OTORRINOLARINGOLOGIA,TRAUMATOLOGIA,UROLOGIA,ANATOMIA_PATOLOGIA,BIOQUIMICA,FARMACOLOGIA,GENETICA_MEDICA,INMUNOLOGIA,MEDICINA_NUCLEAR,RADIOLOGIA"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "especialidades_medicas",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210927194459"
+}

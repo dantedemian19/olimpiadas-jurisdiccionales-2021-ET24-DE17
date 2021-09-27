@@ -1,0 +1,37 @@
+{
+  "name": "HistoriaClinica",
+  "fields": [
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "diagnostico",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength", "pattern"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "500",
+      "fieldValidateRulesPattern": "^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$"
+    },
+    {
+      "fieldName": "tratamiento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength", "pattern"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "500",
+      "fieldValidateRulesPattern": "^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "historia_clinica",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210927194501"
+}

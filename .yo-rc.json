@@ -57,6 +57,8 @@
     "languages": ["es"],
     "cacheProvider": "ehcache",
     "buildTool": "maven",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Paciente", "Medico", "EspecialidadesMedicas", "Turno", "HistoriaClinica", "Diario", "Valoracion"],
+    "lastLiquibaseTimestamp": 1632771903000
   }
 }
