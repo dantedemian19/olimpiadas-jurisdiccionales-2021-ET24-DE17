@@ -46,7 +46,10 @@ describe('User', () => {
 
     it('/POST create user', async () => {
         const createdUser: UserDTO = (
-            await request(app.getHttpServer()).post('/api/admin/users').send(testUserRequestObject).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/admin/users')
+                .send(testUserRequestObject)
+                .expect(201)
         ).body;
 
         expect(createdUser.login).toEqual(testUserRequestObject.login);
@@ -54,7 +57,9 @@ describe('User', () => {
     });
 
     it('/GET all users', () => {
-        request(app.getHttpServer()).get('/api/admin/users').expect(200);
+        request(app.getHttpServer())
+            .get('/api/admin/users')
+            .expect(200);
     });
 
     it('/PUT update user', async () => {
@@ -67,7 +72,10 @@ describe('User', () => {
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password: updatedPassword, lastModifiedDate: updatedLastModifiedDate, ...updatedUser } = (
-            await request(app.getHttpServer()).put('/api/admin/users').send(savedUser).expect(200)
+            await request(app.getHttpServer())
+                .put('/api/admin/users')
+                .send(savedUser)
+                .expect(200)
         ).body;
 
         expect(updatedUser.firstName).toEqual(savedUser.firstName);

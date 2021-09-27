@@ -26,7 +26,7 @@ async function bootstrap(): Promise<void> {
     if (fs.existsSync(staticClientPath)) {
         logger.log(`Serving static client resources on ${staticClientPath}`);
     } else {
-        logger.log(`No client it has been found`);
+        logger.log('No client it has been found');
     }
     setupSwagger(app);
 
@@ -64,7 +64,7 @@ function registerAsEurekaService(): void {
                 instanceId: config.get('eureka.instance.instanceId'),
                 hostName: config.get('ipAddress') || 'localhost',
                 ipAddr: config.get('ipAddress') || '127.0.0.1',
-                status: `UP`,
+                status: 'UP',
                 port: {
                     $: port,
                     '@enabled': 'true',
@@ -91,7 +91,7 @@ function registerAsEurekaService(): void {
             },
         });
         client.logger.level('debug');
-        client.start((error) => logger.log(error || 'Eureka registration complete'));
+        client.start(error => logger.log(error || 'Eureka registration complete'));
     }
 }
 

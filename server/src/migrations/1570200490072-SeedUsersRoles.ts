@@ -73,7 +73,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
         this.user3.authorities = [adminRole, userRole];
         this.user4.authorities = [userRole];
 
-        await Promise.all([this.user1, this.user2, this.user3, this.user4].map((u) => transformPassword(u)));
+        await Promise.all([this.user1, this.user2, this.user3, this.user4].map(u => transformPassword(u)));
 
         await userRepository.save([this.user1, this.user2, this.user3, this.user4]);
     }
