@@ -49,7 +49,11 @@
       "confirmpassword.label": "Confirmación de la nueva contraseña",
       "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
       "email.label": "Correo electrónico",
-      "email.placeholder": "Su correo electrónico"
+      "email.placeholder": "Correo electrónico",
+      "asunto.label": "Asunto",
+      "asunto.placeholder": "Asunto",
+      "cuerpo.label": "Mensaje",
+      "cuerpo.placeholder": "Mensaje"
     },
     "messages": {
       "info": {

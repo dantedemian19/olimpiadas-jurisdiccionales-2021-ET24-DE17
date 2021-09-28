@@ -3,6 +3,7 @@ import { Translate, translate } from 'react-jhipster';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Alert, Row, Col } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Link } from 'react-router-dom';
+import './modal.scss';
 
 export interface ILoginModalProps {
   showModal: boolean;
@@ -21,14 +22,14 @@ class LoginModal extends React.Component<ILoginModalProps> {
     const { loginError, handleClose } = this.props;
 
     return (
-      <Modal isOpen={this.props.showModal} toggle={handleClose} backdrop="static" id="login-page" autoFocus={false}>
+      <Modal isOpen={this.props.showModal} style={{ zoom: '85%' }} toggle={handleClose} backdrop="static" id="login-page" autoFocus={false}>
         <AvForm onSubmit={this.handleSubmit}>
           <ModalHeader id="login-title" data-cy="loginTitle" toggle={handleClose}>
             <Translate contentKey="login.title">Sign in</Translate>
           </ModalHeader>
           <ModalBody>
             <Row>
-              <Col md="12">
+              <Col md="12" className="col-login">
                 {loginError ? (
                   <Alert color="danger" data-cy="loginError">
                     <Translate contentKey="login.messages.error.authentication">
@@ -37,13 +38,13 @@ class LoginModal extends React.Component<ILoginModalProps> {
                   </Alert>
                 ) : null}
               </Col>
-              <Col md="12">
+              <Col md="12" className="col-login">
                 <AvField
                   name="username"
                   label={translate('global.form.username.label')}
                   placeholder={translate('global.form.username.placeholder')}
                   required
-                  errorMessage="Username cannot be empty!"
+                  errorMessage="El usuario no puede estar vacío!"
                   autoFocus
                   data-cy="username"
                 />
@@ -53,7 +54,7 @@ class LoginModal extends React.Component<ILoginModalProps> {
                   label={translate('login.form.password')}
                   placeholder={translate('login.form.password.placeholder')}
                   required
-                  errorMessage="Password cannot be empty!"
+                  errorMessage="La contraseña no puede estar vacía!"
                   data-cy="password"
                 />
                 <AvGroup check inline>
@@ -64,12 +65,12 @@ class LoginModal extends React.Component<ILoginModalProps> {
               </Col>
             </Row>
             <div className="mt-1">&nbsp;</div>
-            <Alert color="warning">
+            <Alert color="dark" className="alerta-login">
               <Link to="/account/reset/request" data-cy="forgetYourPasswordSelector">
                 <Translate contentKey="login.password.forgot">Did you forget your password?</Translate>
               </Link>
             </Alert>
-            <Alert color="warning">
+            <Alert color="dark" className="alerta-login">
               <span>
                 <Translate contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
               </span>{' '}

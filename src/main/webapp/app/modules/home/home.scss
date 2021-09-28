@@ -22,7 +22,7 @@ Main page styles
   width: 400px;
   position: absolute;
   left: 100px;
-  top: 350px;
+  top: 40vh;
   padding: 15px;
   border-radius: 15px;
 }
@@ -39,7 +39,6 @@ Main page styles
 
 .parrafo {
   color: #202225;
-  // width: 75%;
   margin-top: 15px;
   font-size: 18px;
 }
@@ -51,11 +50,11 @@ Main page styles
   flex-direction: row;
 }
 
-.sociales > li:nth-child(1) {
+.sociales>li:nth-child(1) {
   margin-left: -40px !important;
 }
 
-.sociales > li {
+.sociales>li {
   margin-left: 15px;
   background-color: #2f3136;
   color: white;
@@ -67,11 +66,11 @@ Main page styles
   transition: all 0.25s ease-in-out;
 }
 
-.sociales > li:hover {
+.sociales>li:hover {
   transform: scale(1.2);
 }
 
-.sociales > li > .icono {
+.sociales>li>.icono {
   display: flex;
   justify-content: center;
   position: relative;
@@ -80,7 +79,6 @@ Main page styles
 
 .cuerpo {
   width: 95%;
-  // background-color: rebeccapurple;
   margin: 25px 2.5%;
   padding: 25px;
 }
@@ -89,24 +87,25 @@ Main page styles
   display: flex;
   flex-direction: row;
 
-  & > .escala-covid {
+  &>.escala-covid {
     background: url(../../../content/images/estadistica-covid.png) no-repeat 50%;
     background-size: cover;
     width: 50%;
     height: 400px;
   }
 
-  & > .datos {
+  &>.datos {
     max-width: 50%;
     padding: 15px 25px;
     // background-color: red;
 
-    & > .ver-mas {
+    &>.ver-mas {
       font-size: 20px;
       margin: 0 42%;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-width: 100px;
     }
   }
 }
@@ -117,9 +116,9 @@ Main page styles
   flex-direction: row;
   width: 90%;
   margin: 25px 5% 50px 5%;
-  & > li {
+
+  &>li {
     max-width: 25%;
-    // background-color: rebeccapurple;
     padding: 25px;
   }
 }
@@ -142,35 +141,42 @@ Main page styles
 .banner-central {
   background-color: #858e99;
   color: white;
-  height: 500px;
+  height: 400px;
   width: 100%;
   margin: 50px 0;
-  & > .contenido-banner {
-    width: 40%;
+
+  &>.contenido-banner {
+    width: 100%;
     height: 50%;
     align-items: center;
     margin: 0 30%;
-    padding: 65px 40px 15px 40px;
-    & > h1 {
+    padding: 50px 40px 15px 40px;
+
+    &>h1 {
       display: flex;
       justify-content: center;
       align-items: center;
       text-transform: uppercase;
-      margin-top: 50px;
+      margin-top: 25px;
+      width: 40%;
     }
-    & > p {
+
+    &>p {
+      width: 40%;
       text-align: center;
     }
   }
+
   .iconos-banner {
     height: 150px;
     width: 60%;
     list-style: none;
     display: flex;
     flex-direction: row;
-    margin: 0 20%;
+    margin: -20px 20% 0 20%;
     padding: 15px 20px;
-    & > li {
+
+    &>li {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -178,9 +184,64 @@ Main page styles
       text-align: center;
       width: calc(100% / 6);
 
-      & > .icono {
+      &>.icono {
         height: 50%;
       }
     }
+  }
+}
+
+.contacto {
+  background-color: #555d66;
+  color: white;
+  height: 575px;
+  width: 50%;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &>div>h1 {
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &>div>p {
+    margin-top: -40px;
+    width: 70%;
+    margin: 0 15% 10px 15%;
+    text-align: center;
+  }
+
+  &>.form-contacto {
+    width: 55%;
+    display: flex;
+    justify-content: flex-start;
+
+    &>.columna {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px 15px;
+
+      &>.inputs-contacto {
+        width: 105% !important;
+      }
+    }
+  }
+}
+
+.columna-derecha {
+  width: 50%;
+  height: 575px;
+  position: absolute;
+  right: 0%;
+
+  &>.imagen {
+    background: url(../../../content/images/dosis-diaria.jpg) no-repeat 10%;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
   }
 }
