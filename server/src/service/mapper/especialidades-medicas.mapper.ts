@@ -9,9 +9,9 @@ export class EspecialidadesMedicasMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new EspecialidadesMedicas();
+        const entity = new EspecialidadesMedicas();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class EspecialidadesMedicasMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new EspecialidadesMedicasDTO();
+        const entityDTO = new EspecialidadesMedicasDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

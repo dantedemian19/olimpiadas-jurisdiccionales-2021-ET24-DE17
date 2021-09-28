@@ -36,7 +36,7 @@ export class EspecialidadesMedicasService {
         const resultList = await this.especialidadesMedicasRepository.findAndCount(options);
         const especialidadesMedicasDTO: EspecialidadesMedicasDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((especialidadesMedicas) =>
+            resultList[0].forEach(especialidadesMedicas =>
                 especialidadesMedicasDTO.push(EspecialidadesMedicasMapper.fromEntityToDTO(especialidadesMedicas)),
             );
             resultList[0] = especialidadesMedicasDTO;

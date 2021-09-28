@@ -8,6 +8,7 @@ import { Row, Col, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain, faEye, faHeading, faHeadset, faHeadSideCough, faHeartbeat, faMedkit, faTooth } from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { faEarlybirds } from '@fortawesome/free-brands-svg-icons';
 
 export type IHomeProp = StateProps;
 
@@ -143,7 +144,7 @@ export const Home = (props: IHomeProp) => {
               <h5>CUIDADO DENTAL</h5>
             </li>
             <li>
-              <FontAwesomeIcon icon={faHeadset} size="3x" className="icono" />
+              <FontAwesomeIcon icon={faEarlybirds} size="3x" className="icono" />
               <h5>CUIDADO DEL OÍDO</h5>
             </li>
             <li>
@@ -157,44 +158,43 @@ export const Home = (props: IHomeProp) => {
         <h1>Falta algo aca xd</h1>
       </section>
       <section className="contacto">
-        <div>
-          <h1>¡Contactanos!</h1>
-          <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-        </div>
-        <AvForm className="form-contacto">
-          <div className="columna">
-            <AvField
-              className="inputs-contacto"
-              name="email"
-              label={translate('global.form.email.label')}
-              placeholder={translate('global.form.email.placeholder')}
-              required
-              errorMessage="El email no puede estar vacío!"
-              data-cy="email"
-            />
-            <AvField
-              className="inputs-contacto"
-              name="asunto"
-              label={translate('global.form.asunto.label')}
-              placeholder={translate('global.form.asunto.placeholder')}
-              required
-              errorMessage="El asunto no puede estar vacío!"
-              data-cy="asunto"
-            />
-            <label htmlFor="mensaje">Mensaje</label>
-            <AvInput
-              type="textarea"
-              name="mensaje"
-              style={{ resize: 'none', height: 100 }}
-              placeholder={translate('global.form.cuerpo.placeholder')}
-            />
-            <button className="btn btn-dark" style={{ marginTop: 15 }}>
-              Enviar
-            </button>
+        <div className="formulario">
+          <div>
+            <h1>¡Contactanos!</h1>
+            <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
           </div>
-        </AvForm>
-        <div className="columna-derecha">
-          <div className="imagen"></div>
+          <AvForm className="form-contacto">
+            <div className="columna">
+              <AvField
+                className="inputs-contacto"
+                name="email"
+                label={translate('global.form.email.label')}
+                placeholder={translate('global.form.email.placeholder')}
+                required
+                errorMessage="El email no puede estar vacío!"
+                data-cy="email"
+              />
+              <AvField
+                className="inputs-contacto"
+                name="asunto"
+                label={translate('global.form.asunto.label')}
+                placeholder={translate('global.form.asunto.placeholder')}
+                required
+                errorMessage="El asunto no puede estar vacío!"
+                data-cy="asunto"
+              />
+              <label htmlFor="mensaje">Mensaje</label>
+              <AvInput
+                type="textarea"
+                name="mensaje"
+                style={{ resize: 'none', height: 100 }}
+                placeholder={translate('global.form.cuerpo.placeholder')}
+              />
+              <button className="btn btn-dark" style={{ width: '15%', fontSize: 20, margin: '25px 42.5% 0 42.5%' }}>
+                Enviar
+              </button>
+            </div>
+          </AvForm>
         </div>
       </section>
     </>

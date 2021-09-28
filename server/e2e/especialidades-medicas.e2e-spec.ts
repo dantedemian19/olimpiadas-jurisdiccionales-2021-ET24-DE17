@@ -42,7 +42,9 @@ describe('EspecialidadesMedicas Controller', () => {
 
     it('/GET all especialidades-medicas ', async () => {
         const getEntities: EspecialidadesMedicasDTO[] = (
-            await request(app.getHttpServer()).get('/api/especialidades-medicas').expect(200)
+            await request(app.getHttpServer())
+                .get('/api/especialidades-medicas')
+                .expect(200)
         ).body;
 
         expect(getEntities).toEqual(entityMock);
@@ -60,7 +62,10 @@ describe('EspecialidadesMedicas Controller', () => {
 
     it('/POST create especialidades-medicas', async () => {
         const createdEntity: EspecialidadesMedicasDTO = (
-            await request(app.getHttpServer()).post('/api/especialidades-medicas').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/especialidades-medicas')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -68,7 +73,10 @@ describe('EspecialidadesMedicas Controller', () => {
 
     it('/PUT update especialidades-medicas', async () => {
         const updatedEntity: EspecialidadesMedicasDTO = (
-            await request(app.getHttpServer()).put('/api/especialidades-medicas').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/especialidades-medicas')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);
