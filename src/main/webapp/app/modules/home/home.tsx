@@ -40,57 +40,6 @@ export const Home = (props: IHomeProp) => {
         </div>
       </section>
       <section className="cuerpo">
-        <div className="columnas">
-          <ul className="mini-lista">
-            <li>
-              <div className="subtitulo">
-                <h3>Mantente conectado</h3>
-                <div className="guion"></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
-                </p>
-              </div>
-            </li>
-            <div className="vertical-divisor"></div>
-            <li>
-              <div className="subtitulo">
-                <h3>Hablar sobre</h3>
-                <div className="guion"></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
-                </p>
-              </div>
-            </li>
-            <div className="vertical-divisor"></div>
-            <li>
-              <div className="subtitulo">
-                <h3>Permanecer en la cima</h3>
-                <div className="guion"></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
-                </p>
-              </div>
-            </li>
-            <div className="vertical-divisor"></div>
-            <li>
-              <div className="subtitulo">
-                <h3>Sigue haciendo</h3>
-                <div className="guion"></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
         <div className="general">
           <h1>Conceptos generales</h1>
           <p>
@@ -103,21 +52,56 @@ export const Home = (props: IHomeProp) => {
             voluptatum!
           </p>
         </div>
-        <hr />
-        <div className="estadistica">
-          <div className="escala-covid"></div>
-          <div className="datos">
-            <h1>Covid-19</h1>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore possimus laudantium nisi commodi quia in aspernatur numquam
-              laboriosam soluta harum. Provident quasi magnam laudantium neque minus facere delectus consectetur ad ullam maxime tempore
-              officiis nam tempora magni, nobis itaque, modi ab dicta quo. Nam blanditiis ea debitis ex quos amet officiis qui alias.
-              Deserunt, provident numquam. Molestiae itaque sint repellat voluptatum dicta corrupti expedita perspiciatis, atque eligendi
-              repudiandae aspernatur impedit odit unde non id dolorum facere autem velit nihil esse! Quam iure iste eum animi obcaecati
-              perferendis, vero ipsum quae? Nihil natus nesciunt ea sapiente accusamus rem exercitationem nulla minus.
-            </p>
-            <button className="btn btn-dark ver-mas">Ver más</button>
-          </div>
+        <div className="columnas">
+          <ul className="mini-lista">
+            <li>
+              <div className="subtitulo">
+                <h4>Mantente conectado</h4>
+                <div className="guion"></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
+                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
+                  excepturi.
+                </p>
+              </div>
+            </li>
+            <div className="vertical-divisor"></div>
+            <li>
+              <div className="subtitulo">
+                <h4>Hablar sobre</h4>
+                <div className="guion"></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
+                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
+                  excepturi.
+                </p>
+              </div>
+            </li>
+            <div className="vertical-divisor"></div>
+            <li>
+              <div className="subtitulo">
+                <h4>Permanecer en la cima</h4>
+                <div className="guion"></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
+                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
+                  excepturi.
+                </p>
+              </div>
+            </li>
+            <div className="vertical-divisor"></div>
+            <li>
+              <div className="subtitulo">
+                <h4>Sigue haciendo</h4>
+                <div className="guion"></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
+                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
+                  excepturi.
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
       <section>
@@ -154,8 +138,22 @@ export const Home = (props: IHomeProp) => {
           </ul>
         </div>
       </section>
-      <section style={{ justifyContent: 'center', display: 'flex' }}>
-        <h1>Falta algo aca xd</h1>
+      <section className="cuerpo" style={{ justifyContent: 'center', display: 'flex' }}>
+        <div className="estadistica">
+          <div className="escala-covid"></div>
+          <div className="datos">
+            <h1>Covid-19</h1>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore possimus laudantium nisi commodi quia in aspernatur numquam
+              laboriosam soluta harum. Provident quasi magnam laudantium neque minus facere delectus consectetur ad ullam maxime tempore
+              officiis nam tempora magni, nobis itaque, modi ab dicta quo. Nam blanditiis ea debitis ex quos amet officiis qui alias.
+              Deserunt, provident numquam. Molestiae itaque sint repellat voluptatum dicta corrupti expedita perspiciatis, atque eligendi
+              repudiandae aspernatur impedit odit unde non id dolorum facere autem velit nihil esse! Quam iure iste eum animi obcaecati
+              perferendis, vero ipsum quae? Nihil natus nesciunt ea sapiente accusamus rem exercitationem nulla minus.
+            </p>
+            <button className="btn btn-dark ver-mas">Ver más</button>
+          </div>
+        </div>
       </section>
       <section className="contacto">
         <div className="formulario">
