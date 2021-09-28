@@ -82,7 +82,7 @@ export class Config {
         if (typeof template === 'string') {
             return template.replace(
                 new RegExp('\\${[^{]+}', 'g'),
-                (name) => variables[name.substring(2, name.length - 1)],
+                name => variables[name.substring(2, name.length - 1)],
             );
         }
         return template;

@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "paciente": "Paciente",
+        "medico": "Medico",
+        "especialidadesMedicas": "Especialidades Medicas",
+        "turno": "Turno",
+        "historiaClinica": "Historia Clinica",
+        "diario": "Diario",
+        "valoracion": "Valoracion",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -42,7 +49,11 @@
       "confirmpassword.label": "Confirmación de la nueva contraseña",
       "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
       "email.label": "Correo electrónico",
-      "email.placeholder": "Su correo electrónico"
+      "email.placeholder": "Correo electrónico",
+      "asunto.label": "Asunto",
+      "asunto.placeholder": "Asunto",
+      "cuerpo.label": "Mensaje",
+      "cuerpo.placeholder": "Mensaje"
     },
     "messages": {
       "info": {

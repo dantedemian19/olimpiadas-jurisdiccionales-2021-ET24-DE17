@@ -1,0 +1,24 @@
+{
+  "pruebaApp": {
+    "especialidadesMedicas": {
+      "home": {
+        "title": "Especialidades Medicas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Especialidades Medicas",
+        "createOrEditLabel": "Crear o editar Especialidades Medicas",
+        "notFound": "Ningún Especialidades Medicas encontrado"
+      },
+      "created": "Un nuevo Especialidades Medicas ha sido creado con el identificador {{ param }}",
+      "updated": "Un Especialidades Medicas ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Especialidades Medicas ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Especialidades Medicas {{ id }}?"
+      },
+      "detail": {
+        "title": "Especialidades Medicas"
+      },
+      "id": "ID",
+      "especialidad": "Especialidad"
+    }
+  }
+}

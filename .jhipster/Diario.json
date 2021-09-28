@@ -1,0 +1,34 @@
+{
+  "name": "Diario",
+  "fields": [
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entrada",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength", "pattern"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "500",
+      "fieldValidateRulesPattern": "^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$"
+    },
+    {
+      "fieldName": "sintomas",
+      "fieldType": "SintomasTipo",
+      "fieldValues": "GARGANTA (Dolor_de_garganta),CABEZA (Dolor_de_cabeza),ESTOMAGO (Dolor_de_estomago),FRACTURA (Fractura),NAUSEAS (Nauseas),MOCOS (Mocos),OLFATO (Perdida_de_olfato),CONTACTO_ESTRECHO (Contacto_estrecho)"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "diario",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210927194502"
+}

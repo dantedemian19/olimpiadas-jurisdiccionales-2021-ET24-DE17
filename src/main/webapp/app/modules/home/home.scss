@@ -1,10 +1,247 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-.hipster {
-  display: inline-block;
+.container,
+.container-fluid,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.banner {
+  background: url(../../../content/images/banner2.jpg) no-repeat 50%;
+  background-position: center;
+  background-size: cover;
+  height: calc(100vh + 13px);
+}
+
+.card-home {
+  width: 400px;
+  position: absolute;
+  left: 100px;
+  top: 40vh;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.titulo {
+  color: #202225;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 45px;
+}
+
+.parrafo {
+  color: #202225;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.sociales {
+  margin-top: 15px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.sociales>li:nth-child(1) {
+  margin-left: -40px !important;
+}
+
+.sociales>li {
+  margin-left: 15px;
+  background-color: #2f3136;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  list-style: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.sociales>li:hover {
+  transform: scale(1.2);
+}
+
+.sociales>li>.icono {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 12px;
+}
+
+.cuerpo {
+  width: 95%;
+  margin: 25px 2.5%;
+  padding: 25px;
+}
+
+.estadistica {
+  display: flex;
+  flex-direction: row;
+
+  &>.escala-covid {
+    background: url(../../../content/images/estadistica-covid.png) no-repeat 50%;
+    background-size: cover;
+    width: 50%;
+    height: 400px;
+  }
+
+  &>.datos {
+    max-width: 50%;
+    padding: 15px 25px;
+    // background-color: red;
+
+    &>.ver-mas {
+      font-size: 20px;
+      margin: 0 42%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 100px;
+    }
+  }
+}
+
+.mini-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 25px 5% 50px 5%;
+
+  &>li {
+    max-width: 25%;
+    padding: 25px;
+  }
+}
+
+.guion {
+  width: 50px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #e91e63;
+  margin: 10px 0;
+}
+
+.vertical-divisor {
+  width: 1px;
+  height: 100px;
+  background-color: #ccc;
+  margin-top: 70px;
+}
+
+.banner-central {
+  background-color: #858e99;
+  color: white;
+  height: 400px;
   width: 100%;
-  height: 497px;
-  background: url('../../../content/images/jhipster_family_member_3.svg') no-repeat center top;
-  background-size: contain;
+  margin: 50px 0;
+
+  &>.contenido-banner {
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    margin: 0 30%;
+    padding: 50px 40px 15px 40px;
+
+    &>h1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      margin-top: 25px;
+      width: 40%;
+    }
+
+    &>p {
+      width: 40%;
+      text-align: center;
+    }
+  }
+
+  .iconos-banner {
+    height: 150px;
+    width: 60%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: -20px 20% 0 20%;
+    padding: 15px 20px;
+
+    &>li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      width: calc(100% / 6);
+
+      &>.icono {
+        height: 50%;
+      }
+    }
+  }
+}
+
+.contacto {
+  background-color: #555d66;
+  color: white;
+  height: 575px;
+  width: 50%;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &>div>h1 {
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &>div>p {
+    margin-top: -40px;
+    width: 70%;
+    margin: 0 15% 10px 15%;
+    text-align: center;
+  }
+
+  &>.form-contacto {
+    width: 55%;
+    display: flex;
+    justify-content: flex-start;
+
+    &>.columna {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px 15px;
+
+      &>.inputs-contacto {
+        width: 105% !important;
+      }
+    }
+  }
+}
+
+.columna-derecha {
+  width: 50%;
+  height: 575px;
+  position: absolute;
+  right: 0%;
+
+  &>.imagen {
+    background: url(../../../content/images/dosis-diaria.jpg) no-repeat 10%;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
 }

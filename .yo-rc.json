@@ -8,18 +8,14 @@
     }
   },
   "generator-jhipster": {
-    "blueprints": [
-      {
-        "name": "generator-jhipster-nodejs",
-        "version": "2.0.0"
-      }
-    ],
-    "otherModules": [
-      {
-        "name": "generator-jhipster-nodejs",
-        "version": "2.0.0"
-      }
-    ],
+    "blueprints": [{
+      "name": "generator-jhipster-nodejs",
+      "version": "2.0.0"
+    }],
+    "otherModules": [{
+      "name": "generator-jhipster-nodejs",
+      "version": "2.0.0"
+    }],
     "applicationType": "monolith",
     "baseName": "prueba",
     "jhipsterVersion": "7.0.1",
@@ -57,6 +53,8 @@
     "languages": ["es"],
     "cacheProvider": "ehcache",
     "buildTool": "maven",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Paciente", "Medico", "EspecialidadesMedicas", "Turno", "HistoriaClinica", "Diario", "Valoracion"],
+    "lastLiquibaseTimestamp": 1632771903000
   }
 }

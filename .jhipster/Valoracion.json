@@ -1,0 +1,34 @@
+{
+  "name": "Valoracion",
+  "fields": [
+    {
+      "fieldName": "estrellas",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "5"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "isPaciente",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "valoracion",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210927194503"
+}

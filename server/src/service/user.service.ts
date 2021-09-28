@@ -30,7 +30,7 @@ export class UserService {
         const resultList = await this.userRepository.findAndCount(options);
         const usersDTO: UserDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((user) => usersDTO.push(UserMapper.fromEntityToDTO(this.flatAuthorities(user))));
+            resultList[0].forEach(user => usersDTO.push(UserMapper.fromEntityToDTO(this.flatAuthorities(user))));
             resultList[0] = usersDTO;
         }
         return resultList;
@@ -64,7 +64,7 @@ export class UserService {
     private flatAuthorities(user: any): User {
         if (user && user.authorities) {
             const authorities: string[] = [];
-            user.authorities.forEach((authority) => authorities.push(authority.name));
+            user.authorities.forEach(authority => authorities.push(authority.name));
             user.authorities = authorities;
         }
         return user;
@@ -73,7 +73,7 @@ export class UserService {
     private convertInAuthorities(user: any): User {
         if (user && user.authorities) {
             const authorities: any[] = [];
-            user.authorities.forEach((authority) => authorities.push({ name: authority }));
+            user.authorities.forEach(authority => authorities.push({ name: authority }));
             user.authorities = authorities;
         }
         return user;
