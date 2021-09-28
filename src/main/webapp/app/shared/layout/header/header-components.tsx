@@ -16,7 +16,7 @@ export const BrandIcon = props => (
 export const Brand = props => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">DAMAAGMA</span>
+    <span className="brand-title">DIAFRAGMA</span>
   </NavbarBrand>
 );
 

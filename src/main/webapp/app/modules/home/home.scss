@@ -51,27 +51,27 @@ Main page styles
   flex-direction: row;
 }
 
-.sociales>li:nth-child(1) {
+.sociales > li:nth-child(1) {
   margin-left: -40px !important;
 }
 
-.sociales>li {
+.sociales > li {
   margin-left: 15px;
-  background-color: #2F3136;
+  background-color: #2f3136;
   color: white;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
   list-style: none;
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
-.sociales>li:hover {
+.sociales > li:hover {
   transform: scale(1.2);
 }
 
-.sociales>li>.icono {
+.sociales > li > .icono {
   display: flex;
   justify-content: center;
   position: relative;
@@ -89,24 +89,98 @@ Main page styles
   display: flex;
   flex-direction: row;
 
-  &>.escala-covid {
+  & > .escala-covid {
     background: url(../../../content/images/estadistica-covid.png) no-repeat 50%;
     background-size: cover;
     width: 50%;
     height: 400px;
   }
 
-  &>.datos {
+  & > .datos {
     max-width: 50%;
     padding: 15px 25px;
     // background-color: red;
 
-    &>.ver-mas {
+    & > .ver-mas {
       font-size: 20px;
       margin: 0 42%;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+}
+
+.mini-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 25px 5% 50px 5%;
+  & > li {
+    max-width: 25%;
+    // background-color: rebeccapurple;
+    padding: 25px;
+  }
+}
+
+.guion {
+  width: 50px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #e91e63;
+  margin: 10px 0;
+}
+
+.vertical-divisor {
+  width: 1px;
+  height: 100px;
+  background-color: #ccc;
+  margin-top: 70px;
+}
+
+.banner-central {
+  background-color: #858e99;
+  color: white;
+  height: 500px;
+  width: 100%;
+  margin: 50px 0;
+  & > .contenido-banner {
+    width: 40%;
+    height: 50%;
+    align-items: center;
+    margin: 0 30%;
+    padding: 65px 40px 15px 40px;
+    & > h1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      margin-top: 50px;
+    }
+    & > p {
+      text-align: center;
+    }
+  }
+  .iconos-banner {
+    height: 150px;
+    width: 60%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0 20%;
+    padding: 15px 20px;
+    & > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      width: calc(100% / 6);
+
+      & > .icono {
+        height: 50%;
+      }
     }
   }
 }
