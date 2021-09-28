@@ -61,7 +61,6 @@ enum TurnoEstado {
 }
 
 enum SintomasTipo {
-    FRACTURA (Fractura),
 	GARGANTA,
     CABEZA,
     ESTOMAGO,
