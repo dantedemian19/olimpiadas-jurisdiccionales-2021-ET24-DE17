@@ -52,24 +52,24 @@ entity Valoracion {
 }
 
 enum TurnoEstado {
-  SOLICITADO (Solicitado),
-  APROBADO (Aprobado),
-  RECHAZADO (Rechazado),
-  EN_ESPERA (En_espera),
-  TOMADO (Tomado),
-  FINALIZADO (Finalizado)
+  SOLICITADO,
+  APROBADO,
+  RECHAZADO,
+  EN_ESPERA,
+  TOMADO,
+  FINALIZADO
 }
 
 enum SintomasTipo {
-	GARGANTA (Dolor_de_garganta),
-    CABEZA (Dolor_de_cabeza),
-    ESTOMAGO (Dolor_de_estomago),
-    FRACTURA (Fractura),
-    NAUSEAS (Nauseas),
-    MOCOS (Mocos),
-    OLFATO (Perdida_de_olfato),
-    CONTACTO_ESTRECHO (Contacto_estrecho)
-	CANCER (cancer)
+	GARGANTA,
+    CABEZA,
+    ESTOMAGO,
+    FRACTURA,
+    NAUSEAS,
+    MOCOS,
+    OLFATO,
+    CONTACTO_ESTRECHO,
+	CANCER
 }
 
 enum EspecialidadesTipo {
