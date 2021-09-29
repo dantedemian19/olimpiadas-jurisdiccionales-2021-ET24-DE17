@@ -41,8 +41,11 @@ describe('Valoracion Controller', () => {
     });
 
     it('/GET all valoracions ', async () => {
-        const getEntities: ValoracionDTO[] = (await request(app.getHttpServer()).get('/api/valoracions').expect(200))
-            .body;
+        const getEntities: ValoracionDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/valoracions')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -59,7 +62,10 @@ describe('Valoracion Controller', () => {
 
     it('/POST create valoracions', async () => {
         const createdEntity: ValoracionDTO = (
-            await request(app.getHttpServer()).post('/api/valoracions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/valoracions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -67,7 +73,10 @@ describe('Valoracion Controller', () => {
 
     it('/PUT update valoracions', async () => {
         const updatedEntity: ValoracionDTO = (
-            await request(app.getHttpServer()).put('/api/valoracions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/valoracions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

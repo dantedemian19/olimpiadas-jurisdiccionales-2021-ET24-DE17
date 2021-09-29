@@ -5,9 +5,9 @@
 @import '~bootswatch/dist/journal/bootswatch';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-html {
-  // zoom: 90%;
-}
+// html {
+//   zoom: 90%;
+// }
 
 body {
   margin: 0;
@@ -28,7 +28,7 @@ a {
     box-sizing: border-box;
   }
   ::-webkit-scrollbar {
-    display: none !important;
+    // display: none !important;
   }
 }
 

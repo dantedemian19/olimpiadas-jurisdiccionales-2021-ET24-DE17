@@ -7,5 +7,5 @@ export enum SintomasTipo {
     MOCOS = 'Mocos',
     OLFATO = 'Perdida_de_olfato',
     CONTACTO_ESTRECHO = 'Contacto_estrecho',
-	CANCER = 'cancer'
+    CANCER = 'cancer',
 }

@@ -6,7 +6,17 @@ import { translate, Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBrain, faEye, faHeading, faHeadset, faHeadSideCough, faHeartbeat, faMedkit, faTooth } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBrain,
+  faEye,
+  faHeading,
+  faHeadphones,
+  faHeadset,
+  faHeadSideCough,
+  faHeartbeat,
+  faMedkit,
+  faTooth,
+} from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { faEarlybirds } from '@fortawesome/free-brands-svg-icons';
 
@@ -107,33 +117,33 @@ export const Home = (props: IHomeProp) => {
       <section>
         <div className="banner-central">
           <div className="contenido-banner">
-            <h1>Nuestro departamento</h1>
+            <h1 style={{color: 'white'}}>Nuestro departamento</h1>
             <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
           </div>
           <ul className="iconos-banner">
             <li>
               <FontAwesomeIcon icon={faEye} size="3x" className="icono" />
-              <h5>CUIDADO DE LOS OJOS CON LÁSER</h5>
+              <p>CUIDADO DE LOS OJOS CON LÁSER</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faHeartbeat} size="3x" className="icono" />
-              <h5>CUIDADO DEL CORAZON</h5>
+              <p>CUIDADO DEL CORAZON</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faBrain} size="3x" className="icono" />
-              <h5>NEUROLOGÍA</h5>
+              <p>NEUROLOGÍA</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faTooth} size="3x" className="icono" />
-              <h5>CUIDADO DENTAL</h5>
+              <p>CUIDADO DENTAL</p>
             </li>
             <li>
-              <FontAwesomeIcon icon={faEarlybirds} size="3x" className="icono" />
-              <h5>CUIDADO DEL OÍDO</h5>
+              <FontAwesomeIcon icon={faHeadphones} size="3x" className="icono" />
+              <p>CUIDADO DEL OÍDO</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faMedkit} size="3x" className="icono" />
-              <h5>EMERGENCIA</h5>
+              <p>EMERGENCIA</p>
             </li>
           </ul>
         </div>
