@@ -3,6 +3,7 @@
 // Import Bootstrap source files from node_modules
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import '~bootswatch/dist/journal/bootswatch';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 html {
   // zoom: 90%;
@@ -20,6 +21,7 @@ a {
 * {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif !important;
   &:after,
   &::before {
     -moz-box-sizing: border-box;

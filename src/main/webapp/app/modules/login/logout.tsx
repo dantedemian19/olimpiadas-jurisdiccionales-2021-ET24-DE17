@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { IRootState } from 'app/shared/reducers';
 import { logout } from 'app/shared/reducers/authentication';
+import { Redirect } from 'react-router-dom';
 
 export interface ILogoutProps extends StateProps, DispatchProps {
   idToken: string;
@@ -20,12 +21,9 @@ export const Logout = (props: ILogoutProps) => {
         : logoutUrl + '?id_token_hint=' + props.idToken + '&post_logout_redirect_uri=' + window.location.origin;
     }
   });
+  const { from } = (location.pathname as any) || { from: { pathname: '/', search: location.search } };
 
-  return (
-    <div className="p-5">
-      <h4>Logged out successfully!</h4>
-    </div>
-  );
+  return <Redirect to={from} />;
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
