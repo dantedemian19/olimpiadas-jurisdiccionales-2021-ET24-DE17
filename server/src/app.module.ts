@@ -8,9 +8,9 @@ import { PacienteModule } from './module/paciente.module';
 import { MedicoModule } from './module/medico.module';
 import { EspecialidadesMedicasModule } from './module/especialidades-medicas.module';
 import { TurnoModule } from './module/turno.module';
-// import { HistoriaClinicaModule } from './module/historia-clinica.module';
-// import { DiarioModule } from './module/diario.module';
-// import { ValoracionModule } from './module/valoracion.module';
+import { HistoriaClinicaModule } from './module/historia-clinica.module';
+import { DiarioModule } from './module/diario.module';
+import { ValoracionModule } from './module/valoracion.module';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
 // jhipster-needle-add-service-module-to-main-import - JHipster will import service modules here, do not remove
