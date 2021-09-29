@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
-import { Translate } from 'react-jhipster';
+import {} from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -20,65 +20,43 @@ export const PacienteDetail = (props: IPacienteDetailProps) => {
   return (
     <Row>
       <Col md="8">
-        <h2 data-cy="pacienteDetailsHeading">
-          <Translate contentKey="pruebaApp.paciente.detail.title">Paciente</Translate>
-        </h2>
+        <h2 data-cy="pacienteDetailsHeading">Paciente</h2>
         <dl className="jh-entity-details">
           <dt>
-            <span id="id">
-              <Translate contentKey="global.field.id">ID</Translate>
-            </span>
+            <span id="id">ID</span>
           </dt>
           <dd>{pacienteEntity.id}</dd>
           <dt>
-            <span id="dni">
-              <Translate contentKey="pruebaApp.paciente.dni">Dni</Translate>
-            </span>
+            <span id="dni">Dni</span>
           </dt>
           <dd>{pacienteEntity.dni}</dd>
           <dt>
-            <span id="historiaClinica">
-              <Translate contentKey="pruebaApp.paciente.historiaClinica">Historia Clinica</Translate>
-            </span>
+            <span id="historiaClinica">Historia Clinica</span>
           </dt>
           <dd>{pacienteEntity.historiaClinica}</dd>
           <dt>
-            <span id="nombre">
-              <Translate contentKey="pruebaApp.paciente.nombre">Nombre</Translate>
-            </span>
+            <span id="nombre">Nombre</span>
           </dt>
           <dd>{pacienteEntity.nombre}</dd>
           <dt>
-            <span id="apellido">
-              <Translate contentKey="pruebaApp.paciente.apellido">Apellido</Translate>
-            </span>
+            <span id="apellido">Apellido</span>
           </dt>
           <dd>{pacienteEntity.apellido}</dd>
           <dt>
-            <span id="telefono">
-              <Translate contentKey="pruebaApp.paciente.telefono">Telefono</Translate>
-            </span>
+            <span id="telefono">Telefono</span>
           </dt>
           <dd>{pacienteEntity.telefono}</dd>
           <dt>
-            <span id="mail">
-              <Translate contentKey="pruebaApp.paciente.mail">Mail</Translate>
-            </span>
+            <span id="mail">Mail</span>
           </dt>
           <dd>{pacienteEntity.mail}</dd>
         </dl>
         <Button tag={Link} to="/paciente" replace color="info" data-cy="entityDetailsBackButton">
-          <FontAwesomeIcon icon="arrow-left" />{' '}
-          <span className="d-none d-md-inline">
-            <Translate contentKey="entity.action.back">Back</Translate>
-          </span>
+          <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
         </Button>
         &nbsp;
         <Button tag={Link} to={`/paciente/${pacienteEntity.id}/edit`} replace color="primary">
-          <FontAwesomeIcon icon="pencil-alt" />{' '}
-          <span className="d-none d-md-inline">
-            <Translate contentKey="entity.action.edit">Edit</Translate>
-          </span>
+          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
         </Button>
       </Col>
     </Row>

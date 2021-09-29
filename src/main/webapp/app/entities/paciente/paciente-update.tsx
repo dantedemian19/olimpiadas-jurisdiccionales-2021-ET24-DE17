@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
-import { Translate, translate } from 'react-jhipster';
+import { translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
@@ -57,7 +57,7 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="pruebaApp.paciente.home.createOrEditLabel" data-cy="PacienteCreateUpdateHeading">
-            <Translate contentKey="pruebaApp.paciente.home.createOrEditLabel">Create or edit a Paciente</Translate>
+            Create or edit a Paciente
           </h2>
         </Col>
       </Row>
@@ -69,15 +69,13 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
             <AvForm model={isNew ? {} : pacienteEntity} onSubmit={saveEntity}>
               {!isNew ? (
                 <AvGroup>
-                  <Label for="paciente-id">
-                    <Translate contentKey="global.field.id">ID</Translate>
-                  </Label>
+                  <Label for="paciente-id">ID</Label>
                   <AvInput id="paciente-id" type="text" className="form-control" name="id" required readOnly />
                 </AvGroup>
               ) : null}
               <AvGroup>
                 <Label id="dniLabel" for="paciente-dni">
-                  <Translate contentKey="pruebaApp.paciente.dni">Dni</Translate>
+                  Dni
                 </Label>
                 <AvField
                   id="paciente-dni"
@@ -86,16 +84,16 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   className="form-control"
                   name="dni"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 8, errorMessage: translate('entity.validation.maxlength', { max: 8 }) },
-                    number: { value: true, errorMessage: translate('entity.validation.number') },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 8, errorMessage: 'This field cannot be longer than 8 characters.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="historiaClinicaLabel" for="paciente-historiaClinica">
-                  <Translate contentKey="pruebaApp.paciente.historiaClinica">Historia Clinica</Translate>
+                  Historia Clinica
                 </Label>
                 <AvField
                   id="paciente-historiaClinica"
@@ -103,18 +101,18 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   type="text"
                   name="historiaClinica"
                   validate={{
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 500, errorMessage: translate('entity.validation.maxlength', { max: 500 }) },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 500, errorMessage: 'This field cannot be longer than 500 characters.' },
                     pattern: {
                       value: '^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$' }),
+                      errorMessage: "This field should follow pattern for '^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+..",
                     },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="nombreLabel" for="paciente-nombre">
-                  <Translate contentKey="pruebaApp.paciente.nombre">Nombre</Translate>
+                  Nombre
                 </Label>
                 <AvField
                   id="paciente-nombre"
@@ -122,19 +120,16 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   type="text"
                   name="nombre"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 100, errorMessage: translate('entity.validation.maxlength', { max: 100 }) },
-                    pattern: {
-                      value: '^[A-Za-z0-9 ]+$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[A-Za-z0-9 ]+$' }),
-                    },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 100, errorMessage: 'This field cannot be longer than 100 characters.' },
+                    pattern: { value: '^[A-Za-z0-9 ]+$', errorMessage: "This field should follow pattern for '^[A-Za-z0-9 ]+.." },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="apellidoLabel" for="paciente-apellido">
-                  <Translate contentKey="pruebaApp.paciente.apellido">Apellido</Translate>
+                  Apellido
                 </Label>
                 <AvField
                   id="paciente-apellido"
@@ -142,19 +137,16 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   type="text"
                   name="apellido"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 100, errorMessage: translate('entity.validation.maxlength', { max: 100 }) },
-                    pattern: {
-                      value: '^[A-Za-z0-9 ]+$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[A-Za-z0-9 ]+$' }),
-                    },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 100, errorMessage: 'This field cannot be longer than 100 characters.' },
+                    pattern: { value: '^[A-Za-z0-9 ]+$', errorMessage: "This field should follow pattern for '^[A-Za-z0-9 ]+.." },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="telefonoLabel" for="paciente-telefono">
-                  <Translate contentKey="pruebaApp.paciente.telefono">Telefono</Translate>
+                  Telefono
                 </Label>
                 <AvField
                   id="paciente-telefono"
@@ -163,15 +155,15 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   className="form-control"
                   name="telefono"
                   validate={{
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 10, errorMessage: translate('entity.validation.maxlength', { max: 10 }) },
-                    number: { value: true, errorMessage: translate('entity.validation.number') },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 10, errorMessage: 'This field cannot be longer than 10 characters.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="mailLabel" for="paciente-mail">
-                  <Translate contentKey="pruebaApp.paciente.mail">Mail</Translate>
+                  Mail
                 </Label>
                 <AvField
                   id="paciente-mail"
@@ -179,11 +171,11 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
                   type="text"
                   name="mail"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
                     pattern: {
                       value: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$' }),
+                      errorMessage: "This field should follow pattern for '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}..",
                     },
                   }}
                 />
@@ -191,15 +183,12 @@ export const PacienteUpdate = (props: IPacienteUpdateProps) => {
               <Button tag={Link} id="cancel-save" to="/paciente" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
+                <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
               <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                 <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
+                &nbsp; Save
               </Button>
             </AvForm>
           )}

@@ -1,103 +1,198 @@
-import React from 'react';
+// removed th id primary key
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Calendar, Badge } from 'antd';
-import { Button } from 'antd';
-import { BookOutlined } from '@ant-design/icons';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { Button, Col, Row, Table } from 'reactstrap';
+import { Translate, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './paciente.scss';
+import { IRootState } from 'app/shared/reducers';
+import { getEntities } from './paciente.reducer';
+import { IPaciente } from 'app/shared/model/paciente.model';
+import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
+import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
-export type IHomeProp = StateProps;
+export interface IPacienteProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
-export const Paciente = (props: IHomeProp) => {
-  const { account } = props;
+export const Paciente = (props: IPacienteProps) => {
+  const [paginationState, setPaginationState] = useState(
+    overridePaginationStateWithQueryParams(getSortState(props.location, ITEMS_PER_PAGE, 'id'), props.location.search)
+  );
 
-  function getListData(value) {
-    let listData;
-    switch (value.date()) {
-      case 8:
-        listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
-        ];
-        break;
-      case 10:
-        listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
-          { type: 'error', content: 'This is error event.' },
-        ];
-        break;
-      case 15:
-        listData = [
-          { type: 'warning', content: 'This is warning event' },
-          { type: 'success', content: 'This is very long usual event。。....' },
-          { type: 'error', content: 'This is error event 1.' },
-          { type: 'error', content: 'This is error event 2.' },
-          { type: 'error', content: 'This is error event 3.' },
-          { type: 'error', content: 'This is error event 4.' },
-        ];
-        break;
-      default:
+  const getAllEntities = () => {
+    props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
+  };
+
+  const sortEntities = () => {
+    getAllEntities();
+    const endURL = `?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`;
+    if (props.location.search !== endURL) {
+      props.history.push(`${props.location.pathname}${endURL}`);
     }
-    return listData || [];
-  }
+  };
 
-  function dateCellRender(value) {
-    const listData = getListData(value);
-    return (
-      <ul className="events">
-        {listData.map(item => (
-          <li key={item.content}>
-            <Badge status={item.type} text={item.content} />
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  useEffect(() => {
+    sortEntities();
+  }, [paginationState.activePage, paginationState.order, paginationState.sort]);
 
-  function getMonthData(value) {
-    if (value.month() === 8) {
-      return 1394;
+  useEffect(() => {
+    const params = new URLSearchParams(props.location.search);
+    const page = params.get('page');
+    const sort = params.get('sort');
+    if (page && sort) {
+      const sortSplit = sort.split(',');
+      setPaginationState({
+        ...paginationState,
+        activePage: +page,
+        sort: sortSplit[0],
+        order: sortSplit[1],
+      });
     }
-  }
+  }, [props.location.search]);
 
-  function monthCellRender(value) {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
-  }
+  const sort = p => () => {
+    setPaginationState({
+      ...paginationState,
+      order: paginationState.order === 'asc' ? 'desc' : 'asc',
+      sort: p,
+    });
+  };
 
+  const handlePagination = currentPage =>
+    setPaginationState({
+      ...paginationState,
+      activePage: currentPage,
+    });
+
+  const handleSyncList = () => {
+    sortEntities();
+  };
+
+  const { pacienteList, match, loading, totalItems } = props;
   return (
-    <div className="screen-pacientes">
-      <section className="banner-pacientes">
-        <div className="banner pacientes">
-          <div className="titulo-pacientes">
-            <h1>Turnos</h1>
-          </div>
-        </div>
-      </section>
-      <main className="cuerpo">
-        <section className="turnos">
-          <h1>Turnos solicitados</h1>
-          <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
-          <Button className="button-turnos" type="primary" danger icon={<BookOutlined />}>
-            ¡Solicitá tú turno!
+    <div>
+      <h2 id="paciente-heading" data-cy="PacienteHeading">
+        Pacientes
+        <div className="d-flex justify-content-end">
+          <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
+            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
           </Button>
-        </section>
-      </main>
+          <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+            <FontAwesomeIcon icon="plus" />
+            &nbsp; Create new Paciente
+          </Link>
+        </div>
+      </h2>
+      <div className="table-responsive">
+        {pacienteList && pacienteList.length > 0 ? (
+          <Table responsive>
+            <thead>
+              <tr>
+                <th className="hand" onClick={sort('id')}>
+                  ID <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('dni')}>
+                  Dni <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('historiaClinica')}>
+                  Historia Clinica <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('nombre')}>
+                  Nombre <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('apellido')}>
+                  Apellido <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('telefono')}>
+                  Telefono <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('mail')}>
+                  Mail <FontAwesomeIcon icon="sort" />
+                </th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {pacienteList.map((paciente, i) => (
+                <tr key={`entity-${i}`} data-cy="entityTable">
+                  <td>
+                    <Button tag={Link} to={`${match.url}/${paciente.id}`} color="link" size="sm">
+                      {paciente.id}
+                    </Button>
+                  </td>
+                  <td>{paciente.dni}</td>
+                  <td>{paciente.historiaClinica}</td>
+                  <td>{paciente.nombre}</td>
+                  <td>{paciente.apellido}</td>
+                  <td>{paciente.telefono}</td>
+                  <td>{paciente.mail}</td>
+                  <td className="text-right">
+                    <div className="btn-group flex-btn-group-container">
+                      <Button tag={Link} to={`${match.url}/${paciente.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${paciente.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="primary"
+                        size="sm"
+                        data-cy="entityEditButton"
+                      >
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                      </Button>
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${paciente.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                        data-cy="entityDeleteButton"
+                      >
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          !loading && <div className="alert alert-warning">No Pacientes found</div>
+        )}
+      </div>
+      {props.totalItems ? (
+        <div className={pacienteList && pacienteList.length > 0 ? '' : 'd-none'}>
+          <Row className="justify-content-center">
+            <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} />
+          </Row>
+          <Row className="justify-content-center">
+            <JhiPagination
+              activePage={paginationState.activePage}
+              onSelect={handlePagination}
+              maxButtons={5}
+              itemsPerPage={paginationState.itemsPerPage}
+              totalItems={props.totalItems}
+            />
+          </Row>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
 
-const mapStateToProps = storeState => ({
-  account: storeState.authentication.account,
-  isAuthenticated: storeState.authentication.isAuthenticated,
+const mapStateToProps = ({ paciente }: IRootState) => ({
+  pacienteList: paciente.entities,
+  loading: paciente.loading,
+  totalItems: paciente.totalItems,
 });
 
-type StateProps = ReturnType<typeof mapStateToProps>;
+const mapDispatchToProps = {
+  getEntities,
+};
 
-export default connect(mapStateToProps)(Paciente);
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paciente);

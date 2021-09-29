@@ -49,6 +49,11 @@
       "fieldName": "atiendeDiscapacitados",
       "fieldType": "Boolean",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "especialidad",
+      "fieldType": "EspecialidadesTipo",
+      "fieldValues": "CLINICO,DERMATOLOGIA,GINECOLOGIA,EMERGENCIAS,OFTALMOLOGIA,OTORRINOLARINGOLOGIA,TRAUMATOLOGIA,UROLOGIA,ANATOMIA_PATOLOGIA,BIOQUIMICA,FARMACOLOGIA,GENETICA_MEDICA,INMUNOLOGIA,MEDICINA_NUCLEAR,RADIOLOGIA"
     }
   ],
   "relationships": [],

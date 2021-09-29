@@ -41,11 +41,7 @@ describe('Paciente Controller', () => {
     });
 
     it('/GET all pacientes ', async () => {
-        const getEntities: PacienteDTO[] = (
-            await request(app.getHttpServer())
-                .get('/api/pacientes')
-                .expect(200)
-        ).body;
+        const getEntities: PacienteDTO[] = (await request(app.getHttpServer()).get('/api/pacientes').expect(200)).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -62,10 +58,7 @@ describe('Paciente Controller', () => {
 
     it('/POST create pacientes', async () => {
         const createdEntity: PacienteDTO = (
-            await request(app.getHttpServer())
-                .post('/api/pacientes')
-                .send(entityMock)
-                .expect(201)
+            await request(app.getHttpServer()).post('/api/pacientes').send(entityMock).expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -73,10 +66,7 @@ describe('Paciente Controller', () => {
 
     it('/PUT update pacientes', async () => {
         const updatedEntity: PacienteDTO = (
-            await request(app.getHttpServer())
-                .put('/api/pacientes')
-                .send(entityMock)
-                .expect(201)
+            await request(app.getHttpServer()).put('/api/pacientes').send(entityMock).expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

@@ -21,6 +21,11 @@
       "fieldValidateRulesMinlength": "1",
       "fieldValidateRulesMaxlength": "500",
       "fieldValidateRulesPattern": "^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$"
+    },
+    {
+      "fieldName": "categoria",
+      "fieldType": "Categoria",
+      "fieldValues": "SIN_IMPORTANCIA,LEVE,GRAVE"
     }
   ],
   "relationships": [],
@@ -31,7 +36,7 @@
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
-  "embedded": false,
+  "embedded": true,
   "applications": "*",
   "changelogDate": "20210927194501"
 }
