@@ -72,21 +72,25 @@ export const Turnos = (props: IHomeProp) => {
   }
 
   return (
-    <div className="screen-Turnoss">
-      <section className="banner-Turnoss">
-        <div className="banner Turnoss">
-          <div className="titulo-Turnoss">
+    <div className="screen-turnos">
+      <section className="banner super-turnos">
+        <div className="banner-turnos">
+          <div className="titulo-turnos">
             <h1>Turnos</h1>
           </div>
         </div>
       </section>
       <main className="cuerpo">
         <section className="turnos">
-          <h1>Turnos solicitados</h1>
-          <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
-          <Button className="button-turnos" type="primary" danger icon={<BookOutlined />}>
-            ¡Solicitá tú turno!
-          </Button>
+          <div className="columna1">
+            <h1>Turnos solicitados</h1>
+            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+          </div>
+          <div className="columna2">
+            <Button className="button-turnos" type="primary" danger icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}>
+              ¡Solicitá tú turno!
+            </Button>
+          </div>
         </section>
       </main>
     </div>

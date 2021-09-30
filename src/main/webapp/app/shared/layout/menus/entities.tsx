@@ -9,7 +9,7 @@ export const EntitiesMenu = props => (
     name={translate('global.menu.entities.main')}
     id="entity-menu"
     data-cy="entity"
-    style={{ maxHeight: '80vh', overflow: 'auto' }}
+    style={{ maxHeight: '80vh', overflow: 'auto', fontSize: 16 }}
   >
     <MenuItem icon="user" to="/paciente">
       <Translate contentKey="global.menu.entities.paciente" />

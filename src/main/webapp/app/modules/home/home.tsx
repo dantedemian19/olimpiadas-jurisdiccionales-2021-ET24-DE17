@@ -26,7 +26,7 @@ export const Home = (props: IHomeProp) => {
   const { account } = props;
 
   return (
-    <>
+    <div className="home-screen">
       <section>
         <div className="banner">
           <div className="card-home">
@@ -150,7 +150,12 @@ export const Home = (props: IHomeProp) => {
       </section>
       <section className="cuerpo" style={{ justifyContent: 'center', display: 'flex' }}>
         <div className="estadistica">
-          <div className="escala-covid"></div>
+          <iframe
+            src="https://ourworldindata.org/explorers/coronavirus-data-explorer?tab=chart&zoomToSelection=true&facet=none&pickerSort=desc&pickerMetric=new_cases_smoothed_per_million&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=true&Align+outbreaks=false&country=ARG~USA~GBR~ITA~ESP&hideControls=true"
+            loading="lazy"
+            style={{ border: '0px none' }}
+            className="escala-covid"
+          ></iframe>
           <div className="datos">
             <h1>Covid-19</h1>
             <p>
@@ -159,9 +164,11 @@ export const Home = (props: IHomeProp) => {
               officiis nam tempora magni, nobis itaque, modi ab dicta quo. Nam blanditiis ea debitis ex quos amet officiis qui alias.
               Deserunt, provident numquam. Molestiae itaque sint repellat voluptatum dicta corrupti expedita perspiciatis, atque eligendi
               repudiandae aspernatur impedit odit unde non id dolorum facere autem velit nihil esse! Quam iure iste eum animi obcaecati
-              perferendis, vero ipsum quae? Nihil natus nesciunt ea sapiente accusamus rem exercitationem nulla minus.
+              perferendis.
             </p>
-            <button className="btn btn-dark ver-mas">Ver más</button>
+            <Link to="/covid-19">
+              <button className="btn btn-dark ver-mas">Ver más</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -198,7 +205,7 @@ export const Home = (props: IHomeProp) => {
                 style={{ resize: 'none', height: 100 }}
                 placeholder={translate('global.form.cuerpo.placeholder')}
               />
-              <button className="btn btn-dark" style={{ width: '15%', fontSize: 20, margin: '25px 42.5% 0 42.5%' }}>
+              <button className="btn btn-dark" style={{ width: '25%', fontSize: 20, margin: '25px 37.5% 0 37.5%' }}>
                 Enviar
               </button>
             </div>
@@ -269,7 +276,7 @@ export const Home = (props: IHomeProp) => {
           </Row>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
