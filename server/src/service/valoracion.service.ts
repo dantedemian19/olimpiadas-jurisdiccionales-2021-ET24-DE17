@@ -29,7 +29,7 @@ export class ValoracionService {
         const resultList = await this.valoracionRepository.findAndCount(options);
         const valoracionDTO: ValoracionDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach(valoracion => valoracionDTO.push(ValoracionMapper.fromEntityToDTO(valoracion)));
+            resultList[0].forEach((valoracion) => valoracionDTO.push(ValoracionMapper.fromEntityToDTO(valoracion)));
             resultList[0] = valoracionDTO;
         }
         return resultList;

@@ -26,9 +26,9 @@ import { ValoracionModule } from './module/valoracion.module';
         MedicoModule,
         EspecialidadesMedicasModule,
         TurnoModule,
-        // HistoriaClinicaModule,
-        // DiarioModule,
-        // ValoracionModule,
+        HistoriaClinicaModule,
+        DiarioModule,
+        ValoracionModule,
         // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
     ],
     controllers: [
