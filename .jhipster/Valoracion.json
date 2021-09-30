@@ -16,7 +16,7 @@
       "fieldValidateRulesMaxlength": "500"
     },
     {
-      "fieldName": "isPaciente",
+      "fieldName": "isForAttention",
       "fieldType": "Boolean"
     }
   ],
