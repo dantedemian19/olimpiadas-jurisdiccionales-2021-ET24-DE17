@@ -4,6 +4,7 @@ import { FindManyOptions, FindOneOptions } from 'typeorm';
 import { EspecialidadesMedicasDTO } from '../service/dto/especialidades-medicas.dto';
 import { EspecialidadesMedicasMapper } from '../service/mapper/especialidades-medicas.mapper';
 import { EspecialidadesMedicasRepository } from '../repository/especialidades-medicas.repository';
+import { EspecialidadesTipo } from '../domain/enumeration/especialidades-tipo';
 
 const relationshipNames = [];
 

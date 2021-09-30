@@ -54,8 +54,7 @@ export class HistoriaClinicaController {
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
-        description: 'List all records',
-        // type: ,
+        description: 'List all records'
     })
     async generateReport(@Req() req: Request): Promise<any> {// report the cuantity of historiasClinicas, por especialidad y por categoria 
         const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
@@ -75,14 +74,15 @@ export class HistoriaClinicaController {
                     EspecialidadTipo: `${EspecialidadesTipo[index]}`
                 }
             });
-            diseaseKindCount[index].especiality = EspecialidadesTipo[index];
             diseaseKindCount[index].perCategory.push(count);
         }
+        diseaseKindCount[index].especiality = EspecialidadesTipo[index];
         }
         return {
             diseaseKindCount
         };
     }
+    
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({
