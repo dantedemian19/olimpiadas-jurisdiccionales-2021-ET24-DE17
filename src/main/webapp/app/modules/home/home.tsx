@@ -31,19 +31,19 @@ export const Home = (props: IHomeProp) => {
         <div className="banner">
           <div className="card-home">
             <h1 className="titulo">Servicios para clientes</h1>
-            <p className="parrafo">Ofrecemos la gama más amplia de servicios innovadores y acreditados para pacientes</p>
+            <p className="parrafo">Ofrecemos la gama más amplia de servicios innovadores.</p>
             <ul className="sociales">
               <li>
-                <FontAwesomeIcon icon={['fab', 'facebook-f']} className="icono" />
+                <img src="../../../content/images/icono-mano.png" />
               </li>
               <li>
-                <i className="fab fa-twitter"></i>
+                <img src="../../../content/images/icono-brazo.png" />
               </li>
               <li>
-                <i className="fab fa-instagram"></i>
+                <img src="../../../content/images/icono-cabeza.png" />
               </li>
               <li>
-                <i className="fab fa-youtube"></i>
+                <img src="../../../content/images/icono-corazon.png" />
               </li>
             </ul>
           </div>
@@ -117,7 +117,7 @@ export const Home = (props: IHomeProp) => {
       <section>
         <div className="banner-central">
           <div className="contenido-banner">
-            <h1 style={{color: 'white'}}>Nuestro departamento</h1>
+            <h1 style={{ color: 'white' }}>Nuestro departamento</h1>
             <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
           </div>
           <ul className="iconos-banner">
