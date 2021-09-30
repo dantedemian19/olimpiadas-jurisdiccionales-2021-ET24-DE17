@@ -21,15 +21,15 @@ import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
-@Controller('api/valoracions')
-@UseGuards(AuthGuard, RolesGuard)
-@UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-@ApiBearerAuth()
+@Controller('api/valorations')
+// @UseGuards(AuthGuard, RolesGuard)
+// @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
+// @ApiBearerAuth()
 @ApiUseTags('valoracions')
 export class ValoracionController {
     logger = new Logger('ValoracionController');
 
-    constructor(private readonly valoracionService: ValoracionService) {}
+    constructor(private readonly valoracionService: ValoracionService) { }
 
     @Get('/')
     @Roles(RoleType.USER)
@@ -47,6 +47,36 @@ export class ValoracionController {
         });
         HeaderUtil.addPaginationHeaders(req.res, new Page(results, count, pageRequest));
         return results;
+    }
+
+    @Get('/report')
+    @Roles(RoleType.USER)
+    @ApiResponse({
+        status: 200,
+        description: 'List all records',
+        // type: ,
+    })
+    async generateReporte(@Req() req: Request): Promise<any> {
+        const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
+        let valorationsCount: number[] = [];
+
+        for (let index = 1; index <= 5; index++) {
+            let [results, count] = await this.valoracionService.findAndCount({
+                skip: +pageRequest.page * pageRequest.size,
+                take: +pageRequest.size,
+                order: pageRequest.sort.asOrder(),
+                where: { estrellas: `${index}` }
+            });
+            valorationsCount.push(count);
+        }
+        
+        return {
+            "oneStars": valorationsCount[0],
+            "twoStars": valorationsCount[1],
+            "threeStars": valorationsCount[2],
+            "fourStars": valorationsCount[3],
+            "fiveStars": valorationsCount[4]
+        };
     }
 
     @Get('/:id')
