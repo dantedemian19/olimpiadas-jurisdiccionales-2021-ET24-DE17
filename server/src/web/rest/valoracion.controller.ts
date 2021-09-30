@@ -20,6 +20,7 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
+import { ValorationsStars } from '../../domain/enumeration/ValorationsStars';
 
 @Controller('api/valorations')
 // @UseGuards(AuthGuard, RolesGuard)
@@ -60,7 +61,7 @@ export class ValoracionController {
         const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
         let valorationsCount: number[] = [];
 
-        for (let index = 1; index <= 5; index++) {
+        for (let index = 1; index <= Object.keys(ValorationsStars).length; index++) {
             let [results, count] = await this.valoracionService.findAndCount({
                 skip: +pageRequest.page * pageRequest.size,
                 take: +pageRequest.size,
