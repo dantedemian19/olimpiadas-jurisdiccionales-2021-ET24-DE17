@@ -20,6 +20,8 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
+import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo';
+import { Categoria } from '../../domain/enumeration/categoria';
 
 @Controller('api/historia-clinicas')
 @UseGuards(AuthGuard, RolesGuard)
@@ -48,7 +50,39 @@ export class HistoriaClinicaController {
         HeaderUtil.addPaginationHeaders(req.res, new Page(results, count, pageRequest));
         return results;
     }
-
+    @Get('/report')
+    @Roles(RoleType.USER)
+    @ApiResponse({
+        status: 200,
+        description: 'List all records',
+        // type: ,
+    })
+    async generateReport(@Req() req: Request): Promise<any> {// report the cuantity of historiasClinicas, por especialidad y por categoria 
+        const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
+        type temp = {
+            especiality: string
+            perCategory: number[]
+        };
+        let diseaseKindCount: temp[] = [];
+        for (let index = 1; index <= Object.keys(EspecialidadesTipo).length; index +=1){
+        for (let indexCategory = 1; indexCategory <= Object.keys(Categoria).length; indexCategory +=1) {
+            let [results, count] = await this.historiaClinicaService.findAndCount({
+                skip: +pageRequest.page * pageRequest.size,
+                take: +pageRequest.size,
+                order: pageRequest.sort.asOrder(),
+                where: { 
+                    categoria: `${Categoria[indexCategory]}`,
+                    EspecialidadTipo: `${EspecialidadesTipo[index]}`
+                }
+            });
+            diseaseKindCount[index].especiality = EspecialidadesTipo[index];
+            diseaseKindCount[index].perCategory.push(count);
+        }
+        }
+        return {
+            diseaseKindCount
+        };
+    }
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({
