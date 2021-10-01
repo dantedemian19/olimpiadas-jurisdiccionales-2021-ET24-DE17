@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { Calendar, Badge } from 'antd';
 import { Button } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
+import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 
 import './turnos.scss';
+import { translate } from 'react-jhipster';
 
 export type IHomeProp = StateProps;
 
@@ -16,25 +18,17 @@ export const Turnos = (props: IHomeProp) => {
     switch (value.date()) {
       case 8:
         listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
+          { type: 'error', content: 'Ocupado' },
         ];
         break;
       case 10:
         listData = [
-          { type: 'warning', content: 'This is warning event.' },
-          { type: 'success', content: 'This is usual event.' },
-          { type: 'error', content: 'This is error event.' },
+          { type: 'error', content: 'Ocupado' },
         ];
         break;
       case 15:
         listData = [
-          { type: 'warning', content: 'This is warning event' },
-          { type: 'success', content: 'This is very long usual event。。....' },
-          { type: 'error', content: 'This is error event 1.' },
-          { type: 'error', content: 'This is error event 2.' },
-          { type: 'error', content: 'This is error event 3.' },
-          { type: 'error', content: 'This is error event 4.' },
+          { type: 'error', content: 'Ocupado' },
         ];
         break;
       default:
@@ -84,12 +78,49 @@ export const Turnos = (props: IHomeProp) => {
         <section className="turnos">
           <div className="columna1">
             <h1>Turnos solicitados</h1>
-            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} style={{padding: 15}} />
           </div>
           <div className="columna2">
-            <Button className="button-turnos" type="primary" danger icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}>
-              ¡Solicitá tú turno!
-            </Button>
+            <AvForm className="form-turnos">
+              <AvField
+                className="inputs-turnos"
+                name="email"
+                type="email"
+                label={translate('global.form.email.label')}
+                placeholder={translate('global.form.email.placeholder')}
+                required
+                errorMessage="El email no puede estar vacío!"
+                data-cy="email"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="asunto"
+                label={translate('global.form.asunto.label')}
+                placeholder={translate('global.form.asunto.placeholder')}
+                required
+                errorMessage="El asunto no puede estar vacío!"
+                data-cy="asunto"
+              />
+              <div>
+              <label htmlFor="fecha">Fecha de consulta</label>
+              <AvInput
+                type="date"
+                name="fecha"
+              />
+              </div>
+              <div>
+              <label htmlFor="mensaje">Mensaje</label>
+              <AvInput
+                type="textarea"
+                name="mensaje"
+                style={{ resize: 'none', height: 100 }}
+                placeholder={translate('global.form.cuerpo.placeholder')}
+              />
+              </div>
+              <Button className="button-turnos" type="primary" danger icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}>
+                ¡Solicitá tú turno!
+              </Button>
+            </AvForm>
           </div>
         </section>
       </main>

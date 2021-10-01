@@ -31,7 +31,7 @@ import { request } from 'http';
 export class ValoracionController {
     logger = new Logger('ValoracionController');
 
-    constructor(private readonly valoracionService: ValoracionService) { }
+    constructor(private readonly valoracionService: ValoracionService) {}
 
     @Get('/')
     @Roles(RoleType.USER)
@@ -57,30 +57,30 @@ export class ValoracionController {
         status: 200,
         description: 'List all records',
         // type: ,
-
     })
-    async generateReport(@Req() req: Request): Promise<any> { // report the Valorations of the users
-        const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
-        let valorationsCount: number[] = [];
+    async generateReport(@Req() req: Request): Promise<any> {
+        // report the Valorations of the users
+        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
+        const valorationsCount: number[] = [];
         for (let index = 1; index <= Object.keys(ValorationsStars).length; index++) {
-            let [results, count] = await this.valoracionService.findAndCount({
+            const [results, count] = await this.valoracionService.findAndCount({
                 skip: +pageRequest.page * pageRequest.size,
                 take: +pageRequest.size,
                 order: pageRequest.sort.asOrder(),
-                where: { 
+                where: {
                     estrellas: `${index}`,
-                    isForAttention: false // req.params
-                }
+                    isForAttention: false, // req.params
+                },
             });
             valorationsCount.push(count);
         }
-        
+
         return {
-            "oneStars": valorationsCount[0],
-            "twoStars": valorationsCount[1],
-            "threeStars": valorationsCount[2],
-            "fourStars": valorationsCount[3],
-            "fiveStars": valorationsCount[4]
+            oneStars: valorationsCount[0],
+            twoStars: valorationsCount[1],
+            threeStars: valorationsCount[2],
+            fourStars: valorationsCount[3],
+            fiveStars: valorationsCount[4],
         };
     }
 

@@ -29,7 +29,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 export class EspecialidadesMedicasController {
     logger = new Logger('EspecialidadesMedicasController');
 
-    constructor(private readonly especialidadesMedicasService: EspecialidadesMedicasService) { }
+    constructor(private readonly especialidadesMedicasService: EspecialidadesMedicasService) {}
 
     @Get('/')
     @Roles(RoleType.USER)

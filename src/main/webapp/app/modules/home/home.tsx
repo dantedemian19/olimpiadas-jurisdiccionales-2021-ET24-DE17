@@ -6,7 +6,6 @@ import { translate, Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import $ from 'jquery';
 import {
   faBrain,
   faEye,
@@ -25,17 +24,6 @@ export type IHomeProp = StateProps;
 
 export const Home = (props: IHomeProp) => {
   const { account } = props;
-
-  $('#floating-button').click(function () {
-    $(this).closest('#container-floating').toggleClass('is-opened');
-    $('.nds').removeClass('is-opened');
-    $('body').toggleClass('is-blur');
-  });
-
-  $('.nds').click(function () {
-    $('.nds').not(this).removeClass('is-opened');
-    $(this).toggleClass('is-opened');
-  });
 
   return (
     <div className="home-screen">
@@ -58,39 +46,6 @@ export const Home = (props: IHomeProp) => {
                 <img src="../../../content/images/icono-corazon.png" />
               </li>
             </ul>
-          </div>
-        </div>
-      </section>
-      <section className="valoracion-button">
-        <div id="container-floating">
-          <div className="nd4 nds">
-            <img
-              className="reminder"
-              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-            />
-          </div>
-          <div className="nd3 nds is-always-opened">
-            <img
-              className="reminder"
-              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-            />
-          </div>
-          <div className="nd2 nds">
-            <img
-              className="reminder"
-              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-            />
-          </div>
-          <div className="nd1 nds">
-            <img
-              className="reminder"
-              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-            />
-          </div>
-
-          <div id="floating-button">
-            <p className="plus">+</p>
-            <img className="close" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" />
           </div>
         </div>
       </section>
