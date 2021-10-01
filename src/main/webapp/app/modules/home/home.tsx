@@ -6,6 +6,7 @@ import { translate, Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import $ from 'jquery';
 import {
   faBrain,
   faEye,
@@ -24,6 +25,17 @@ export type IHomeProp = StateProps;
 
 export const Home = (props: IHomeProp) => {
   const { account } = props;
+
+  $('#floating-button').click(function () {
+    $(this).closest('#container-floating').toggleClass('is-opened');
+    $('.nds').removeClass('is-opened');
+    $('body').toggleClass('is-blur');
+  });
+
+  $('.nds').click(function () {
+    $('.nds').not(this).removeClass('is-opened');
+    $(this).toggleClass('is-opened');
+  });
 
   return (
     <div className="home-screen">
@@ -46,6 +58,39 @@ export const Home = (props: IHomeProp) => {
                 <img src="../../../content/images/icono-corazon.png" />
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+      <section className="valoracion-button">
+        <div id="container-floating">
+          <div className="nd4 nds">
+            <img
+              className="reminder"
+              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
+            />
+          </div>
+          <div className="nd3 nds is-always-opened">
+            <img
+              className="reminder"
+              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
+            />
+          </div>
+          <div className="nd2 nds">
+            <img
+              className="reminder"
+              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
+            />
+          </div>
+          <div className="nd1 nds">
+            <img
+              className="reminder"
+              src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
+            />
+          </div>
+
+          <div id="floating-button">
+            <p className="plus">+</p>
+            <img className="close" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" />
           </div>
         </div>
       </section>
@@ -218,11 +263,6 @@ export const Home = (props: IHomeProp) => {
             <Col md="12">
               <ul className="lista-footer">
                 <li>
-                  <a href="#">
-                    <div className="logo"></div>
-                  </a>
-                </li>
-                <li>
                   <div>
                     <p>102</p>
                     <p>Niñez y adolescencia</p>
@@ -238,6 +278,19 @@ export const Home = (props: IHomeProp) => {
                   <div>
                     <p>107</p>
                     <p>SAME</p>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href="#">
+                      <div className="logo"></div>
+                    </a>
+                    <h4 style={{ fontWeight: 'bolder' }}>Teléfonos útiles</h4>
+                    <p>
+                      <a target="_blank" href="https://www.buenosaires.gob.ar/laciudad/telefonosutiles" rel="noreferrer">
+                        Ver todos los teléfonos
+                      </a>
+                    </p>
                   </div>
                 </li>
                 <li>
@@ -258,19 +311,10 @@ export const Home = (props: IHomeProp) => {
                     <p>Violencia de género</p>
                   </div>
                 </li>
-                <li>
-                  <div>
-                    <p>Teléfonos útiles</p>
-                    <p>
-                      <a target="_blank" href="https://www.buenosaires.gob.ar/laciudad/telefonosutiles" rel="noreferrer">
-                        Ver todos los teléfonos
-                      </a>
-                    </p>
-                  </div>
-                </li>
               </ul>
+              <hr style={{ width: '55%', backgroundColor: '#495057', marginTop: '-20px', position: 'relative', right: '15px' }} />
               <div className="copyright">
-                <p>&copy;Derechos reservados - SANATORIO LOS BEPI 2021</p>
+                <p>&copy;Derechos reservados C-CARE 2021 - Siempre al cuidado de nuestros pacientes</p>
               </div>
             </Col>
           </Row>
