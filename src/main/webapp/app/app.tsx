@@ -19,6 +19,7 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import $ from 'jquery';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -28,6 +29,17 @@ export const App = (props: IAppProps) => {
   useEffect(() => {
     props.getSession();
     props.getProfile();
+
+    $('#floating-button').click(function () {
+      $(this).closest('#container-floating').toggleClass('is-opened');
+      $('.nds').removeClass('is-opened');
+      $('body').toggleClass('is-blur');
+    });
+
+    $('.nds').click(function () {
+      $('.nds').not(this).removeClass('is-opened');
+      $(this).toggleClass('is-opened');
+    });
   }, []);
 
   const paddingTop = '60px';
@@ -51,6 +63,21 @@ export const App = (props: IAppProps) => {
             <ErrorBoundary>
               <AppRoutes />
             </ErrorBoundary>
+            <section className="valoracion-button">
+              <div id="container-floating">
+                <div className="nd1 nds">
+                  <img
+                    className="reminder"
+                    src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
+                  />
+                </div>
+
+                <div id="floating-button">
+                  <p className="plus">+</p>
+                  <img className="close" src="../content/images/icono-lapiz.png" />
+                </div>
+              </div>
+            </section>
           </Card>
           <Footer />
         </div>

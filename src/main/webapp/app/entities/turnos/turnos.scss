@@ -27,36 +27,54 @@
 }
 
 .turnos {
-  width: 95%;
-  margin: 25px 2.5%;
+  width: 97%;
+  height: fit-content;
+  margin: 25px 1.5%;
   display: flex;
   flex-direction: row;
+  background: linear-gradient(180deg, #e16e93 50%, #9d2e7d);
+  // GRADIENTS https://codepen.io/LauraRobertson/pen/eBjrgj?editors=0100
+  // https://codepen.io/Zaku/pen/vzBKWe?editors=0100
+  // https://codepen.io/marcobiedermann/pen/WNGWzYR?editors=0010
+  // background-color: khaki;
 
   .columna1 {
-  width: 70%;
-  height: 100%;
-  background-color: red;
-  
-    & > .button-turnos {
-      font-size: 30px;
-      height: fit-content;
-      width: 100%;
-      padding: 15px;
-      margin: 25px 0;
+    width: 70%;
+    // height: 99%;
+    padding: 15px;
+    // background-color: red;
+    & > h1 {
+      color: white;
     }
   }
-
   .columna2 {
-  width: 30%;
-  height: 100%;
-  background-color: blue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 30%;
+    // background: linear-gradient(180deg, #E16E93 50%, #9D2E7D);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > .form-turnos {
+      // background-color: red;
+      height: 65%;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      & > .button-turnos {
+        font-size: 18px;
+        height: fit-content;
+        width: 70%;
+        padding: 15px;
+        margin: 25px 15% 0 15%;
+        border-radius: 5px;
+      }
+    }
   }
 }
-
-
 
 .events {
   margin: 0;
