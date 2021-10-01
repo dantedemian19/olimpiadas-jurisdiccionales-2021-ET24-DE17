@@ -19,7 +19,7 @@ export class ValoracionDTO extends BaseDTO {
 
     @IsOptional()
     @IsBoolean()
-    @ApiModelProperty({ description: 'filter valorations by type', required: true })
+    @ApiModelProperty({ description: 'filter valorations by type', required: false })
     isForAttention: boolean;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
