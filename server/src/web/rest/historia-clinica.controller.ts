@@ -54,35 +54,36 @@ export class HistoriaClinicaController {
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
-        description: 'List all records'
+        description: 'List all records',
     })
-    async generateReport(@Req() req: Request): Promise<any> {// report the cuantity of historiasClinicas, por especialidad y por categoria 
-        const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
-        type temp = {
-            especiality: string
-            perCategory: number[]
-        };
-        let diseaseKindCount: temp[] = [];
-        for (let index = 1; index <= Object.keys(EspecialidadesTipo).length; index +=1){
-        for (let indexCategory = 1; indexCategory <= Object.keys(Categoria).length; indexCategory +=1) {
-            let [results, count] = await this.historiaClinicaService.findAndCount({
-                skip: +pageRequest.page * pageRequest.size,
-                take: +pageRequest.size,
-                order: pageRequest.sort.asOrder(),
-                where: { 
-                    categoria: `${Categoria[indexCategory]}`,
-                    EspecialidadTipo: `${EspecialidadesTipo[index]}`
-                }
-            });
-            diseaseKindCount[index].perCategory.push(count);
+    async generateReport(@Req() req: Request): Promise<any> {
+        // report the cuantity of historiasClinicas, por especialidad y por categoria
+        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
+        interface temp {
+            especiality: string;
+            perCategory: number[];
         }
-        diseaseKindCount[index].especiality = EspecialidadesTipo[index];
+        const diseaseKindCount: temp[] = [];
+        for (let index = 1; index <= Object.keys(EspecialidadesTipo).length; index += 1) {
+            for (let indexCategory = 1; indexCategory <= Object.keys(Categoria).length; indexCategory += 1) {
+                const [results, count] = await this.historiaClinicaService.findAndCount({
+                    skip: +pageRequest.page * pageRequest.size,
+                    take: +pageRequest.size,
+                    order: pageRequest.sort.asOrder(),
+                    where: {
+                        categoria: `${Categoria[indexCategory]}`,
+                        EspecialidadTipo: `${EspecialidadesTipo[index]}`,
+                    },
+                });
+                diseaseKindCount[index].perCategory.push(count);
+            }
+            diseaseKindCount[index].especiality = EspecialidadesTipo[index];
         }
         return {
-            diseaseKindCount
+            diseaseKindCount,
         };
     }
-    
+
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({

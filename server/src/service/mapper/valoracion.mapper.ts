@@ -9,9 +9,9 @@ export class ValoracionMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Valoracion();
+        const entity = new Valoracion();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class ValoracionMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new ValoracionDTO();
+        const entityDTO = new ValoracionDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

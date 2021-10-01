@@ -13,8 +13,8 @@ export class Valoracion extends BaseEntity {
     @Column({ name: 'descripcion', length: 500, nullable: true })
     descripcion: string;
 
-    @Column({ type: 'boolean', name: 'is_paciente', nullable: true })
-    isPaciente: boolean;
+    @Column({ type: 'boolean', name: 'is_for_attention', nullable: true })
+    isForAttention: boolean;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

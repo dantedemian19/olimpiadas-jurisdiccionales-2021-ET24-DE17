@@ -2,9 +2,9 @@ export interface IValoracion {
   id?: string;
   estrellas?: number;
   descripcion?: string | null;
-  isPaciente?: boolean | null;
+  isForAttention?: boolean | null;
 }
 
 export const defaultValue: Readonly<IValoracion> = {
-  isPaciente: false,
+  isForAttention: false,
 };

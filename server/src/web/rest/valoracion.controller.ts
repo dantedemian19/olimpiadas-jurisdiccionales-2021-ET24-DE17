@@ -14,6 +14,7 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { ValoracionDTO } from '../../service/dto/valoracion.dto';
+import { GetValoracionDTO } from '../../service/dto/getValoration.dto';
 import { ValoracionService } from '../../service/valoracion.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
@@ -27,20 +28,20 @@ import { request } from 'http';
 // @UseGuards(AuthGuard, RolesGuard)
 // @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 // @ApiBearerAuth()
-@ApiUseTags('valoracions')
+@ApiUseTags('valorations')
 export class ValoracionController {
     logger = new Logger('ValoracionController');
 
-    constructor(private readonly valoracionService: ValoracionService) { }
+    constructor(private readonly valoracionService: ValoracionService) {}
 
     @Get('/')
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'List all records',
-        type: ValoracionDTO,
+        type: GetValoracionDTO,
     })
-    async getAll(@Req() req: Request): Promise<ValoracionDTO[]> {
+    async getAll(@Req() req: Request): Promise<GetValoracionDTO[]> {
         const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
         const [results, count] = await this.valoracionService.findAndCount({
             skip: +pageRequest.page * pageRequest.size,
@@ -51,36 +52,41 @@ export class ValoracionController {
         return results;
     }
 
-    @Get('/report')
+    @Get('/report' /* /:isForAttention   */)
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
-        description: 'List all records',
-        // type: ,
-
+        description: 'Show report of valorations filtered by type',
+        // type: JSON,
     })
-    async generateReport(@Req() req: Request): Promise<any> { // report the Valorations of the users
-        const pageRequest: PageRequest = new PageRequest("0", "-1", "id,ASC");
-        let valorationsCount: number[] = [];
+    async generateReport(@Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */): Promise<{}> {
+        // report the Valorations of the users
+        this.logger.debug("Here the params get:")
+        this.logger.debug(req)
+        // this.logger.warn(isForAttention);
+
+        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
+        const valorationsCount: number[] = [];
         for (let index = 1; index <= Object.keys(ValorationsStars).length; index++) {
-            let [results, count] = await this.valoracionService.findAndCount({
+            const [results, count] = await this.valoracionService.findAndCount({
                 skip: +pageRequest.page * pageRequest.size,
                 take: +pageRequest.size,
                 order: pageRequest.sort.asOrder(),
-                where: { 
-                    estrellas: `${index}`,
-                    isForAttention: false // req.params
-                }
+                where: {
+                    estrellas: index,
+                    // isForAttention: isForAttention == 'isForAttention',
+                    isForAttention: req.isForAttention,
+                },
             });
             valorationsCount.push(count);
         }
-        
+
         return {
-            "oneStars": valorationsCount[0],
-            "twoStars": valorationsCount[1],
-            "threeStars": valorationsCount[2],
-            "fourStars": valorationsCount[3],
-            "fiveStars": valorationsCount[4]
+            oneStars: valorationsCount[0],
+            twoStars: valorationsCount[1],
+            threeStars: valorationsCount[2],
+            fourStars: valorationsCount[3],
+            fiveStars: valorationsCount[4],
         };
     }
 
@@ -105,6 +111,7 @@ export class ValoracionController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(@Req() req: Request, @Body() valoracionDTO: ValoracionDTO): Promise<ValoracionDTO> {
+        this.logger.debug(valoracionDTO);
         const created = await this.valoracionService.save(valoracionDTO, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Valoracion', created.id);
         return created;

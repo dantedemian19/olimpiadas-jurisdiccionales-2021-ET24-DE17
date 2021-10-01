@@ -9,7 +9,7 @@ export default class ValoracionUpdatePage {
   cancelButton: ElementFinder = element(by.id('cancel-save'));
   estrellasInput: ElementFinder = element(by.css('input#valoracion-estrellas'));
   descripcionInput: ElementFinder = element(by.css('input#valoracion-descripcion'));
-  isPacienteInput: ElementFinder = element(by.css('input#valoracion-isPaciente'));
+  isForAttentionInput: ElementFinder = element(by.css('input#valoracion-isForAttention'));
 
   getPageTitle() {
     return this.pageTitle;
@@ -31,8 +31,8 @@ export default class ValoracionUpdatePage {
     return this.descripcionInput.getAttribute('value');
   }
 
-  getIsPacienteInput() {
-    return this.isPacienteInput;
+  getIsForAttentionInput() {
+    return this.isForAttentionInput;
   }
   async save() {
     await this.saveButton.click();
@@ -54,13 +54,13 @@ export default class ValoracionUpdatePage {
     await this.setDescripcionInput('descripcion');
     expect(await this.getDescripcionInput()).to.match(/descripcion/);
     await waitUntilDisplayed(this.saveButton);
-    const selectedIsPaciente = await this.getIsPacienteInput().isSelected();
-    if (selectedIsPaciente) {
-      await this.getIsPacienteInput().click();
-      expect(await this.getIsPacienteInput().isSelected()).to.be.false;
+    const selectedIsForAttention = await this.getIsForAttentionInput().isSelected();
+    if (selectedIsForAttention) {
+      await this.getIsForAttentionInput().click();
+      expect(await this.getIsForAttentionInput().isSelected()).to.be.false;
     } else {
-      await this.getIsPacienteInput().click();
-      expect(await this.getIsPacienteInput().isSelected()).to.be.true;
+      await this.getIsForAttentionInput().click();
+      expect(await this.getIsForAttentionInput().isSelected()).to.be.true;
     }
     await this.save();
     await waitUntilHidden(this.saveButton);
