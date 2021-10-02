@@ -35,9 +35,9 @@ export const ValoracionDetail = (props: IValoracionDetailProps) => {
           </dt>
           <dd>{valoracionEntity.descripcion}</dd>
           <dt>
-            <span id="isPaciente">Is Paciente</span>
+            <span id="isForAttention">Is For Attention</span>
           </dt>
-          <dd>{valoracionEntity.isPaciente ? 'true' : 'false'}</dd>
+          <dd>{valoracionEntity.isForAttention ? 'true' : 'false'}</dd>
         </dl>
         <Button tag={Link} to="/valoracion" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

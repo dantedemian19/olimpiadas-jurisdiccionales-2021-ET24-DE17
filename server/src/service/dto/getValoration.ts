@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsNotEmpty, Length, IsOptional, IsBoolean, Max, Min } from 'class-validator';
+import { IsNotEmpty, Length, IsOptional, IsBoolean } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
 /**
@@ -8,8 +8,7 @@ import { BaseDTO } from './base.dto';
  */
 export class ValoracionDTO extends BaseDTO {
     @IsNotEmpty()
-    @Min(1)
-    @Max(5)
+    @Length(1, 5)
     @ApiModelProperty({ description: 'estrellas field' })
     estrellas: number;
 
@@ -17,9 +16,7 @@ export class ValoracionDTO extends BaseDTO {
     @ApiModelProperty({ description: 'descripcion field', required: false })
     descripcion: string;
 
-    @IsOptional()
-    @IsBoolean()
-    @ApiModelProperty({ description: 'filter valorations by type', required: false })
+    @ApiModelProperty({ description: 'isForAttention field', required: true })
     isForAttention: boolean;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
-
+import { Medico } from './medico.entity';
 import { Categoria } from './enumeration/categoria';
 
 /**
@@ -20,6 +20,9 @@ export class HistoriaClinica extends BaseEntity {
 
     @Column({ type: 'simple-enum', name: 'categoria', enum: Categoria })
     categoria: Categoria;
+
+    @ManyToOne(()=> Medico)
+    medico: Medico;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }
