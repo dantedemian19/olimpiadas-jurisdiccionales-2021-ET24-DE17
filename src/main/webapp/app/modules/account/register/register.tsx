@@ -93,7 +93,7 @@ export const RegisterPage = (props: IRegisterProps) => {
               }}
               data-cy="secondPassword"
             />
-            <Button id="register-submit" color="primary" type="submit" data-cy="submit">
+            <Button id="register-submit" className="iniciar-sesion" type="submit" data-cy="submit">
               <Translate contentKey="register.form.button">Register</Translate>
             </Button>
           </AvForm>

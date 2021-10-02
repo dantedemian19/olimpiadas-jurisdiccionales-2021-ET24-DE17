@@ -13,4 +13,23 @@
 .alerta-login {
   width: 90% !important;
   margin: 10px 5% !important;
+
+  &>.link {
+    color: black;
+  }
+}
+
+.iniciar-sesion {
+  background-color: #E63946;
+  border-color: #E63946;
+
+  &:hover {
+    background-color: #bd2d38;
+    border-color: #bd2d38;
+    color: white;
+  }
+}
+
+.cancelar:hover {
+  color: white;
 }

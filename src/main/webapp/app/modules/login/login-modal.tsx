@@ -58,15 +58,18 @@ class LoginModal extends React.Component<ILoginModalProps> {
                   data-cy="password"
                 />
                 <AvGroup check inline>
-                  <Label className="form-check-label">
-                    <AvInput type="checkbox" name="rememberMe" /> <Translate contentKey="login.form.rememberme">Remember me</Translate>
+                  <Label className="form-check-label" style={{ display: 'flex', flexDirection: 'row' }}>
+                    <AvInput type="checkbox" name="rememberMe" />{' '}
+                    <div style={{ fontSize: 16, marginTop: '-6px' }}>
+                      <Translate contentKey="login.form.rememberme">Remember me</Translate>
+                    </div>
                   </Label>
                 </AvGroup>
               </Col>
             </Row>
-            <div className="mt-1">&nbsp;</div>
+            <br />
             <Alert color="dark" className="alerta-login">
-              <Link to="/account/reset/request" data-cy="forgetYourPasswordSelector">
+              <Link to="/account/reset/request" data-cy="forgetYourPasswordSelector" className="link">
                 <Translate contentKey="login.password.forgot">Did you forget your password?</Translate>
               </Link>
             </Alert>
@@ -74,16 +77,16 @@ class LoginModal extends React.Component<ILoginModalProps> {
               <span>
                 <Translate contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
               </span>{' '}
-              <Link to="/account/register">
+              <Link to="/account/register" className="link">
                 <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
               </Link>
             </Alert>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={handleClose} tabIndex={1}>
+            <Button className="cancelar" onClick={handleClose} tabIndex={1}>
               <Translate contentKey="entity.action.cancel">Cancel</Translate>
             </Button>{' '}
-            <Button color="primary" type="submit" data-cy="submit">
+            <Button className="iniciar-sesion" type="submit" data-cy="submit">
               <Translate contentKey="login.form.button">Sign in</Translate>
             </Button>
           </ModalFooter>

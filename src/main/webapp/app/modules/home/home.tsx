@@ -205,7 +205,10 @@ export const Home = (props: IHomeProp) => {
                 style={{ resize: 'none', height: 100 }}
                 placeholder={translate('global.form.cuerpo.placeholder')}
               />
-              <button className="btn btn-dark" style={{ width: '25%', fontSize: 20, margin: '25px 37.5% 0 37.5%' }}>
+              <button
+                className="btn btn-dark"
+                style={{ backgroundColor: '#1D3557', width: '25%', fontSize: 20, margin: '25px 37.5% 0 37.5%' }}
+              >
                 Enviar
               </button>
             </div>

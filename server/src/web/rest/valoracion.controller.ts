@@ -59,10 +59,12 @@ export class ValoracionController {
         description: 'Show report of valorations filtered by type',
         // type: JSON,
     })
-    async generateReport(@Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */): Promise<{}> {
+    async generateReport(
+        @Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */,
+    ): Promise<{}> {
         // report the Valorations of the users
-        this.logger.debug("Here the params get:")
-        this.logger.debug(req)
+        this.logger.debug('Here the params get:');
+        this.logger.debug(req);
         // this.logger.warn(isForAttention);
 
         const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');

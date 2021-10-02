@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApiModelProperty } from '@nestjs/swagger';
-import {
-    IsOptional,
-    IsBoolean,
-} from 'class-validator';
+import { IsOptional, IsBoolean } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
 /**

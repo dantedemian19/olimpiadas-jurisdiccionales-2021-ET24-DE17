@@ -21,7 +21,7 @@ export class HistoriaClinica extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'categoria', enum: Categoria })
     categoria: Categoria;
 
-    @ManyToOne(()=> Medico)
+    @ManyToOne(() => Medico)
     medico: Medico;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
