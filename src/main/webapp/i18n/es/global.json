@@ -54,7 +54,8 @@
       "asunto.label": "Asunto",
       "asunto.placeholder": "Asunto",
       "cuerpo.label": "Mensaje",
-      "cuerpo.placeholder": "Mensaje"
+      "cuerpo.placeholder": "Mensaje",
+      "opinion.placeholder": "Opinión"
     },
     "messages": {
       "info": {

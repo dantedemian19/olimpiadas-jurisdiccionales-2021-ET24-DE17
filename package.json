@@ -48,10 +48,15 @@
     "default_environment": "prod"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.2",
+    "@mui/styled-engine-sc": "^5.0.0",
     "antd": "^4.16.13",
     "availity-reactstrap-validation": "2.7.1",
     "axios": "0.21.1",
@@ -80,6 +85,7 @@
     "redux-devtools-log-monitor": "2.1.0",
     "redux-promise-middleware": "6.1.2",
     "redux-thunk": "2.3.0",
+    "styled-components": "^5.3.1",
     "tslib": "2.1.0",
     "uuid": "8.3.2"
   },

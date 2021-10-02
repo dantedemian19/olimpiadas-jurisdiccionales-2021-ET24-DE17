@@ -27,9 +27,9 @@ a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  ::-webkit-scrollbar {
-    // display: none !important;
-  }
+  // ::-webkit-scrollbar {
+  // display: none !important;
+  // }
 }
 
 .app-container {
@@ -65,7 +65,7 @@ a {
 }
 
 /* ==========================================================================
-                        CONTENIDO BOTON ESTATICO
+                        CONTENIDO FLOAT BUTTON
 ========================================================================== */
 
 h3 {
@@ -87,7 +87,7 @@ h3 {
 .plus {
   color: white;
   position: absolute;
-  top: 0;
+  top: 6px;
   display: block;
   bottom: 0;
   left: 0;
@@ -96,7 +96,7 @@ h3 {
   padding: 0;
   margin: 0;
   line-height: 55px;
-  font-size: 38px;
+  font-size: 30px;
   font-family: 'Roboto';
   font-weight: 300;
   animation: plus-out 0.3s;
@@ -120,7 +120,8 @@ h3 {
 
 .close {
   position: absolute;
-  top: 0;
+  color: white !important;
+  top: 14px;
   display: block;
   bottom: 0;
   left: 0;
@@ -129,8 +130,8 @@ h3 {
   padding: 0;
   opacity: 0;
   margin: auto;
+  font-size: 28px;
   line-height: 65px;
-  transform: rotateZ(-70deg);
   transition: all 0.3s;
   animation: close-out 0.3s;
 }
@@ -144,48 +145,40 @@ h3 {
 @keyframes close-in {
   from {
     opacity: 0;
-    transform: rotateZ(-70deg);
   }
 
   to {
     opacity: 1;
-    transform: rotateZ(0deg);
   }
 }
 
 @keyframes close-out {
   from {
     opacity: 1;
-    transform: rotateZ(0deg);
   }
 
   to {
     opacity: 0;
-    transform: rotateZ(-70deg);
   }
 }
 
 @keyframes plus-in {
   from {
     opacity: 1;
-    transform: rotateZ(0deg);
   }
 
   to {
     opacity: 0;
-    transform: rotateZ(180deg);
   }
 }
 
 @keyframes plus-out {
   from {
     opacity: 0;
-    transform: rotateZ(180deg);
   }
 
   to {
     opacity: 1;
-    transform: rotateZ(0deg);
   }
 }
 
@@ -197,51 +190,59 @@ h3 {
   z-index: 300;
   transform: scale(0);
   transition: width 0.25s;
-  // cursor: pointer;
-}
-
-.nds.is-opened,
-.nds.is-always-opened {
-  width: 150px;
 }
 
 .nd1 {
-  background: #d3a411;
-  right: 50px;
-  bottom: 10px;
+  // background: #d3a411;
+  // background-color: white;
+  background: linear-gradient(to bottom, #41c7af -40%, #54e38e);
+  right: 70px;
+  bottom: 20px;
   z-index: -1;
   width: 250px;
-  height: 260px;
+  height: 280px;
   animation-delay: 0.2s;
   animation: bounce-out-nds 0.3s linear;
   animation-fill-mode: forwards;
-}
 
-.nd2 {
-  background: #3c80f6;
-  right: 40px;
-  bottom: 150px;
-  animation-delay: 0.15s;
-  animation: bounce-out-nds 0.15s linear;
-  animation-fill-mode: forwards;
-}
+  & > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    height: 10%;
+    padding: 15px 5px;
+    margin-top: 20px;
+  }
 
-.nd3 {
-  background: #ba68c8;
-  right: 40px;
-  bottom: 200px;
-  animation-delay: 0.1s;
-  animation: bounce-out-nds 0.1s linear;
-  animation-fill-mode: forwards;
-}
+  & > .estrellas {
+    height: 30%;
+    margin: -55px 0 10px 0;
 
-.nd4 {
-  background: #d3a411;
-  right: 40px;
-  bottom: 250px;
-  animation-delay: 0.08s;
-  animation: bounce-out-nds 0.1s linear;
-  animation-fill-mode: forwards;
+    & > .rating {
+      width: 100%;
+      height: 60%;
+      margin: 15% 6%;
+      // color: black;
+      font-size: 40px;
+      padding: 10px;
+    }
+  }
+
+  & > .descripcion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > .input-valoracion {
+      width: 80%;
+      margin-top: 5px;
+    }
+  }
+
+  & > .button-valoracion {
+    width: 50%;
+    margin: 15px 25%;
+  }
 }
 
 @keyframes bounce-nds {
@@ -270,18 +271,6 @@ h3 {
 #container-floating.is-opened .nds {
   animation: bounce-nds 0.1s linear;
   animation-fill-mode: forwards;
-}
-
-#container-floating.is-opened .nd2 {
-  animation-delay: 0.08s;
-}
-
-#container-floating.is-opened .nd3 {
-  animation-delay: 0.15s;
-}
-
-#container-floating.is-opened .nd4 {
-  animation-delay: 0.2s;
 }
 
 .reminder {

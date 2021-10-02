@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './app.scss';
 import 'app/config/dayjs.ts';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'reactstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -19,13 +19,28 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import { StarOutlined, CloseOutlined } from '@ant-design/icons';
 import $ from 'jquery';
+
+// MATERIAL UI IMPORTS
+
+import Rating, { IconContainerProps } from '@mui/material/Rating';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { translate } from 'react-jhipster';
+import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { Button } from 'antd';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
 export interface IAppProps extends StateProps, DispatchProps {}
 
 export const App = (props: IAppProps) => {
+  const [valueRating, setValueRating] = React.useState(0);
+
   useEffect(() => {
     props.getSession();
     props.getProfile();
@@ -41,6 +56,11 @@ export const App = (props: IAppProps) => {
       $(this).toggleClass('is-opened');
     });
   }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(valueRating, 'estrellitas');
+  }, [valueRating]);
 
   const paddingTop = '60px';
   return (
@@ -66,15 +86,44 @@ export const App = (props: IAppProps) => {
             <section className="valoracion-button">
               <div id="container-floating">
                 <div className="nd1 nds">
-                  <img
-                    className="reminder"
-                    src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-                  />
+                  <h1>¡Danos tu opinión!</h1>
+                  <div className="estrellas">
+                    <Rating
+                      name="size-large"
+                      defaultValue={1}
+                      className="rating"
+                      onChange={(event, newValue) => {
+                        setValueRating(newValue);
+                      }}
+                    />
+                  </div>
+                  <div className="descripcion">
+                    <AvForm className="input-valoracion">
+                      <AvInput
+                        type="textarea"
+                        name="mensaje"
+                        style={{ resize: 'none', height: 100 }}
+                        placeholder={translate('global.form.opinion.placeholder')}
+                      />
+                    </AvForm>
+                  </div>
+                  <Button
+                    className="button-valoracion"
+                    type="primary"
+                    danger
+                    // icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}
+                  >
+                    Enviar
+                  </Button>
                 </div>
 
                 <div id="floating-button">
-                  <p className="plus">+</p>
-                  <img className="close" src="../content/images/icono-lapiz.png" />
+                  <p className="plus">
+                    <StarOutlined className="plus" />
+                    {/* + */}
+                  </p>
+                  <CloseOutlined className="close" />
+                  {/* <img className="close" src="../content/images/icono-lapiz.png" /> */}
                 </div>
               </div>
             </section>
