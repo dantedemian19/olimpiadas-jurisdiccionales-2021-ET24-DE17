@@ -17,19 +17,13 @@ export const Turnos = (props: IHomeProp) => {
     let listData;
     switch (value.date()) {
       case 8:
-        listData = [
-          { type: 'error', content: 'Ocupado' },
-        ];
+        listData = [{ type: 'error', content: 'Ocupado' }];
         break;
       case 10:
-        listData = [
-          { type: 'error', content: 'Ocupado' },
-        ];
+        listData = [{ type: 'error', content: 'Ocupado' }];
         break;
       case 15:
-        listData = [
-          { type: 'error', content: 'Ocupado' },
-        ];
+        listData = [{ type: 'error', content: 'Ocupado' }];
         break;
       default:
     }
@@ -78,7 +72,7 @@ export const Turnos = (props: IHomeProp) => {
         <section className="turnos">
           <div className="columna1">
             <h1>Turnos solicitados</h1>
-            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} style={{padding: 15}} />
+            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} style={{ padding: 15 }} />
           </div>
           <div className="columna2">
             <AvForm className="form-turnos">
@@ -102,20 +96,17 @@ export const Turnos = (props: IHomeProp) => {
                 data-cy="asunto"
               />
               <div>
-              <label htmlFor="fecha">Fecha de consulta</label>
-              <AvInput
-                type="date"
-                name="fecha"
-              />
+                <label htmlFor="fecha">Fecha de consulta</label>
+                <AvInput type="date" name="fecha" />
               </div>
               <div>
-              <label htmlFor="mensaje">Mensaje</label>
-              <AvInput
-                type="textarea"
-                name="mensaje"
-                style={{ resize: 'none', height: 100 }}
-                placeholder={translate('global.form.cuerpo.placeholder')}
-              />
+                <label htmlFor="mensaje">Mensaje</label>
+                <AvInput
+                  type="textarea"
+                  name="mensaje"
+                  style={{ resize: 'none', height: 100 }}
+                  placeholder={translate('global.form.cuerpo.placeholder')}
+                />
               </div>
               <Button className="button-turnos" type="primary" danger icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}>
                 ¡Solicitá tú turno!

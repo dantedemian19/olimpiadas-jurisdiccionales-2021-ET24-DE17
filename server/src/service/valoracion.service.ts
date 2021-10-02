@@ -27,6 +27,7 @@ export class ValoracionService {
     async findAndCount(options: FindManyOptions<ValoracionDTO>): Promise<[ValoracionDTO[], number]> {
         options.relations = relationshipNames;
         const resultList = await this.valoracionRepository.findAndCount(options);
+        // this.logger.debug(resultList)
         const valoracionDTO: ValoracionDTO[] = [];
         if (resultList && resultList[0]) {
             resultList[0].forEach(valoracion => valoracionDTO.push(ValoracionMapper.fromEntityToDTO(valoracion)));

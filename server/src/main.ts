@@ -18,7 +18,9 @@ async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule, appOptions);
     app.useGlobalPipes(
         new ValidationPipe({
-            exceptionFactory: (): BadRequestException => new BadRequestException('Validation error'),
+            // exceptionFactory: (): BadRequestException => new BadRequestException('Validation error'), // Uncommenting will prevent errors from being described in responses
+            whitelist: true,
+            forbidUnknownValues: true,
         }),
     );
 

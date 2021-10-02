@@ -98,8 +98,8 @@ export const Valoracion = (props: IValoracionProps) => {
                 <th className="hand" onClick={sort('descripcion')}>
                   Descripcion <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('isPaciente')}>
-                  Is Paciente <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={sort('isForAttention')}>
+                  Is For Attention <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -114,7 +114,7 @@ export const Valoracion = (props: IValoracionProps) => {
                   </td>
                   <td>{valoracion.estrellas}</td>
                   <td>{valoracion.descripcion}</td>
-                  <td>{valoracion.isPaciente ? 'true' : 'false'}</td>
+                  <td>{valoracion.isForAttention ? 'true' : 'false'}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${valoracion.id}`} color="info" size="sm" data-cy="entityDetailsButton">

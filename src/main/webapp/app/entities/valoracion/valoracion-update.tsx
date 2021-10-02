@@ -107,9 +107,15 @@ export const ValoracionUpdate = (props: IValoracionUpdateProps) => {
                 />
               </AvGroup>
               <AvGroup check>
-                <Label id="isPacienteLabel">
-                  <AvInput id="valoracion-isPaciente" data-cy="isPaciente" type="checkbox" className="form-check-input" name="isPaciente" />
-                  Is Paciente
+                <Label id="isForAttentionLabel">
+                  <AvInput
+                    id="valoracion-isForAttention"
+                    data-cy="isForAttention"
+                    type="checkbox"
+                    className="form-check-input"
+                    name="isForAttention"
+                  />
+                  Is For Attention
                 </Label>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/valoracion" replace color="info">
