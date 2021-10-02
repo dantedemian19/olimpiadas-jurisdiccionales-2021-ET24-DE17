@@ -24,9 +24,9 @@ import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo
 import { Categoria } from '../../domain/enumeration/categoria';
 
 @Controller('api/historia-clinicas')
-@UseGuards(AuthGuard, RolesGuard)
-@UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-@ApiBearerAuth()
+// @UseGuards(AuthGuard, RolesGuard)
+// @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
+// @ApiBearerAuth()
 @ApiUseTags('historia-clinicas')
 export class HistoriaClinicaController {
     logger = new Logger('HistoriaClinicaController');

@@ -4,6 +4,7 @@ import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'cla
 import { BaseDTO } from './base.dto';
 
 import { SintomasTipo } from '../../domain/enumeration/sintomas-tipo';
+import { Paciente } from 'src/domain/paciente.entity';
 
 /**
  * A DiarioDTO object.
@@ -21,6 +22,8 @@ export class DiarioDTO extends BaseDTO {
 
     @ApiModelProperty({ enum: SintomasTipo, description: 'sintomas enum field', required: false })
     sintomas: SintomasTipo;
+
+    paciente: Paciente;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

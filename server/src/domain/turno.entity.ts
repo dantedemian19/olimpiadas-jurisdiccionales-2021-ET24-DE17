@@ -22,7 +22,7 @@ export class Turno extends BaseEntity {
     @Column({ name: 'descripcion', length: 500, nullable: true })
     descripcion: string;
 
-    @ManyToOne(()=> Paciente, Paciente => Paciente.turno)
+    @ManyToOne(()=> Paciente)
     paciente: Paciente;
 
 
