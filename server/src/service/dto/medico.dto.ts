@@ -2,6 +2,8 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
+import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo';
+
 
 /**
  * A MedicoDTO object.
@@ -42,6 +44,9 @@ export class MedicoDTO extends BaseDTO {
     @IsNotEmpty()
     @ApiModelProperty({ description: 'atiendeDiscapacitados field' })
     atiendeDiscapacitados: boolean;
+
+    @ApiModelProperty({ enum: EspecialidadesTipo, description: 'especialidad enum field', required: false })
+    especialidad: EspecialidadesTipo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

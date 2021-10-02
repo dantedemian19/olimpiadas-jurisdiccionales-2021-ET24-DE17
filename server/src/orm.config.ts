@@ -37,7 +37,7 @@ async function ormConfig(): Promise<TypeOrmModuleOptions> {
             type: 'mongodb',
             database: 'admin',
             host: 'localhost',
-            port: 27018,
+            port: 27017,
             username: 'sa',
             password: 'yourStrong(!)Password',
             logging: false,
