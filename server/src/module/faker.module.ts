@@ -8,16 +8,7 @@ import { AuthModule } from './auth.module';
 import { HistoriaClinicaModule } from './historia-clinica.module';
 
 @Module({
-  providers: [
-    TasksService
-  ],
-  imports: [
-    ValoracionModule,
-    UserModule,
-    DiarioModule,
-    TurnoModule,
-    AuthModule,
-    HistoriaClinicaModule
-  ]
+    providers: [TasksService],
+    imports: [ValoracionModule, UserModule, DiarioModule, TurnoModule, AuthModule, HistoriaClinicaModule],
 })
-export class FakerModule { }
+export class FakerModule {}

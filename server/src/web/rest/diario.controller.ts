@@ -61,7 +61,7 @@ export class DiarioController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Create diario' })
     @ApiResponse({
         status: 201,

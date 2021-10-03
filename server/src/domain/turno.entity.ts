@@ -23,6 +23,5 @@ export class Turno extends BaseEntity {
     @Column({ name: 'paciente', length: 500 })
     paciente: string;
 
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

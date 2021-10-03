@@ -26,15 +26,11 @@ export class UserService {
         // const randomID = Math.floor(Math.random()*usersCount);
         // const result = await this.userRepository.findOne(options);
         // return UserMapper.fromEntityToDTO(this.flatAuthorities(result));
-        
-        const [results, count] = await this.userRepository.findAndCount( options );
-        
+
+        const [results, count] = await this.userRepository.findAndCount(options);
+
         const randomIndex = Math.floor(Math.random() * count);
-        return UserMapper.fromEntityToDTO(
-            this.flatAuthorities(
-                results[randomIndex]
-            )
-        );
+        return UserMapper.fromEntityToDTO(this.flatAuthorities(results[randomIndex]));
     }
 
     async find(options: FindManyOptions<UserDTO>): Promise<UserDTO | undefined> {

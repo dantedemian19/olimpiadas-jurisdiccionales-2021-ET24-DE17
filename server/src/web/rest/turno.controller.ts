@@ -61,7 +61,7 @@ export class TurnoController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.MEDICO)
     @ApiOperation({ title: 'Create turno' })
     @ApiResponse({
         status: 201,
@@ -89,7 +89,7 @@ export class TurnoController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.MEDICO)
     @ApiOperation({ title: 'Update turno with id' })
     @ApiResponse({
         status: 200,

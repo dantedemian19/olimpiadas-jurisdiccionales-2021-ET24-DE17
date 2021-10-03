@@ -4,7 +4,6 @@ import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'cla
 import { BaseDTO } from './base.dto';
 import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo';
 
-
 /**
  * A MedicoDTO object.
  */

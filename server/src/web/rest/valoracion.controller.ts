@@ -53,15 +53,15 @@ export class ValoracionController {
     }
 
     @Get('/report' /* /:isForAttention   */)
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'Show report of valorations filtered by type',
         // type: JSON,
     })
-    async generateReport(@Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */,
+    async generateReport(
+        @Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */,
     ): Promise<{}> {
-
         const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
         const valorationsCount: number[] = [];
         for (let index = 1; index <= Object.keys(ValorationsStars).length; index++) {
@@ -88,7 +88,7 @@ export class ValoracionController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -99,7 +99,7 @@ export class ValoracionController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Create valoracion' })
     @ApiResponse({
         status: 201,

@@ -22,6 +22,8 @@ import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo';
 import { Categoria } from '../../domain/enumeration/categoria';
+import { GetHistoryByIdDTO } from '../../service/dto/historybyid.dto';
+import { count } from 'console';
 
 @Controller('api/historia-clinicas')
 // @UseGuards(AuthGuard, RolesGuard)
@@ -34,7 +36,7 @@ export class HistoriaClinicaController {
     constructor(private readonly historiaClinicaService: HistoriaClinicaService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -51,7 +53,7 @@ export class HistoriaClinicaController {
         return results;
     }
     @Get('/report')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -78,11 +80,11 @@ export class HistoriaClinicaController {
                 if (diseaseKindCount[index]) {
                     diseaseKindCount[index].perCategory.push(count);
                 } else {
-                    diseaseKindCount[index] = new temp;
+                    diseaseKindCount[index] = new temp();
                     diseaseKindCount[index].perCategory = [count];
                 }
             }
-            
+
             this.logger.debug(Object.keys(EspecialidadesTipo)[index]);
             diseaseKindCount[index].especiality = Object.keys(EspecialidadesTipo)[index];
         }
@@ -91,29 +93,27 @@ export class HistoriaClinicaController {
         };
     }
     @Get('/obtainHistory')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.USER, RoleType.MEDICO)
     @ApiResponse({
         status: 200,
-        description: 'List all records',
+        description: 'Results: ',
     })
-    async obtainHistory(@Body()req:{ IsForPaciente: boolean, ID: string}): Promise<any> {
+    async obtainHistory(@Req() req: Request, @Body() get: GetHistoryByIdDTO): Promise<any> {
         // report the cuantity of historiasClinicas, por especialidad y por categoria
-        this.logger.debug('Here the params get:');
-        this.logger.debug(req.IsForPaciente);
-        this.logger.debug(req.ID);
+        // this.logger.debug('Here the params get:');
+        // this.logger.debug(get.IsForPaciente);
+        // this.logger.debug(get.ID);
         const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
-        let response: HistoriaClinicaDTO [] = [];
-        let datatype: string;
-        if(req.IsForPaciente) datatype = "paciente";
-        else datatype = "medico";
-        const results = await this.historiaClinicaService.findByFields({
-            where: {
-                '${datatype}': req.ID
-            }
-            });
-        response.push(results);
+        const response: HistoriaClinicaDTO[] = [];
+        let results;
+        let count;
+        if (get.IsForPaciente) {
+            [results, count] = await this.historiaClinicaService.findAndCount({ where: { paciente: get.ID } });
+        } else {
+            [results, count] = await this.historiaClinicaService.findAndCount({ where: { medico: get.ID } });
+        }
         return {
-            response
+            results,
         };
     }
     @Get('/:id')
@@ -128,7 +128,7 @@ export class HistoriaClinicaController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.MEDICO)
     @ApiOperation({ title: 'Create historiaClinica' })
     @ApiResponse({
         status: 201,

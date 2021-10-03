@@ -16,7 +16,7 @@ export class HistoriaClinica extends BaseEntity {
 
     @Column({ name: 'tratamiento', length: 500 })
     tratamiento: string;
-    
+
     @Column({ name: 'medico', length: 500 })
     medico: string;
 

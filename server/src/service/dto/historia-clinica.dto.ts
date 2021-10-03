@@ -9,8 +9,8 @@ import { ObjectID } from 'mongodb';
  * A HistoriaClinicaDTO object.
  */
 export class HistoriaClinicaDTO extends BaseDTO {
-    //@IsNotEmpty()
-    //@IsDate()
+    // @IsNotEmpty()
+    // @IsDate()
     @ApiModelProperty({ description: 'fecha field' })
     fecha: any;
 
@@ -28,12 +28,12 @@ export class HistoriaClinicaDTO extends BaseDTO {
 
     @IsNotEmpty()
     @Length(1, 500)
-    @ApiModelProperty({description: 'medico id'})
+    @ApiModelProperty({ description: 'medico id' })
     medico: string;
 
     @IsNotEmpty()
     @Length(1, 500)
-    @ApiModelProperty({description: 'medico id'})
+    @ApiModelProperty({ description: 'medico id' })
     paciente: string;
 
     @ApiModelProperty({ enum: Categoria, description: 'categoria enum field', required: false })
