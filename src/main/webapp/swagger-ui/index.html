@@ -59,6 +59,7 @@
             plugins: [SwaggerUIBundle.plugins.DownloadUrl, AlwaysEnableTryItOutPlugin],
             requestInterceptor: function (req) {
               var authToken = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+              console.log(authToken);
               if (authToken) {
                 authToken = JSON.parse(authToken);
                 req.headers['Authorization'] = 'Bearer ' + authToken;

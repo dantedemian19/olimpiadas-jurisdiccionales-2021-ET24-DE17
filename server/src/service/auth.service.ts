@@ -83,7 +83,7 @@ export class AuthService {
         if (userFind) {
             throw new HttpException('Email is already in use!', HttpStatus.BAD_REQUEST);
         }
-        newUser.authorities = ['ROLE_USER'];
+        // newUser.authorities = ['ROLE_USER'];
         const user: UserDTO = await this.userService.save(newUser, newUser.login, true);
         return user;
     }

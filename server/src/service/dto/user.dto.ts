@@ -29,7 +29,7 @@ export class UserDTO extends BaseDTO {
 
     @ApiModelProperty({
         isArray: true,
-        enum: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ANONYMOUS'],
+        enum: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ANONYMOUS', 'ROLE_MEDICO', 'ROLE_PACIENTE'],
         description: 'Array of permissions',
         required: false,
     })

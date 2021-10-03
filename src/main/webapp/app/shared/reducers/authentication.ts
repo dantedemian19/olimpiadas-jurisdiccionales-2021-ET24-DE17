@@ -123,6 +123,8 @@ export const login: (username: string, password: string, rememberMe?: boolean) =
   const bearerToken = result.value.headers.authorization;
   if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
     const jwt = bearerToken.slice(7, bearerToken.length);
+    localStorage.setItem('jhi-authenticationToken', jwt);
+    sessionStorage.setItem('jhi-authenticationToken', jwt);
     if (rememberMe) {
       Storage.local.set(AUTH_TOKEN_KEY, jwt);
     } else {

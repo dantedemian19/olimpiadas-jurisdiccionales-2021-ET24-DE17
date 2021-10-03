@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../domain/user.entity';
 import { UserDTO } from './dto/user.dto';
@@ -19,6 +19,22 @@ export class UserService {
     async findByFields(options: FindOneOptions<UserDTO>): Promise<UserDTO | undefined> {
         const result = await this.userRepository.findOne(options);
         return UserMapper.fromEntityToDTO(this.flatAuthorities(result));
+    }
+
+    async getRandomUser(options?: FindManyOptions<UserDTO>): Promise<UserDTO | undefined> {
+        // const usersCount = await this.userRepository.count(options);
+        // const randomID = Math.floor(Math.random()*usersCount);
+        // const result = await this.userRepository.findOne(options);
+        // return UserMapper.fromEntityToDTO(this.flatAuthorities(result));
+        
+        const [results, count] = await this.userRepository.findAndCount( options );
+        
+        const randomIndex = Math.floor(Math.random() * count);
+        return UserMapper.fromEntityToDTO(
+            this.flatAuthorities(
+                results[randomIndex]
+            )
+        );
     }
 
     async find(options: FindManyOptions<UserDTO>): Promise<UserDTO | undefined> {
