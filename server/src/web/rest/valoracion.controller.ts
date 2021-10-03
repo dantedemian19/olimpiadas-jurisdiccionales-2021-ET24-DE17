@@ -59,13 +59,8 @@ export class ValoracionController {
         description: 'Show report of valorations filtered by type',
         // type: JSON,
     })
-    async generateReport(
-        @Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */,
+    async generateReport(@Body() req: GetValoracionDTO /* @Param('isForAttention') isForAttention: string */,
     ): Promise<{}> {
-        // report the Valorations of the users
-        this.logger.debug('Here the params get:');
-        this.logger.debug(req);
-        // this.logger.warn(isForAttention);
 
         const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
         const valorationsCount: number[] = [];
@@ -113,7 +108,6 @@ export class ValoracionController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(@Req() req: Request, @Body() valoracionDTO: ValoracionDTO): Promise<ValoracionDTO> {
-        this.logger.debug(valoracionDTO);
         const created = await this.valoracionService.save(valoracionDTO, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Valoracion', created.id);
         return created;
