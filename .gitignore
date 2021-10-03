@@ -14,6 +14,7 @@ node_modules/
 npm-debug.log.*
 /.awcache/*
 /.cache-loader/*
+*/.env
 
 ######################
 # Node Server NestJS
@@ -143,3 +144,4 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+server/.env

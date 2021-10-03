@@ -61,7 +61,7 @@ export class TurnoController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Create turno' })
     @ApiResponse({
         status: 201,
@@ -76,7 +76,7 @@ export class TurnoController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Update turno' })
     @ApiResponse({
         status: 200,
@@ -89,7 +89,7 @@ export class TurnoController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Update turno with id' })
     @ApiResponse({
         status: 200,
@@ -102,7 +102,7 @@ export class TurnoController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Delete turno' })
     @ApiResponse({
         status: 204,

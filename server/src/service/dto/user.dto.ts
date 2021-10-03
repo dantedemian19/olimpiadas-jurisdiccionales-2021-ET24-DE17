@@ -2,6 +2,7 @@ import { ApiModelProperty } from '@nestjs/swagger';
 import { IsString, IsEmail } from 'class-validator';
 import { BaseDTO } from './base.dto';
 import { Exclude } from 'class-transformer';
+import { RoleType } from '../../../src/security';
 
 /**
  * An User DTO object.
@@ -29,7 +30,7 @@ export class UserDTO extends BaseDTO {
 
     @ApiModelProperty({
         isArray: true,
-        enum: ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ANONYMOUS'],
+        enum: RoleType,
         description: 'Array of permissions',
         required: false,
     })
