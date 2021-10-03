@@ -108,7 +108,6 @@
 }
 
 .datos-covid {
-  // background: linear-gradient(to bottom, #0792b3 -30%, #b5d0db);
   background-color: #f3f6f9;
   width: 100%;
   height: 800px;
@@ -189,6 +188,9 @@
 .prevencion-sintomas {
   width: 90%;
   padding: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   &>.prevencion {
     width: 50%;
@@ -223,6 +225,51 @@
 
         &>p {
           max-width: 280px;
+          margin: 5px 0 0 15px;
+          font-weight: 700;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+  &>.sintomas {
+    width: 50%;
+    padding: 15px;
+
+    &>h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    &>p {
+      margin-top: 25px;
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    &>a>.button-consejos {
+      background-color: #ffdb2e;
+      font-size: 16px;
+      margin-top: -10px;
+    }
+
+    &>ul {
+      list-style: none;
+      padding: 0;
+
+      &>li {
+        display: flex;
+        flex-direction: row;
+        margin-top: 25px;
+        align-items: center;
+
+        &>img {
+          width: 80px;
+        }
+
+        &>p {
+          // max-width: 280px;
           margin: 5px 0 0 15px;
           font-weight: 700;
           font-size: 17px;

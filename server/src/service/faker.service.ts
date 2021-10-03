@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, Interval, Timeout } from '@nestjs/schedule';
+// import { Cron, Interval, Timeout } from '@nestjs/schedule';
 import { ValoracionDTO } from './dto/valoracion.dto';
 import { ValoracionService } from './valoracion.service';
 import { } from 'faker'
@@ -11,7 +11,7 @@ export class TasksService {
 
     constructor(private readonly valoracionService: ValoracionService) { }
 
-    @Interval(1000)
+    // @Interval(1000)
     async handleInterval(): Promise<void> {
 
         let newValoration: ValoracionDTO = {
