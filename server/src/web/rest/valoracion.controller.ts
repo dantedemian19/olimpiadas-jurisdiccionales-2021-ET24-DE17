@@ -53,7 +53,7 @@ export class ValoracionController {
     }
 
     @Get('/report' /* /:isForAttention   */)
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'Show report of valorations filtered by type',
@@ -88,7 +88,7 @@ export class ValoracionController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -99,7 +99,7 @@ export class ValoracionController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiOperation({ title: 'Create valoracion' })
     @ApiResponse({
         status: 201,

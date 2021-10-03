@@ -13,6 +13,10 @@ import { HistoriaClinicaModule } from './module/historia-clinica.module';
 import { DiarioModule } from './module/diario.module';
 import { ValoracionModule } from './module/valoracion.module';
 import { FakerModule } from './module/faker.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+
+
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
 // jhipster-needle-add-service-module-to-main-import - JHipster will import service modules here, do not remove
@@ -42,4 +46,22 @@ import { FakerModule } from './module/faker.module';
         // jhipster-needle-add-service-module-to-main - JHipster will add service modules here, do not remove
     ],
 })
+@Module({
+    imports: [
+      MailerModule.forRoot({
+        transport: 'smtps://user@domain.com:pass@smtp.domain.com',
+        defaults: {
+          from: '"nest-modules" <modules@nestjs.com>',
+        },
+        template: {
+          dir: __dirname + '/templates',
+          adapter: new HandlebarsAdapter(),
+          options: {
+            strict: true,
+          },
+        },
+      }),
+    ],
+  })
+
 export class AppModule {}

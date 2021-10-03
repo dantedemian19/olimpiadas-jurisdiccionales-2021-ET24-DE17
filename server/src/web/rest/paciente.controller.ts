@@ -90,6 +90,8 @@ export class PacienteController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
+    @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @ApiOperation({ title: 'Update paciente with id' })
     @ApiResponse({
         status: 200,

@@ -109,4 +109,5 @@ export class AuthService {
     async getAllUsers(options: FindManyOptions<UserDTO>): Promise<[UserDTO[], number]> {
         return await this.userService.findAndCount(options);
     }
+
 }
