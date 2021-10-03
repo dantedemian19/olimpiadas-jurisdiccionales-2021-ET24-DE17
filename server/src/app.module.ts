@@ -20,7 +20,7 @@ import { FakerModule } from './module/faker.module';
 @Module({
     imports: [
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
-        ScheduleModule.forRoot(),
+        // ScheduleModule.forRoot(),
         ServeStaticModule.forRoot({
             rootPath: config.getClientPath(),
         }),

@@ -42,7 +42,7 @@ export class TasksService {
 
     @Interval(90000)
     async fakeValoracion(): Promise<void> {
-        this.logger.debug("Fake valoration created");
+        // this.logger.debug("Fake valoration created");
         let newValoration: ValoracionDTO = {
             estrellas: Math.floor(Math.random() * (6 - 1) + 1),
             descripcion: faker.lorem.sentences(),
@@ -53,7 +53,7 @@ export class TasksService {
 
     @Interval(40000)
     async fakeDiario(): Promise<void> {
-        this.logger.debug("Fake diario created");
+        // this.logger.debug("Fake diario created");
         let randomPaciente = await this.userService.getRandomUser();
 
         let newDiario: DiarioDTO = {
@@ -67,7 +67,7 @@ export class TasksService {
 
     @Interval(80000)
     async fakeTurno(): Promise<void> {
-        this.logger.debug("Fake turno created");
+        // this.logger.debug("Fake turno created");
         let randomPaciente = await this.userService.getRandomUser({
             where: {
                 "authorities": {
@@ -91,7 +91,7 @@ export class TasksService {
 
     @Interval(30000)
     async fakeHistoriaClinica(): Promise<void> {
-        this.logger.debug("Fake historia clinica created");
+        // this.logger.debug("Fake historia clinica created");
         const randomPaciente = await this.userService.getRandomUser({
             where: {
                 "authorities": {
@@ -127,7 +127,7 @@ export class TasksService {
 
     @Interval(120000)
     async fakeUsers(): Promise<void> {
-        this.logger.debug("Fake user created");
+        // this.logger.debug("Fake user created");
         let aleatoryRol = this.randomElementOfEnum(RoleType);
 
         var userAuthorities: RoleType[];
