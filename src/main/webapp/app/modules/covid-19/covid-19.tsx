@@ -3,6 +3,8 @@ import './covid-19.scss';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Select } from 'antd';
+import { Link } from 'react-router-dom';
+import { FileDoneOutlined, IdcardOutlined, UnlockOutlined } from '@ant-design/icons';
 
 export type IHomeProp = StateProps;
 
@@ -104,12 +106,79 @@ export const Covid = (props: IHomeProp) => {
         </div>
       </section>
       <main className="contenedor-covid">
+        <section className="informacion-util">
+          <h1 style={{ color: '#38485c' }}>Información útil</h1>
+          <ul>
+            <li>
+              <div className="icono-informacion">
+                <FileDoneOutlined className="icono" />
+              </div>
+              <a href="https://www.buenosaires.gob.ar/coronavirus/medidas-de-gobierno" target="_blank" className="link" rel="noreferrer">
+                <h3 style={{ color: '#007bd2' }}>Servicio y trámites</h3>
+              </a>
+              <p>Programas para la salud y modalidades para realizar trámites.</p>
+            </li>
+            <li>
+              <div className="icono-informacion">
+                <UnlockOutlined className="icono" />
+              </div>
+              <a href="https://www.buenosaires.gob.ar/coronavirus/protocolos" target="_blank" className="link" rel="noreferrer">
+                <h3 style={{ color: '#007bd2' }}>Protocolos de apertura</h3>
+              </a>
+              <p>Medidas de prevención para la apertura de rubros y actividades.</p>
+            </li>
+            <li>
+              <div className="icono-informacion">
+                <IdcardOutlined className="icono" />
+              </div>
+              <a href="https://www.buenosaires.gob.ar/coronavirus/equipos-salud" target="_blank" className="link" rel="noreferrer">
+                <h3 style={{ color: '#007bd2' }}>Equipos de salud</h3>
+              </a>
+              <p>Instructivos, novedades y protocolos para el equipo de salud.</p>
+            </li>
+          </ul>
+        </section>
+        <section className="escuelas">
+          <h1 style={{ color: '#38485c' }}>Escuelas</h1>
+          <ul>
+            <li>
+              <a
+                href="https://www.buenosaires.gob.ar/coronavirus/vacunacion-covid-19/personal-docente-y-no-docente"
+                target="_blank"
+                className="link"
+                rel="noreferrer"
+              >
+                <h3 style={{ color: '#38485c' }}>Vacunación docente</h3>
+                <p style={{ color: '#4b596a' }}>Empadronamiento para personal docente y no docente de escuelas de la Ciudad.</p>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.buenosaires.gob.ar/educacion/estrategia-de-testeo-para-la-comunidad-educativa"
+                target="_blank"
+                className="link"
+                rel="noreferrer"
+              >
+                <h3 style={{ color: '#38485c' }}>Testeos docentes</h3>
+                <p style={{ color: '#4b596a' }}>Lugares y horarios de testeo para la comunidad educativa estatal o privada.</p>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.buenosaires.gob.ar/educacion/cuidarnos-es-cuidarlos" target="_blank" className="link" rel="noreferrer">
+                <h3 style={{ color: '#38485c' }}>La escuela hoy</h3>
+                <p style={{ color: '#4b596a' }}>Recomendaciones para evitar las posibilidades de contagio en la escuela.</p>
+              </a>
+            </li>
+          </ul>
+        </section>
         <section className="datos-covid">
+          <h1>Información en datos</h1>
+          <p>Datos sobre la evolución del COVID-19 y todo lo que estamos haciendo en la Ciudad para afrontar la emergencia sanitaria.</p>
           <div className="titulo-dropdown">
             <div className="dropdown">
               <Select
                 labelInValue
-                // defaultValue={'Casos por millón de personas'}
+                defaultValue={{ value: 'casos' }}
                 placeholder="Seleccione una opción"
                 className="dropdown-select"
                 onChange={handleChange}
@@ -124,6 +193,54 @@ export const Covid = (props: IHomeProp) => {
             </div>
           </div>
           <div className="grafico">{grafico()}</div>
+          <div className="botonera">
+            <a href="https://www.buenosaires.gob.ar/coronavirus/datos" target="_blank" rel="noreferrer">
+              <button className="btn ver-datos">Ver datos oficiales de COVID-19</button>
+            </a>
+            <a href="http://localhost:9000/" target="_blank" rel="noreferrer">
+              <button className="btn ver-informes">Ver informes diarios del gobierno</button>
+            </a>
+          </div>
+        </section>
+        <section className="prevencion-sintomas">
+          <div className="prevencion">
+            <h1>Prevención</h1>
+            <p>Conocé los consejos para cuidarte</p>
+            <a href="">
+              <button className="btn button-consejos">Ver consejos</button>
+            </a>
+            <ul>
+              <li>
+                <img src="../../../content/images/covid/barbijo.png" />
+                <p>El uso de tapabocas es obligatorio.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/toser.png" />
+                <p>Al toser o estornudar, cubrirse la boca y nariz con el codo.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/limpiar.png" style={{ marginLeft: 20 }} />
+                <p style={{ marginLeft: 20 }}>Limpiar superficies con agua y lavandina.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/jabon.png" />
+                <p>Lavarse las manos con agua y jabón o usar alcohol en gel.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/tocarse.png" />
+                <p>Evitar tocarse la cara con las manos.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/metros.png" />
+                <p>Mantener al menos 2 metros de distanciamiento social.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/ventanas.png" style={{ width: 85 }} />
+                <p>Ventilemos los lugares cerrados.</p>
+              </li>
+            </ul>
+          </div>
+          <div className="sintomas"></div>
         </section>
       </main>
     </div>
