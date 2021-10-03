@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ValoracionController } from '../web/rest/valoracion.controller';
 import { ValoracionRepository } from '../repository/valoracion.repository';
 import { ValoracionService } from '../service/valoracion.service';
+import { FakerModule } from './faker.module';
 
 @Module({
     imports: [TypeOrmModule.forFeature([ValoracionRepository])],
