@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ScheduleModule } from '@nestjs/schedule';
+// import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './module/auth.module';
 import { ormConfig } from './orm.config';
 import { config } from './config';
@@ -20,7 +20,7 @@ import { FakerModule } from './module/faker.module';
 @Module({
     imports: [
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
-        ScheduleModule.forRoot(),
+        // ScheduleModule.forRoot(),
         ServeStaticModule.forRoot({
             rootPath: config.getClientPath(),
         }),

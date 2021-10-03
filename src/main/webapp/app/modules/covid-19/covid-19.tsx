@@ -3,7 +3,6 @@ import './covid-19.scss';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Select } from 'antd';
-import { Link } from 'react-router-dom';
 import { FileDoneOutlined, IdcardOutlined, UnlockOutlined } from '@ant-design/icons';
 
 export type IHomeProp = StateProps;
@@ -205,8 +204,8 @@ export const Covid = (props: IHomeProp) => {
         <section className="prevencion-sintomas">
           <div className="prevencion">
             <h1>Prevención</h1>
-            <p>Conocé los consejos para cuidarte</p>
-            <a href="">
+            <p>Conocé los consejos para cuidarte.</p>
+            <a href="https://www.buenosaires.gob.ar/coronavirus/aprende-cuidarte" target="_blank" rel="noreferrer">
               <button className="btn button-consejos">Ver consejos</button>
             </a>
             <ul>
@@ -240,7 +239,43 @@ export const Covid = (props: IHomeProp) => {
               </li>
             </ul>
           </div>
-          <div className="sintomas"></div>
+          <div className="sintomas">
+            <h1>Síntomas</h1>
+            <p>Si tenés síntomas, acercate a una UFU.</p>
+            <a href="https://www.buenosaires.gob.ar/coronavirus/unidades-febriles-de-urgencia" target="_blank" rel="noreferrer">
+              <button className="btn button-consejos">Ver lugares</button>
+            </a>
+            <ul>
+              <li>
+                <img src="../../../content/images/covid/termometro.png" />
+                <p>Temperatura mayor a 37.0°.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/garganta.png" />
+                <p>Dolor de garganta.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/tos.png" />
+                <p>Tos seca continua.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/respirar.png" />
+                <p>Dificultad para respirar.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/olfato-gusto.png" />
+                <p>Pérdida de olfato o del gusto.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/cabeza.png" />
+                <p>Cefalea.</p>
+              </li>
+              <li>
+                <img src="../../../content/images/covid/estomago.png" />
+                <p>Diarrea y/o vómitos.</p>
+              </li>
+            </ul>
+          </div>
         </section>
       </main>
     </div>
