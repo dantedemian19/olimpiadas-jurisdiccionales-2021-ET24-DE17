@@ -75,7 +75,7 @@ export class HistoriaClinicaController {
                         EspecialidadTipo: `${EspecialidadesTipo[index]}`,
                     },
                 });
-                diseaseKindCount[index].perCategory.push(count);
+                diseaseKindCount[index].perCategory[indexCategory] = count;
             }
             diseaseKindCount[index].especiality = EspecialidadesTipo[index];
         }
