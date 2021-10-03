@@ -2,16 +2,15 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
-
-// import { TurnoEstado } from '../../domain/enumeration/turno-estado';
+import { TurnoEstado } from '../../domain/enumeration/TurnoEstado';
 
 /**
  * A TurnoDTO object.
  */
 export class TurnoDTO extends BaseDTO {
-    // @IsNotEmpty()
-    // @ApiModelProperty({ enum: TurnoEstado, description: 'estado enum field' })
-    // estado: TurnoEstado;
+    @IsNotEmpty()
+    @ApiModelProperty({ enum: TurnoEstado, description: 'estado enum field' })
+    estado: TurnoEstado;
 
     @IsNotEmpty()
     @ApiModelProperty({ description: 'fechaHora field' })
@@ -21,6 +20,11 @@ export class TurnoDTO extends BaseDTO {
     @Length(1, 500)
     @ApiModelProperty({ description: 'motivo field' })
     motivo: string;
+
+    @IsNotEmpty()
+    @Length(1, 500)
+    @ApiModelProperty({ description: 'motivo field' })
+    paciente: string;
 
     @Length(1, 500)
     @ApiModelProperty({ description: 'descripcion field', required: false })

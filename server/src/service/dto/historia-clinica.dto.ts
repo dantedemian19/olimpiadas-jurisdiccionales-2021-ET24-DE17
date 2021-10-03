@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
+import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches, IsDate } from 'class-validator';
 import { BaseDTO } from './base.dto';
-import { Medico } from '../../domain/medico.entity';
-
 import { Categoria } from '../../domain/enumeration/categoria';
+import { ObjectID } from 'mongodb';
 
 /**
  * A HistoriaClinicaDTO object.
  */
 export class HistoriaClinicaDTO extends BaseDTO {
-    @IsNotEmpty()
+    //@IsNotEmpty()
+    //@IsDate()
     @ApiModelProperty({ description: 'fecha field' })
     fecha: any;
 
@@ -26,10 +26,18 @@ export class HistoriaClinicaDTO extends BaseDTO {
     @ApiModelProperty({ description: 'tratamiento field' })
     tratamiento: string;
 
+    @IsNotEmpty()
+    @Length(1, 500)
+    @ApiModelProperty({description: 'medico id'})
+    medico: string;
+
+    @IsNotEmpty()
+    @Length(1, 500)
+    @ApiModelProperty({description: 'medico id'})
+    paciente: string;
+
     @ApiModelProperty({ enum: Categoria, description: 'categoria enum field', required: false })
     categoria: Categoria;
-
-    medico: Medico;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

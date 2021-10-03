@@ -20,10 +20,14 @@ export class DiarioDTO extends BaseDTO {
     @ApiModelProperty({ description: 'entrada field' })
     entrada: string;
 
+    @IsNotEmpty()
+    @Length(1, 500)
+    @Matches('^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$')
+    @ApiModelProperty({ description: 'entrada field' })
+    paciente: string;
+
     @ApiModelProperty({ enum: SintomasTipo, description: 'sintomas enum field', required: false })
     sintomas: SintomasTipo;
-
-    paciente: Paciente;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

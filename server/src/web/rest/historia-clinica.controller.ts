@@ -90,7 +90,32 @@ export class HistoriaClinicaController {
             diseaseKindCount,
         };
     }
-
+    @Get('/obtainHistory')
+    @Roles(RoleType.USER)
+    @ApiResponse({
+        status: 200,
+        description: 'List all records',
+    })
+    async obtainHistory(@Body()req:{ IsForPaciente: boolean, ID: string}): Promise<any> {
+        // report the cuantity of historiasClinicas, por especialidad y por categoria
+        this.logger.debug('Here the params get:');
+        this.logger.debug(req.IsForPaciente);
+        this.logger.debug(req.ID);
+        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
+        let response: HistoriaClinicaDTO [] = [];
+        let datatype: string;
+        if(req.IsForPaciente) datatype = "paciente";
+        else datatype = "medico";
+        const results = await this.historiaClinicaService.findByFields({
+            where: {
+                '${datatype}': req.ID
+            }
+            });
+        response.push(results);
+        return {
+            response
+        };
+    }
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({
