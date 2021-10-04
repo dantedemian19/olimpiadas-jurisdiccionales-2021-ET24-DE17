@@ -276,3 +276,64 @@
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  .informacion-util>ul {
+    flex-direction: column;
+  }
+
+  .escuelas>ul {
+    flex-direction: column;
+
+    &>li:nth-child(1) {
+      margin-top: 0;
+    }
+
+    &>li {
+      margin-top: 15px;
+    }
+  }
+
+  .datos-covid {
+    text-align: center;
+
+    &>h1 {
+      width: 100%;
+    }
+
+    &>.titulo-dropdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &>.dropdown>.dropdown-select {
+        width: 100%;
+        font-size: 16px;
+        text-align: left;
+      }
+    }
+
+    &>.grafico {
+      width: 100%;
+      padding: 5px;
+    }
+
+    &>.botonera {
+      width: 100%;
+      margin-top: -25px;
+      padding: 5px;
+    }
+  }
+
+  .prevencion-sintomas {
+    flex-direction: column;
+
+    &>.prevencion {
+      width: 100%;
+    }
+
+    &>.sintomas {
+      width: 100%;
+    }
+  }
+}

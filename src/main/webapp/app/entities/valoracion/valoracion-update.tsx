@@ -7,7 +7,7 @@ import { translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { getEntity, updateEntity, createEntity, reset } from './valoracion.reducer';
+import { getEntity, updateEntity, createValoracion, reset } from './valoracion.reducer';
 import { IValoracion } from 'app/shared/model/valoracion.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
@@ -45,7 +45,7 @@ export const ValoracionUpdate = (props: IValoracionUpdateProps) => {
       };
 
       if (isNew) {
-        props.createEntity(entity);
+        props.createValoracion(entity);
       } else {
         props.updateEntity(entity);
       }
@@ -146,7 +146,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 const mapDispatchToProps = {
   getEntity,
   updateEntity,
-  createEntity,
+  createValoracion,
   reset,
 };
 

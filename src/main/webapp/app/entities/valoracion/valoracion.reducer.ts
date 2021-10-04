@@ -121,7 +121,7 @@ export const getEntity: ICrudGetAction<IValoracion> = id => {
   };
 };
 
-export const createEntity: ICrudPutAction<IValoracion> = entity => async dispatch => {
+export const createValoracion: ICrudPutAction<IValoracion> = entity => async dispatch => {
   const result = await dispatch({
     type: ACTION_TYPES.CREATE_VALORACION,
     payload: axios.post(apiUrl, cleanEntity(entity)),
