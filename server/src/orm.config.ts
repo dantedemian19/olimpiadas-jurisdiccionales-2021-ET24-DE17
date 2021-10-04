@@ -30,7 +30,7 @@ async function ormConfig(): Promise<TypeOrmModuleOptions> {
         cli: commonConf.CLI,
         migrationsRun: commonConf.MIGRATIONS_RUN,
     };
-    
+
     if (process.env.BACKEND_ENV === 'prod') {
         ormconfig = {
             name: 'default',

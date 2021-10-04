@@ -29,6 +29,7 @@ import { translate } from 'react-jhipster';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'antd';
 import { createValoracion } from './entities/valoracion/valoracion.reducer';
+import { IValoracion } from './shared/model/valoracion.model';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -113,7 +114,13 @@ export const App = (props: IAppProps) => {
                     danger
                     disabled={valueRating ? false : true}
                     onClick={() => {
-                      createValoracion({ estrellas: valueRating, descripcion: valueDescripcion });
+                      let newValoracion: IValoracion = {
+                        estrellas: valueRating,
+                        descripcion: valueDescripcion,
+                      };
+
+                      props.createValoracion(newValoracion);
+                      console.log(createValoracion);
                     }}
                   >
                     Enviar
@@ -147,7 +154,7 @@ const mapStateToProps = ({ authentication, applicationProfile, locale }: IRootSt
   isOpenAPIEnabled: applicationProfile.isOpenAPIEnabled,
 });
 
-const mapDispatchToProps = { setLocale, getSession, getProfile };
+const mapDispatchToProps = { setLocale, getSession, getProfile, createValoracion };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

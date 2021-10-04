@@ -6,9 +6,20 @@ import { DiarioModule } from './diario.module';
 import { TurnoModule } from './turno.module';
 import { AuthModule } from './auth.module';
 import { HistoriaClinicaModule } from './historia-clinica.module';
+import { MedicoModule } from './medico.module';
+import { PacienteModule } from './paciente.module';
 
 @Module({
     providers: [TasksService],
-    imports: [ValoracionModule, UserModule, DiarioModule, TurnoModule, AuthModule, HistoriaClinicaModule],
+    imports: [
+        ValoracionModule,
+        UserModule,
+        DiarioModule,
+        TurnoModule,
+        AuthModule,
+        HistoriaClinicaModule,
+        MedicoModule,
+        PacienteModule,
+    ],
 })
 export class FakerModule {}

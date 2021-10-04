@@ -18,10 +18,15 @@ import { UserDTO } from './dto/user.dto';
 import { HistoriaClinicaDTO } from './dto/historia-clinica.dto';
 
 // Enums
+import { EspecialidadesTipo } from '../../src/domain/enumeration/especialidades-tipo';
 import { SintomasTipo } from '../domain/enumeration/Sintomas-Tipo';
 import { TurnoEstado } from '../domain/enumeration/TurnoEstado';
 import { RoleType } from '../security/role-type-faker';
 import { Categoria } from '../domain/enumeration/categoria';
+import { MedicoDTO } from './dto/medico.dto';
+import { PacienteDTO } from './dto/paciente.dto';
+import { MedicoService } from './medico.service';
+import { PacienteService } from './paciente.service';
 
 const faker = require('faker');
 
@@ -36,6 +41,8 @@ export class TasksService {
         private readonly turnoService: TurnoService,
         private readonly authService: AuthService,
         private readonly historiaClinicaService: HistoriaClinicaService,
+        private readonly medicoService: MedicoService,
+        private readonly pacienteService: PacienteService,
     ) {}
 
     @Interval(90000)
@@ -128,21 +135,46 @@ export class TasksService {
         await this.historiaClinicaService.save(newHistoriaClinica, 'Faker');
     }
 
-    @Interval(120000)
+    @Interval(100)
     async fakeUsers(): Promise<void> {
         // this.logger.debug("Fake user created");
         const aleatoryRol = this.randomElementOfEnum(RoleType);
 
         let userAuthorities: RoleType[];
 
+        let userEntity: PacienteDTO | MedicoDTO;
+
         if (aleatoryRol == RoleType.PACIENTE || aleatoryRol == RoleType.USER) {
             userAuthorities = [RoleType.PACIENTE, RoleType.USER];
+            const newPaciente: PacienteDTO = {
+                apellido: faker.name.lastName(),
+                nombre: faker.name.lastName(),
+                dni: faker.phone.phoneNumber(),
+                mail: faker.internet.email(),
+                telefono: faker.phone.phoneNumber(),
+            };
+
+            userEntity = newPaciente;
+
+            await this.pacienteService.save(newPaciente, 'Faker');
         } else {
             userAuthorities = [RoleType.MEDICO];
+            const newMedico: MedicoDTO = {
+                apellido: faker.name.lastName(),
+                nombre: faker.name.lastName(),
+                dni: faker.phone.phoneNumber(),
+                mail: faker.internet.email(),
+                telefono: faker.phone.phoneNumber(),
+                atiendeDiscapacitados: Math.random() > 0.5,
+                especialidad: this.randomElementOfEnum(EspecialidadesTipo),
+                matricula: faker.phone.phoneNumber(),
+            };
+            userEntity = newMedico;
+            await this.medicoService.save(newMedico, 'Faker');
         }
 
         const newUserInfo: UserDTO = {
-            email: faker.internet.email(),
+            email: userEntity.mail,
             login: faker.name.findName(),
             password: faker.internet.password(),
             activated: true,

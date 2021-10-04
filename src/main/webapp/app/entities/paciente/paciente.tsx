@@ -1,6 +1,7 @@
 // removed th id primary key
 import './paciente.scss';
 import React, { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSortState, translate } from 'react-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
@@ -9,6 +10,8 @@ import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validatio
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
+import { getEntity } from './paciente.reducer';
+import { IRootState } from 'app/shared/reducers';
 
 export type IPacienteProps = RouteComponentProps<{ url: string }>;
 
@@ -48,6 +51,10 @@ export const Paciente = () => {
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(inputValue);
+
+    if (inputValue?.length >= 7) {
+      props.getEntiy();
+    }
   }, [inputValue]);
 
   return (
@@ -131,4 +138,10 @@ export const Paciente = () => {
   );
 };
 
-export default Paciente;
+const mapStateToProps = ({}: IRootState) => ({});
+
+const mapDispatchToProps = {
+  getEntity,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paciente);

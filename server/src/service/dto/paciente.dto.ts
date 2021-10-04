@@ -12,11 +12,6 @@ export class PacienteDTO extends BaseDTO {
     @ApiModelProperty({ description: 'dni field' })
     dni: number;
 
-    @Length(1, 500)
-    @Matches('^([A-Za-z0-9á-ü,.;?¡!¿Á-Ü-_ ])+$')
-    @ApiModelProperty({ description: 'historiaClinica field', required: false })
-    historiaClinica: string;
-
     @IsNotEmpty()
     @Length(1, 100)
     @Matches('^[A-Za-z0-9 ]+$')
