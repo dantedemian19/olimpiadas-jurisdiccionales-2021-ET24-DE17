@@ -8,7 +8,6 @@ import { UserJWTController } from '../web/rest/user.jwt.controller';
 import { config } from '../config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorityRepository } from '../repository/authority.repository';
-import { MailModule } from '../module/mail.module';
 import { PublicUserController } from '../web/rest/public.user.controller';
 import { AccountController } from '../web/rest/account.controller';
 

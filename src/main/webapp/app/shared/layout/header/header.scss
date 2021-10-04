@@ -88,10 +88,20 @@ Navbar styles
 
 
 @media screen and (max-width: 500px) {
+  .nav-item {
+    flex-direction: column !important;
+  }
+
   .brand-title {
     // font-size: 14px;
     margin: 0;
     position: absolute;
     right: 0;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 500px) {
+  .brand-title {
+    display: none;
   }
 }

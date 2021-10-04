@@ -28,6 +28,7 @@ import Rating from '@mui/material/Rating';
 import { translate } from 'react-jhipster';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'antd';
+import { createValoracion } from './entities/valoracion/valoracion.reducer';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -35,6 +36,7 @@ export interface IAppProps extends StateProps, DispatchProps {}
 
 export const App = (props: IAppProps) => {
   const [valueRating, setValueRating] = React.useState(0);
+  const [valueDescripcion, setValueDescripcion] = React.useState('');
 
   useEffect(() => {
     props.getSession();
@@ -99,6 +101,9 @@ export const App = (props: IAppProps) => {
                         name="mensaje"
                         style={{ resize: 'none', height: 100 }}
                         placeholder={translate('global.form.opinion.placeholder')}
+                        onChange={value => {
+                          setValueDescripcion(value.target.defaultValue);
+                        }}
                       />
                     </AvForm>
                   </div>
@@ -106,7 +111,10 @@ export const App = (props: IAppProps) => {
                     className="button-valoracion"
                     type="primary"
                     danger
-                    // icon={<BookOutlined style={{ position: 'relative', bottom: 3 }} />}
+                    disabled={valueRating ? false : true}
+                    onClick={() => {
+                      createValoracion({ estrellas: valueRating, descripcion: valueDescripcion });
+                    }}
                   >
                     Enviar
                   </Button>
