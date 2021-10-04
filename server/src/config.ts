@@ -94,6 +94,11 @@ const envYamlConfigPath = path.join(__dirname, 'config', `application-${process.
 
 const yamlConfig = yaml.load(fs.readFileSync(yamlConfigPath, 'utf8'));
 logger.log(`Actual process.env.BACKEND_ENV value: ${process.env.BACKEND_ENV}`);
+logger.log(`Actual process.env.DB_NAME value: ${process.env.DB_NAME}`)
+logger.log(`Actual process.env.DB_CON value: ${process.env.DB_CON}`)
+logger.log(`Actual process.env.DB_PORT value: ${process.env.DB_PORT}`)
+logger.log(`Actual process.env.DB_USERNAME value: ${process.env.DB_USERNAME}`)
+logger.log(`Actual process.env.PASSWORD value: ${process.env.DB_PASSWORD}`)
 logger.log('Standard allowed values are: dev, test or prod');
 logger.log(
     'if you run with a non standard BACKEND_ENV value, remember to add your application-{process.env.BACKEND_ENV}.yml file',
