@@ -71,7 +71,6 @@ Navbar styles
   top: -30px;
   max-width: 100px !important;
 
-
   &:hover {
     color: $header-color-hover;
     text-decoration: none;
@@ -85,7 +84,6 @@ Navbar styles
   top: 0px;
   z-index: 1031;
 }
-
 
 @media screen and (max-width: 500px) {
   .nav-item {

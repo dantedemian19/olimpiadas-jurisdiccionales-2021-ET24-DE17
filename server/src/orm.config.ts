@@ -30,16 +30,16 @@ async function ormConfig(): Promise<TypeOrmModuleOptions> {
         cli: commonConf.CLI,
         migrationsRun: commonConf.MIGRATIONS_RUN,
     };
-
+    
     if (process.env.BACKEND_ENV === 'prod') {
         ormconfig = {
             name: 'default',
             type: 'mongodb',
-            database: 'test',
-            host: '127.0.0.1',
-            port: 27017,
-            username: 'Employeeadmin',
-            password: 'password',
+            database: process.env.DB_NAME,
+            host: process.env.DB_CON,
+            port: parseInt(process.env.DB_PORT),
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
             logging: false,
             synchronize: commonConf.SYNCRONIZE,
             entities: commonConf.ENTITIES,

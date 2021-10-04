@@ -23,7 +23,7 @@ Main page styles
 }
 
 .nav-link {
-  &>svg {
+  & > svg {
     margin-right: 2px;
   }
 }
@@ -60,11 +60,11 @@ Main page styles
   flex-direction: row;
 }
 
-.sociales>li:nth-child(1) {
+.sociales > li:nth-child(1) {
   margin-left: -40px !important;
 }
 
-.sociales>li {
+.sociales > li {
   margin-left: 15px;
   background-color: #f1faee;
   width: 50px;
@@ -74,24 +74,24 @@ Main page styles
   list-style: none;
   transition: all 0.25s ease-in-out;
 
-  &>img {
+  & > img {
     margin: 5px 0 0 9px;
   }
 }
 
-.sociales>li:nth-child(2)>img {
+.sociales > li:nth-child(2) > img {
   margin: 7px 0 0 9px;
 }
 
-.sociales>li:nth-child(4)>img {
+.sociales > li:nth-child(4) > img {
   margin: 8px 0 0 8px;
 }
 
-.sociales>li:hover {
+.sociales > li:hover {
   transform: scale(1.2);
 }
 
-.sociales>li>.icono {
+.sociales > li > .icono {
   display: flex;
   justify-content: center;
   position: relative;
@@ -114,7 +114,7 @@ Main page styles
   color: black;
   border-radius: 10px;
 
-  &>.escala-covid {
+  & > .escala-covid {
     // background: url(../../../content/images/estadistica-covid.png) no-repeat 50%;
     // background-size: cover;
     width: calc(50% + 50px);
@@ -122,19 +122,18 @@ Main page styles
     margin: 25px 0 0 20px;
   }
 
-  &>.datos {
+  & > .datos {
     max-width: calc(50% - 50px);
     padding: 100px 25px;
     height: 105%;
     display: flex;
     flex-direction: column;
 
-    &>h1 {
+    & > h1 {
       font-weight: bolder;
     }
   }
 }
-
 
 .ver-mas {
   font-size: 20px;
@@ -157,7 +156,7 @@ Main page styles
   width: 90%;
   margin: 50px 5% 25px 5%;
 
-  &>li {
+  & > li {
     max-width: calc(100% / 3);
     padding: 25px;
   }
@@ -190,7 +189,7 @@ Main page styles
   align-items: center;
   zoom: 90%;
 
-  &>.contenido-banner {
+  & > .contenido-banner {
     width: 100%;
     height: 50%;
     align-items: center;
@@ -202,7 +201,7 @@ Main page styles
     justify-content: center;
     margin-top: -50px;
 
-    &>h1 {
+    & > h1 {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -213,7 +212,7 @@ Main page styles
       width: 50%;
     }
 
-    &>p {
+    & > p {
       width: 40%;
       text-align: center;
     }
@@ -228,7 +227,7 @@ Main page styles
     margin: 0 20% 0 20%;
     padding: 15px 20px;
 
-    &>li {
+    & > li {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -236,7 +235,7 @@ Main page styles
       text-align: center;
       width: calc(100% / 5);
 
-      &>.icono {
+      & > .icono {
         height: 50%;
       }
     }
@@ -255,38 +254,38 @@ Main page styles
   align-items: flex-start;
   flex-direction: column;
 
-  &>div>div>h1 {
+  & > div > div > h1 {
     margin: 20px 0 10px 0;
     text-transform: uppercase;
     text-align: center;
     font-weight: bolder;
   }
 
-  &>div>div>p {
+  & > div > div > p {
     margin-top: -40px;
     width: 70%;
     margin: 0 15% 10px 15%;
     text-align: center;
   }
 
-  &>div>div>.form-contacto {
+  & > div > div > .form-contacto {
     width: 55%;
     display: flex;
     justify-content: flex-start;
 
-    &>.columna {
+    & > .columna {
       display: flex;
       flex-direction: column;
       width: 100%;
       padding: 10px 15px;
 
-      &>.inputs-contacto {
+      & > .inputs-contacto {
         width: 105% !important;
       }
     }
   }
 
-  &>.formulario {
+  & > .formulario {
     margin-left: 50px;
     width: 55%;
     padding: 10px 30px;
@@ -310,7 +309,7 @@ Main page styles
     width: 100%;
     margin-left: -6px;
 
-    &>li {
+    & > li {
       max-width: 100%;
       margin-top: -25px;
 
@@ -321,20 +320,19 @@ Main page styles
   }
 
   .banner-central {
-
-    &>.contenido-banner {
-      &>h1 {
+    & > .contenido-banner {
+      & > h1 {
         width: 100%;
         font-size: 28px;
         margin-top: 70px;
       }
 
-      &>p {
+      & > p {
         width: 100%;
       }
     }
 
-    &>.iconos-banner {
+    & > .iconos-banner {
       width: 110%;
       font-size: 12px;
       margin: 15px 0 -15px 0;
@@ -345,25 +343,25 @@ Main page styles
     margin: 0;
     width: 100%;
 
-    &>.estadistica {
+    & > .estadistica {
       flex-direction: column;
       height: fit-content;
 
-      &>.escala-covid {
+      & > .escala-covid {
         padding: 5px;
         width: 100%;
         margin: 0;
       }
 
-      &>.datos {
+      & > .datos {
         max-width: 100%;
         margin: -75px 0;
 
-        &>h1 {
+        & > h1 {
           font-size: 28px;
         }
 
-        &>.link-covid {
+        & > .link-covid {
           margin-left: -40px;
         }
       }
@@ -371,14 +369,12 @@ Main page styles
   }
 
   .contacto {
-
-    &>.formulario {
+    & > .formulario {
       width: 100%;
       margin-left: 0;
 
-      &>.form-contacto {
-
-        &>.columna>.enviar-button {
+      & > .form-contacto {
+        & > .columna > .enviar-button {
           font-size: 20px;
           margin: 25px 35%;
         }
@@ -392,11 +388,11 @@ Main page styles
     margin-left: -90px;
     margin-top: 25px;
 
-    &>.titulo {
+    & > .titulo {
       font-size: 50px;
     }
 
-    &>.parrafo {
+    & > .parrafo {
       font-size: 28px;
     }
   }
@@ -412,7 +408,7 @@ Main page styles
     width: 100%;
     margin-left: -6px;
 
-    &>li {
+    & > li {
       max-width: 100%;
       margin-top: -25px;
 
@@ -423,20 +419,19 @@ Main page styles
   }
 
   .banner-central {
-
-    &>.contenido-banner {
-      &>h1 {
+    & > .contenido-banner {
+      & > h1 {
         width: 100%;
         font-size: 28px;
         margin-top: 70px;
       }
 
-      &>p {
+      & > p {
         width: 100%;
       }
     }
 
-    &>.iconos-banner {
+    & > .iconos-banner {
       width: 80%;
       font-size: 12px;
       margin: 15px 0 -15px 0;
@@ -447,21 +442,21 @@ Main page styles
     margin: 0;
     width: 100%;
 
-    &>.estadistica {
+    & > .estadistica {
       flex-direction: column;
       height: fit-content;
 
-      &>.escala-covid {
+      & > .escala-covid {
         padding: 5px;
         width: 100%;
         margin: 0;
       }
 
-      &>.datos {
+      & > .datos {
         max-width: 100%;
         margin: -75px 0;
 
-        &>h1 {
+        & > h1 {
           font-size: 28px;
         }
       }
@@ -469,14 +464,12 @@ Main page styles
   }
 
   .contacto {
-
-    &>.formulario {
+    & > .formulario {
       width: 100%;
       margin-left: 0;
 
-      &>.form-contacto {
-
-        &>.columna>.enviar-button {
+      & > .form-contacto {
+        & > .columna > .enviar-button {
           font-size: 20px;
           margin: 25px 35%;
         }
