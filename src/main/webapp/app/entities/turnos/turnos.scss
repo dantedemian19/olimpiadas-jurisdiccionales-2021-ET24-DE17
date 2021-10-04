@@ -97,36 +97,59 @@
 }
 
 @media screen and (max-width: 500px) {
-  .ant-picker-calendar {
-    zoom: 70%;
+  .turnos {
+    flex-direction: column;
   }
-  .form-control {
-    font-size: 0.5rem !important;
+
+  .columna1 {
+    width: 100% !important;
+
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
   }
-  .turnos .columna2 > .form-turnos > .button-turnos {
-    font-size: 10px;
-    width: 100%;
-    padding: 9px;
-    margin: 25px 15% 0 0%;
-    border-radius: 5px;
+
+  .columna2 {
+    width: 100% !important;
+
+    & > .form-turnos > .button-turnos {
+      margin-bottom: 15px !important;
+    }
   }
 }
+
 @media screen and (min-width: 500px) and (max-width: 800px) {
-  .ant-picker-calendar {
-    zoom: 90%;
+  .turnos {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .form-control {
-    font-size: 0.7rem !important;
+
+  .columna1 {
+    width: 100% !important;
+
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
   }
-  .turnos .columna2 > .form-turnos > .button-turnos {
-    font-size: 12px;
-    width: 100%;
-    padding: 9px;
-    margin: 25px 15% 0 0%;
-    border-radius: 5px;
+
+  .columna2 {
+    width: 90% !important;
+
+    & > .form-turnos > .button-turnos {
+      margin-bottom: 15px !important;
+    }
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1100px) {
+  .columna1 {
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
   .ant-picker-calendar {
     zoom: 90%;
   }

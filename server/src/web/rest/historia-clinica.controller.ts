@@ -24,7 +24,7 @@ import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo
 import { Categoria } from '../../domain/enumeration/categoria';
 import { GetHistoryByIdDTO } from '../../service/dto/historybyid.dto';
 import { count } from 'console';
-import { temp } from 'src/repository/turno.repository';
+import { temp } from '../../repository/turno.repository';
 
 @Controller('api/historia-clinicas')
 // @UseGuards(AuthGuard, RolesGuard)
