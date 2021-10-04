@@ -1,0 +1,51 @@
+.medicos {
+  background: url(../../../content/images/medichoto.jpg) no-repeat 50%;
+  //   https://images.unsplash.com/photo-1631815589600-85ee48945ce1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjcyfHxwYXRpZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60
+  background-position: top;
+  background-size: cover;
+  height: 50vh;
+}
+
+.cuerpo-medicos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 80%;
+  margin: 50px 10%;
+
+  & > .div-medicos {
+    width: 100%;
+    padding: 40px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.formulario-medicos {
+  width: 55%;
+  margin-right: 5%;
+}
+
+.imagen-medicos {
+  width: 40%;
+  height: 640px;
+  background-size: cover;
+  background: url(https://images.unsplash.com/photo-1589209934789-4aacd30e8e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80)
+    no-repeat 50%;
+}
+
+.discapacitados {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-medico {
+  margin-top: 25px;
+  background-color: #e63946;
+  color: white;
+  &:hover {
+    color: white;
+  }
+}

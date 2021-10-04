@@ -24,6 +24,10 @@
     width: 90%;
     padding: 30px;
 
+    & > div > .input-dni {
+      width: 25% !important;
+    }
+
     & > .collapse {
       display: flex;
       flex-direction: row;
@@ -64,14 +68,28 @@
 }
 
 @media screen and (max-width: 500px) {
-  // body {
-  //   display: none;
-  // }
-  .ant-collapse-header {
-    font-size: 12px;
+  .formulario-paciente {
+    & > h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    & > .form-paciente {
+      & > div > .input-dni {
+        width: 50% !important;
+      }
+
+      & > .collapse {
+        flex-direction: column;
+
+        & > .panel {
+          width: 100%;
+        }
+      }
+    }
   }
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 800px) and (min-width: 500px) {
   h1 {
     font-size: 24px !important;
   }
@@ -80,5 +98,6 @@
     font-size: 0.9rem !important;
   }
 }
-@media screen and (max-width: 1100px) {
+
+@media screen and (max-width: 1100px) and (min-width: 800px) {
 }

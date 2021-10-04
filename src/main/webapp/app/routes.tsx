@@ -15,6 +15,7 @@ import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
+import { Medico } from './entities/medico/medico';
 
 const Account = Loadable({
   loader: () => import(/* webpackChunkName: "account" */ 'app/modules/account'),
@@ -44,6 +45,7 @@ const Routes = () => {
         />
         <ErrorBoundaryRoute path="/" exact component={Home} />
         <ErrorBoundaryRoute path="/covid-19" exact component={Covid} />
+        <ErrorBoundaryRoute path="/medico" exact component={Medico} />
         <PrivateRoute path="/" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
         <ErrorBoundaryRoute component={PageNotFound} />
       </Switch>

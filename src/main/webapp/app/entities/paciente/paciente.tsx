@@ -65,8 +65,8 @@ export const Paciente = () => {
         <h1>Diario e Historia clínica</h1>
         <AvForm className="form-paciente">
           <AvField
-            style={{ width: '25%' }}
-            className="inputs-contacto"
+            // style={{ width: '25%' }}
+            className="inputs-contacto input-dni"
             name="dni"
             label="DNI"
             placeholder="Ingrese su DNI"
@@ -80,7 +80,7 @@ export const Paciente = () => {
               <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
               <label htmlFor="entrada">Entrada</label>
               <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946' }}>
                 Actualizar información
               </button>
             </Panel>
@@ -97,7 +97,7 @@ export const Paciente = () => {
               <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
               <label htmlFor="entrada">Entrada</label>
               <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946' }}>
                 Actualizar información
               </button>
             </Panel>
