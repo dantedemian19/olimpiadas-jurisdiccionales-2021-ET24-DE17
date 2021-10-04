@@ -140,7 +140,7 @@ export const Covid = (props: IHomeProp) => {
         <section className="escuelas">
           <h1 style={{ color: '#38485c' }}>Escuelas</h1>
           <ul>
-            <li>
+            <li style={{ marginRight: 15 }}>
               <a
                 href="https://www.buenosaires.gob.ar/coronavirus/vacunacion-covid-19/personal-docente-y-no-docente"
                 target="_blank"
@@ -151,7 +151,7 @@ export const Covid = (props: IHomeProp) => {
                 <p style={{ color: '#4b596a' }}>Empadronamiento para personal docente y no docente de escuelas de la Ciudad.</p>
               </a>
             </li>
-            <li>
+            <li style={{ marginRight: 15 }}>
               <a
                 href="https://www.buenosaires.gob.ar/educacion/estrategia-de-testeo-para-la-comunidad-educativa"
                 target="_blank"

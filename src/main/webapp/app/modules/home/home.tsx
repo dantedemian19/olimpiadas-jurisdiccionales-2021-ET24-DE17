@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { Row, Col, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faAudioDescription,
+  faBacteria,
   faBrain,
   faEye,
   faHeading,
@@ -18,7 +20,7 @@ import {
   faTooth,
 } from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { faEarlybirds } from '@fortawesome/free-brands-svg-icons';
+import { faApple, faEarlybirds } from '@fortawesome/free-brands-svg-icons';
 
 export type IHomeProp = StateProps;
 
@@ -30,8 +32,8 @@ export const Home = (props: IHomeProp) => {
       <section>
         <div className="banner">
           <div className="card-home">
-            <h1 className="titulo">Servicios para clientes</h1>
-            <p className="parrafo">Ofrecemos la gama más amplia de servicios innovadores.</p>
+            <h1 className="titulo">C-CARE</h1>
+            <p className="parrafo">Al cuidado y atención de nuestros clientes.</p>
             <ul className="sociales">
               <li>
                 <img src="../../../content/images/icono-mano.png" />
@@ -51,63 +53,46 @@ export const Home = (props: IHomeProp) => {
       </section>
       <section className="cuerpo">
         <div className="general">
-          <h1>Conceptos generales</h1>
+          <h1>La salud y la importancia del estilo de vida</h1>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. At pariatur quae a accusantium quibusdam aperiam, repellat, officiis
-            rem consequatur magni porro sequi sit. Molestias neque accusantium pariatur laudantium placeat natus praesentium vel quasi
-            consequatur obcaecati sint repellat, ut minima omnis sit veritatis ducimus mollitia totam dolor, ipsam nemo commodi illum
-            aliquam? Accusantium esse eveniet sequi minus! Fugit excepturi iste consequatur dolorum laboriosam eligendi quas nobis fugiat.
-            Voluptates ipsam ratione dolorum odit dicta ex officia perferendis sed voluptas quis ea, obcaecati repudiandae earum cumque
-            atque, iure suscipit explicabo, consectetur odio maiores nostrum. Sunt quaerat voluptatem natus autem sapiente consequatur eius
-            voluptatum!
+            La salud es la condición de todo ser vivo que goza de un absoluto bienestar tanto a nivel físico como a nivel mental y social.
+            El estilo de vida, o sea el tipo de hábitos y costumbres que posee una persona, puede ser beneficioso para la salud, pero
+            también puede llegar a dañarla o a influir de modo negativo sobre ella. Por ejemplo, un individuo que mantiene una alimentación
+            equilibrada y que realiza actividades físicas en forma cotidiana tiene mayores probabilidades de gozar de buena salud
           </p>
         </div>
         <div className="columnas">
           <ul className="mini-lista">
             <li>
               <div className="subtitulo">
-                <h4>Mantente conectado</h4>
+                <h4>Salud física</h4>
                 <div className="guion"></div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
+                  Para mantener la salud física en óptimas condiciones, se recomienda realizar ejercicios de forma periódica y tener una
+                  dieta equilibrada y saludable, con variedad de nutrientes y proteínas.
                 </p>
               </div>
             </li>
             <div className="vertical-divisor"></div>
             <li>
               <div className="subtitulo">
-                <h4>Hablar sobre</h4>
+                <h4>Salud mental</h4>
                 <div className="guion"></div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
+                  La salud mental, por su parte, apunta a aglutinar todos los factores emocionales y psicológicos que pueden condicionar a
+                  todo ser humano y obligarlo a emplear sus aptitudes cognitivas y su sensibilidad para desenvolverse dentro de una
+                  comunidad y resolver las eventuales demandas surgidas
                 </p>
               </div>
             </li>
             <div className="vertical-divisor"></div>
             <li>
               <div className="subtitulo">
-                <h4>Permanecer en la cima</h4>
+                <h4>Salud emocional</h4>
                 <div className="guion"></div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
-                </p>
-              </div>
-            </li>
-            <div className="vertical-divisor"></div>
-            <li>
-              <div className="subtitulo">
-                <h4>Sigue haciendo</h4>
-                <div className="guion"></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae exercitationem nemo alias soluta. Tenetur debitis
-                  harum architecto voluptatum et voluptatem temporibus maxime mollitia, exercitationem ratione nam consectetur id autem
-                  excepturi.
+                  La salud emocional es una parte importante de la salud general. Las personas que son emocionalmente saludables tienen el
+                  control de sus pensamientos, sentimientos y comportamientos.
                 </p>
               </div>
             </li>
@@ -117,33 +102,32 @@ export const Home = (props: IHomeProp) => {
       <section>
         <div className="banner-central">
           <div className="contenido-banner">
-            <h1 style={{ color: 'white' }}>Nuestro departamento</h1>
-            <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            <h1 style={{ color: 'white' }}>Ciencias que aportan al bienestar</h1>
+            <p>
+              Son aquellas que permiten obtener los conocimientos necesarios para ayudar a prevenir enfermedades y a desarrollar iniciativas
+              que promuevan la salud y el bienestar
+            </p>
           </div>
           <ul className="iconos-banner">
             <li>
-              <FontAwesomeIcon icon={faEye} size="3x" className="icono" />
-              <p>CUIDADO DE LOS OJOS CON LÁSER</p>
+              <FontAwesomeIcon icon={faBacteria} size="3x" className="icono" />
+              <p>BIOQUÍMICA</p>
             </li>
             <li>
-              <FontAwesomeIcon icon={faHeartbeat} size="3x" className="icono" />
-              <p>CUIDADO DEL CORAZON</p>
+              <FontAwesomeIcon icon={faApple} size="3x" className="icono" />
+              <p>BROMATOLOGÍA</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faBrain} size="3x" className="icono" />
-              <p>NEUROLOGÍA</p>
+              <p>PSICOLOGÍA</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faTooth} size="3x" className="icono" />
               <p>CUIDADO DENTAL</p>
             </li>
             <li>
-              <FontAwesomeIcon icon={faHeadphones} size="3x" className="icono" />
-              <p>CUIDADO DEL OÍDO</p>
-            </li>
-            <li>
               <FontAwesomeIcon icon={faMedkit} size="3x" className="icono" />
-              <p>EMERGENCIA</p>
+              <p>MEDICINA</p>
             </li>
           </ul>
         </div>
@@ -159,14 +143,11 @@ export const Home = (props: IHomeProp) => {
           <div className="datos">
             <h1>Covid-19</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore possimus laudantium nisi commodi quia in aspernatur numquam
-              laboriosam soluta harum. Provident quasi magnam laudantium neque minus facere delectus consectetur ad ullam maxime tempore
-              officiis nam tempora magni, nobis itaque, modi ab dicta quo. Nam blanditiis ea debitis ex quos amet officiis qui alias.
-              Deserunt, provident numquam. Molestiae itaque sint repellat voluptatum dicta corrupti expedita perspiciatis, atque eligendi
-              repudiandae aspernatur impedit odit unde non id dolorum facere autem velit nihil esse! Quam iure iste eum animi obcaecati
-              perferendis.
+              La COVID-19 es la enfermedad causada por el nuevo coronavirus conocido como SARS-CoV-2. La OMS tuvo noticia por primera vez de
+              la existencia de este nuevo virus el 31 de diciembre de 2019, al ser informada de un grupo de casos de «neumonía vírica» que
+              se habían declarado en Wuhan (República Popular China).
             </p>
-            <Link to="/covid-19">
+            <Link to="/covid-19" className="link-covid">
               <button className="btn btn-dark ver-mas">Ver más</button>
             </Link>
           </div>
@@ -176,7 +157,7 @@ export const Home = (props: IHomeProp) => {
         <div className="formulario">
           <div>
             <h1>¡Contactanos!</h1>
-            <p>Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            <p>Manteneté al contacto con nuestro equipo para próximas actualizaciones.</p>
           </div>
           <AvForm className="form-contacto">
             <div className="columna">
@@ -206,8 +187,8 @@ export const Home = (props: IHomeProp) => {
                 placeholder={translate('global.form.cuerpo.placeholder')}
               />
               <button
-                className="btn btn-dark"
-                style={{ backgroundColor: '#1D3557', width: '25%', fontSize: 20, margin: '25px 37.5% 0 37.5%' }}
+                className="btn btn-dark enviar-button"
+                style={{ backgroundColor: '#1D3557', width: '30%', fontSize: 20, margin: '25px 37.5% 0 37.5%' }}
               >
                 Enviar
               </button>

@@ -67,6 +67,7 @@
     "jquery": "^3.6.0",
     "loaders.css": "0.1.2",
     "lodash": "4.17.21",
+    "nodemailer": "^6.6.5",
     "path-browserify": "1.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -87,7 +88,8 @@
     "redux-thunk": "2.3.0",
     "styled-components": "^5.3.1",
     "tslib": "2.1.0",
-    "uuid": "8.3.2"
+    "uuid": "8.3.2",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "11.2.6",

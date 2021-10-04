@@ -1,6 +1,6 @@
 // removed th id primary key
 import './paciente.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSortState, translate } from 'react-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
@@ -39,6 +39,17 @@ const { Panel } = Collapse;
 export const Paciente = () => {
   const { Dragger } = Upload;
 
+  const [inputValue, setInputValue] = useState(null);
+
+  function handleChange(value) {
+    setInputValue(value.target.defaultValue);
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(inputValue);
+  }, [inputValue]);
+
   return (
     <div>
       <section>
@@ -50,7 +61,7 @@ export const Paciente = () => {
           </div>
         </div>
       </section>
-      <section className="formulario">
+      <section className="formulario-paciente">
         <h1>Diario e Historia clínica</h1>
         <AvForm className="form-paciente">
           <AvField
@@ -62,38 +73,33 @@ export const Paciente = () => {
             required
             errorMessage="Debe ingresar un DNI"
             data-cy="dni"
-            onEmpty
+            onChange={handleChange}
           />
           <Collapse className="collapse">
-            <Panel header="Ver diario de paciente" key="1" className="panel" disabled>
-              <AvField
-                className="inputs-contacto"
-                name="email"
-                label={translate('global.form.email.label')}
-                placeholder={translate('global.form.email.placeholder')}
-                required
-                errorMessage="El email no puede estar vacío!"
-                data-cy="email"
-              />
-              <AvField
-                className="inputs-contacto"
-                name="asunto"
-                label={translate('global.form.asunto.label')}
-                placeholder={translate('global.form.asunto.placeholder')}
-                required
-                errorMessage="El asunto no puede estar vacío!"
-                data-cy="asunto"
-              />
-              <label htmlFor="mensaje">Mensaje</label>
-              <AvInput
-                type="textarea"
-                name="mensaje"
-                style={{ resize: 'none', height: 100 }}
-                placeholder={translate('global.form.cuerpo.placeholder')}
-              />
+            <Panel header="Ver diario de paciente" key="1" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
+              <label htmlFor="entrada">Entrada</label>
+              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
+              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
+                Actualizar información
+              </button>
             </Panel>
-            <Panel header="Ver historia clínica" key="2" className="panel" disabled>
-              {/* <p>{text}</p> */}
+            <Panel header="Ver historia clínica" key="2" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+              <AvField
+                className="inputs-contacto"
+                name="medico"
+                type="text"
+                label="Médico autor"
+                placeholder="Médico"
+                required
+                data-cy="medico"
+              />
+              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
+              <label htmlFor="entrada">Entrada</label>
+              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
+              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
+                Actualizar información
+              </button>
             </Panel>
           </Collapse>
         </AvForm>

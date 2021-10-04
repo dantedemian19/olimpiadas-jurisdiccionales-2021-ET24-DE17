@@ -63,7 +63,7 @@ export const Footer = () => {
                 </div>
               </li>
             </ul>
-            <hr style={{ width: '55%', backgroundColor: '#495057', marginTop: '-20px', position: 'relative', right: '15px' }} />
+            <hr style={{ width: '55%', backgroundColor: '#495057', marginTop: '-20px' }} />
             <div className="copyright">
               <p>&copy;Derechos reservados C-CARE 2021 - Siempre al cuidado de nuestros pacientes</p>
             </div>
