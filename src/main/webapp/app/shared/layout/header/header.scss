@@ -56,19 +56,20 @@ Navbar styles
     width: auto;
     display: inline-block;
     position: relative;
-    top: -18px;
+    top: -34px;
 
     img {
-      height: 70px;
+      height: 100px;
     }
   }
 }
 
 .brand-title {
-  font-size: 24px;
+  font-size: 16px;
   color: $header-color;
   position: relative;
-  top: -12px;
+  top: -30px;
+  max-width: 100px !important;
 
 
   &:hover {
@@ -83,4 +84,14 @@ Navbar styles
   position: absolute;
   top: 0px;
   z-index: 1031;
+}
+
+
+@media screen and (max-width: 500px) {
+  .brand-title {
+    // font-size: 14px;
+    margin: 0;
+    position: absolute;
+    right: 0;
+  }
 }

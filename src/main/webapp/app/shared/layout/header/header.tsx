@@ -28,14 +28,14 @@ const Header = (props: IHeaderProps) => {
     props.onLocaleChange(langKey);
   };
 
-  const renderDevRibbon = () =>
-    props.isInProduction === false ? (
-      <div className="ribbon dev">
-        <a href="">
-          <Translate contentKey={`global.ribbon.${props.ribbonEnv}`} />
-        </a>
-      </div>
-    ) : null;
+  // const renderDevRibbon = () =>
+  //   props.isInProduction === false ? (
+  //     <div className="ribbon dev">
+  //       <a href="">
+  //         <Translate contentKey={`global.ribbon.${props.ribbonEnv}`} />
+  //       </a>
+  //     </div>
+  //   ) : null;
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -43,7 +43,6 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <div id="app-header" style={{ zoom: '91%', fontWeight: 'bolder' }}>
-      {renderDevRibbon()}
       <LoadingBar className="loading-bar" />
       <Navbar data-cy="navbar" dark expand="sm" fixed="top" className="bg-dark" style={{ maxHeight: 66 }}>
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
