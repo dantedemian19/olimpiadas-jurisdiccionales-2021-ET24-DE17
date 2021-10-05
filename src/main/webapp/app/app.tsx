@@ -114,13 +114,12 @@ export const App = (props: IAppProps) => {
                     danger
                     disabled={valueRating ? false : true}
                     onClick={() => {
-                      let newValoracion: IValoracion = {
+                      const newValoracion: IValoracion = {
                         estrellas: valueRating,
                         descripcion: valueDescripcion,
                       };
 
                       props.createValoracion(newValoracion);
-                      console.log(createValoracion);
                     }}
                   >
                     Enviar
