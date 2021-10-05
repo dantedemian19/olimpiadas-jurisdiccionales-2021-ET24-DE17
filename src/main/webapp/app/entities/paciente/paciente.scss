@@ -13,7 +13,7 @@
   flex-direction: column;
   width: 100%;
 
-  & > h1 {
+  &>h1 {
     width: 90%;
     padding: 0 29px;
     margin: 0 0 -15px 0;
@@ -21,24 +21,24 @@
     font-weight: 600;
   }
 
-  & > .form-paciente {
+  &>.form-paciente {
     width: 90%;
     padding: 30px;
 
-    & > div > .input-dni {
+    &>div>.input-dni {
       width: 25% !important;
     }
 
-    & > .collapse {
+    &>.collapse {
       display: flex;
       flex-direction: row;
       justify-content: center;
       margin-top: 25px;
 
-      & > .panel {
+      &>.panel {
         width: 50%;
 
-        & > .ant-collapse-header > span {
+        &>.ant-collapse-header>span {
           font-size: 16px;
           position: relative;
           top: -2.5px;
@@ -57,11 +57,11 @@
   align-items: center;
   margin: 25px 0 50px 0;
 
-  & > .contenido {
+  &>.contenido {
     width: 90%;
     padding: 29px;
 
-    & > h1 {
+    &>h1 {
       font-size: 28px;
       font-weight: 600;
     }
@@ -77,8 +77,7 @@
 }
 
 .pacientitos {
-  background: url(https://images.unsplash.com/photo-1589209934789-4aacd30e8e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80)
-    no-repeat 50% !important;
+  background: url(https://images.unsplash.com/photo-1589209934789-4aacd30e8e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80) no-repeat 50% !important;
   background-size: cover;
   height: 490px !important;
 }
@@ -89,32 +88,33 @@
   align-items: center;
   flex-direction: column;
 
-  & > h1 {
+  &>h1 {
     text-align: left;
     width: 80%;
     font-size: 28px;
     font-weight: 600;
   }
 
-  & > .form-paciente {
+  &>.form-paciente {
     width: 80%;
 
-    & > .collapse {
+    &>.collapse {
       display: flex;
       flex-direction: row;
       margin-bottom: 25px;
 
-      & > .panel {
+      &>.panel {
         width: 50%;
       }
     }
   }
 }
+
 .input-dni {
   width: 25% !important;
 }
 
-.ant-collapse-header > span {
+.ant-collapse-header>span {
   font-size: 20px !important;
   position: relative;
   bottom: 2.5px;
@@ -128,35 +128,103 @@
 
 @media screen and (max-width: 500px) {
   .formulario-paciente {
-    & > h1 {
+    &>h1 {
       font-size: 24px;
       font-weight: 600;
     }
-    & > .form-paciente {
-      & > div > .input-dni {
+
+    &>.form-paciente {
+      &>div>.input-dni {
         width: 50% !important;
       }
 
-      & > .collapse {
+      &>.collapse {
         flex-direction: column;
 
-        & > .panel {
+        &>.panel {
           width: 100%;
         }
       }
     }
   }
+
+  .pacientitos {
+    display: none;
+  }
+
+  .div-pacientes {
+    width: 100%;
+    flex-direction: column;
+
+    &>.formulario-medicos {
+      width: 100%;
+    }
+  }
+
+  .input-dni {
+    width: 50% !important;
+  }
+
+  .paciente-registrado>.form-paciente>.collapse {
+    flex-direction: column;
+
+    &>.panel {
+      width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 800px) and (min-width: 500px) {
-  h1 {
-    font-size: 24px !important;
+  .formulario-paciente {
+    &>h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    &>.form-paciente {
+      &>div>.input-dni {
+        width: 50% !important;
+      }
+
+      &>.collapse {
+        flex-direction: column;
+
+        &>.panel {
+          width: 100%;
+        }
+      }
+    }
   }
 
-  .form-control {
-    font-size: 0.9rem !important;
+  .pacientitos {
+    display: none;
+  }
+
+  .formulario-paciente {
+    width: 90%;
+    margin: 25px 5%;
+
+    &>.div-pacientes {
+      width: 100%;
+      flex-direction: column;
+
+      &>.formulario-medicos {
+        width: 100%;
+      }
+    }
+  }
+
+  .input-dni {
+    width: 50% !important;
+  }
+
+  .paciente-registrado>.form-paciente>.collapse {
+    flex-direction: column;
+
+    &>.panel {
+      width: 100%;
+    }
   }
 }
 
-@media screen and (max-width: 1100px) and (min-width: 800px) {
-}
+@media screen and (max-width: 1100px) and (min-width: 800px) {}
