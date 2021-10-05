@@ -7,7 +7,7 @@ import { getSortState, translate } from 'react-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Upload, message } from 'antd';
+import { Upload, message, Select } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
 import { getEntity } from './paciente.reducer';
@@ -48,14 +48,16 @@ export const Paciente = () => {
     setInputValue(value.target.defaultValue);
   }
 
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(inputValue);
+  // useEffect(() => {
+  //   // eslint-disable-next-line no-console
+  //   console.log(inputValue);
 
-    if (inputValue?.length >= 7) {
-      props.getEntiy();
-    }
-  }, [inputValue]);
+  //   if (inputValue?.length >= 7) {
+  //     props.getEntiy();
+  //   }
+  // }, [inputValue]);
+
+  const { Option } = Select;
 
   return (
     <div>
@@ -68,8 +70,69 @@ export const Paciente = () => {
           </div>
         </div>
       </section>
+
       <section className="formulario-paciente">
-        <h1>Diario e Historia clínica</h1>
+        <div className="div-pacientes">
+          <div className="formulario-medicos">
+            <AvForm className="form-medico">
+              <AvField
+                className="inputs-turnos"
+                name="dni"
+                type="text"
+                label="DNI"
+                placeholder="Ingrese su DNI"
+                required
+                errorMessage="El DNI no puede estar vacío!"
+                data-cy="dni"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="nombre"
+                type="text"
+                label="Nombre"
+                placeholder="Ingrese su nombre"
+                required
+                errorMessage="El nombre no puede estar vacío!"
+                data-cy="nombre"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="apellido"
+                type="text"
+                label="Apellido"
+                placeholder="Ingrese su apellido"
+                required
+                errorMessage="El apellido no puede estar vacío!"
+                data-cy="apellido"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="telefono"
+                type="text"
+                label="Teléfono"
+                placeholder="Ingrese su teléfono"
+                required
+                errorMessage="El teléfono no puede estar vacío!"
+                data-cy="telefono"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="email"
+                type="email"
+                label={translate('global.form.email.label')}
+                placeholder={translate('global.form.email.placeholder')}
+                required
+                errorMessage="El email no puede estar vacío!"
+                data-cy="email"
+              />
+            </AvForm>
+            <button className="btn button-medico">Registrarse</button>
+          </div>
+          <div className="imagen-medicos pacientitos"></div>
+        </div>
+      </section>
+      <section className="paciente-registrado">
+        <h1>Usuarios registrados</h1>
         <AvForm className="form-paciente">
           <AvField
             // style={{ width: '25%' }}
@@ -83,15 +146,15 @@ export const Paciente = () => {
             onChange={handleChange}
           />
           <Collapse className="collapse">
-            <Panel header="Ver diario de paciente" key="1" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+            <Panel header="Actualizar diario de paciente" key="1" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
               <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
               <label htmlFor="entrada">Entrada</label>
               <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946' }}>
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946', color: 'white' }}>
                 Actualizar información
               </button>
             </Panel>
-            <Panel header="Ver historia clínica" key="2" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+            <Panel header="Actualizar historia clínica" key="2" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
               <AvField
                 className="inputs-contacto"
                 name="medico"
@@ -104,40 +167,18 @@ export const Paciente = () => {
               <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
               <label htmlFor="entrada">Entrada</label>
               <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946' }}>
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946', color: 'white' }}>
                 Actualizar información
               </button>
             </Panel>
           </Collapse>
         </AvForm>
       </section>
-      <section className="recetas">
-        <div className="contenido">
-          <h1>Recetas</h1>
-          <Dragger
-            {...props}
-            beforeUpload={file => {
-              const isJPG = file.type === 'image/jpg' || file.type === 'image/png' || file.type === 'pdf';
-              if (!isJPG) {
-                message.error('You can only upload JPG or PNG file!');
-                return false;
-              } else {
-                return true;
-              }
-            }}
-          >
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Clickea o arrastrá tus recetas</p>
-            <p className="ant-upload-hint">Mantené tus recetas al alcance de tu mano para simepre estar al día.</p>
-          </Dragger>
-        </div>
-      </section>
     </div>
   );
 };
 
+// eslint-disable-next-line no-empty-pattern
 const mapStateToProps = ({}: IRootState) => ({});
 
 const mapDispatchToProps = {

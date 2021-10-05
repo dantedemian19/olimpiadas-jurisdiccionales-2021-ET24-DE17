@@ -17,7 +17,7 @@
 
     & > h1 {
       background-color: #2f3136;
-      color: white;
+      color: black;
       padding: 45px;
       font-size: 45px;
       border-radius: 10px;
@@ -32,11 +32,7 @@
   margin: 25px 1.5%;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(180deg, #e16e93 50%, #9d2e7d);
-  // GRADIENTS https://codepen.io/LauraRobertson/pen/eBjrgj?editors=0100
-  // https://codepen.io/Zaku/pen/vzBKWe?editors=0100
-  // https://codepen.io/marcobiedermann/pen/WNGWzYR?editors=0010
-  // background-color: khaki;
+  background-color: #f1faee;
 
   .columna1 {
     width: 70%;
@@ -44,13 +40,15 @@
     padding: 15px;
     // background-color: red;
     & > h1 {
-      color: white;
+      color: black;
+      font-size: 28px;
+      font-weight: 600;
     }
   }
   .columna2 {
     width: 30%;
     // background: linear-gradient(180deg, #E16E93 50%, #9D2E7D);
-    color: white;
+    color: black;
     font-size: 16px;
     display: flex;
     flex-direction: column;
