@@ -15,31 +15,11 @@ import { IRootState } from 'app/shared/reducers';
 
 export type IPacienteProps = RouteComponentProps<{ url: string }>;
 
-const props = {
-  name: 'file',
-  multiple: true,
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      // eslint-disable-next-line no-console
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    // eslint-disable-next-line no-console
-    console.log('Dropped files', e.dataTransfer.files);
-  },
-};
-
 const { Panel } = Collapse;
 
-export const Paciente = () => {
+export interface IAppProps extends StateProps, DispatchProps {}
+
+export const Paciente = (props: IAppProps) => {
   const { Dragger } = Upload;
 
   const [inputValue, setInputValue] = useState(null);
@@ -48,14 +28,16 @@ export const Paciente = () => {
     setInputValue(value.target.defaultValue);
   }
 
-  // useEffect(() => {
-  //   // eslint-disable-next-line no-console
-  //   console.log(inputValue);
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(inputValue);
 
-  //   if (inputValue?.length >= 7) {
-  //     props.getEntiy();
-  //   }
-  // }, [inputValue]);
+    if (inputValue?.length >= 7) {
+      const varrr = props.getEntity(inputValue);
+      // eslint-disable-next-line no-console
+      console.log(varrr);
+    }
+  }, [inputValue]);
 
   const { Option } = Select;
 
@@ -179,10 +161,33 @@ export const Paciente = () => {
 };
 
 // eslint-disable-next-line no-empty-pattern
-const mapStateToProps = ({}: IRootState) => ({});
+const mapStateToProps = ({}: IRootState) => ({
+  name: 'file',
+  multiple: true,
+  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== 'uploading') {
+      // eslint-disable-next-line no-console
+      console.log(info.file, info.fileList);
+    }
+    if (status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    // eslint-disable-next-line no-console
+    console.log('Dropped files', e.dataTransfer.files);
+  },
+});
 
 const mapDispatchToProps = {
   getEntity,
 };
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paciente);
