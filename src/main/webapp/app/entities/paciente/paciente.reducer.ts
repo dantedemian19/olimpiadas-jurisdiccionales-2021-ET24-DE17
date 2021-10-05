@@ -114,10 +114,14 @@ export const getEntities: ICrudGetAllAction<IPaciente> = (page, size, sort) => {
 };
 
 export const getEntity: ICrudGetAction<IPaciente> = id => {
-  const requestUrl = `${apiUrl}/${id}`;
+  const requestUrl = apiUrl;
   return {
     type: ACTION_TYPES.FETCH_PACIENTE,
-    payload: axios.get<IPaciente>(requestUrl),
+    payload: axios.get<IPaciente>(requestUrl, {
+      params: {
+        dni: id,
+      },
+    }),
   };
 };
 

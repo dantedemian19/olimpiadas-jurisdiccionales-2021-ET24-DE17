@@ -149,20 +149,21 @@ export class TasksService {
             const newPaciente: PacienteDTO = {
                 apellido: faker.name.lastName(),
                 nombre: faker.name.lastName(),
-                dni: faker.phone.phoneNumber(),
+                dni: Math.floor(Math.random() * (54000000 - 50000000)) + 50000000,
                 mail: faker.internet.email(),
                 telefono: faker.phone.phoneNumber(),
             };
-
             userEntity = newPaciente;
 
-            await this.pacienteService.save(newPaciente, 'Faker');
+            let result = await this.pacienteService.save(newPaciente, 'Faker');
+
+            this.logger.debug(result)
         } else {
             userAuthorities = [RoleType.MEDICO];
             const newMedico: MedicoDTO = {
                 apellido: faker.name.lastName(),
                 nombre: faker.name.lastName(),
-                dni: faker.phone.phoneNumber(),
+                dni: Math.floor(Math.random() * (54000000 - 50000000)) + 50000000,
                 mail: faker.internet.email(),
                 telefono: faker.phone.phoneNumber(),
                 atiendeDiscapacitados: Math.random() > 0.5,

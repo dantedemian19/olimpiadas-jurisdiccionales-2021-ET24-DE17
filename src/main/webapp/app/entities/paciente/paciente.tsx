@@ -15,31 +15,11 @@ import { IRootState } from 'app/shared/reducers';
 
 export type IPacienteProps = RouteComponentProps<{ url: string }>;
 
-const props = {
-  name: 'file',
-  multiple: true,
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      // eslint-disable-next-line no-console
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    // eslint-disable-next-line no-console
-    console.log('Dropped files', e.dataTransfer.files);
-  },
-};
-
 const { Panel } = Collapse;
 
-export const Paciente = () => {
+export interface IAppProps extends StateProps, DispatchProps {}
+
+export const Paciente = (props: IAppProps) => {
   const { Dragger } = Upload;
 
   const [inputValue, setInputValue] = useState(null);
@@ -53,7 +33,8 @@ export const Paciente = () => {
     console.log(inputValue);
 
     if (inputValue?.length >= 7) {
-      props.getEntiy();
+      let varrr = props.getEntity(inputValue);
+      console.log(varrr);
     }
   }, [inputValue]);
 
@@ -111,37 +92,37 @@ export const Paciente = () => {
           </Collapse>
         </AvForm>
       </section>
-      <section className="recetas">
-        <div className="contenido">
-          <h1>Recetas</h1>
-          <Dragger
-            {...props}
-            beforeUpload={file => {
-              const isJPG = file.type === 'image/jpg' || file.type === 'image/png' || file.type === 'pdf';
-              if (!isJPG) {
-                message.error('You can only upload JPG or PNG file!');
-                return false;
-              } else {
-                return true;
-              }
-            }}
-          >
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Clickea o arrastrá tus recetas</p>
-            <p className="ant-upload-hint">Mantené tus recetas al alcance de tu mano para simepre estar al día.</p>
-          </Dragger>
-        </div>
-      </section>
     </div>
   );
 };
 
-const mapStateToProps = ({}: IRootState) => ({});
+const mapStateToProps = ({}: IRootState) => ({
+  name: 'file',
+  multiple: true,
+  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== 'uploading') {
+      // eslint-disable-next-line no-console
+      console.log(info.file, info.fileList);
+    }
+    if (status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    // eslint-disable-next-line no-console
+    console.log('Dropped files', e.dataTransfer.files);
+  },
+});
 
 const mapDispatchToProps = {
   getEntity,
 };
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paciente);

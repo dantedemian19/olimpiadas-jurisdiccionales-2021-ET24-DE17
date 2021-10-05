@@ -49,6 +49,22 @@ export class PacienteController {
         return results;
     }
 
+    @Get('/DNI')
+    @Roles(RoleType.MEDICO)
+    @ApiResponse({
+        status: 200,
+        description: 'The found record',
+        type: PacienteDTO,
+    })
+    async getOneByDNI(@Body() req: number): Promise<PacienteDTO> {
+        this.logger.debug(req)
+        let respont = await this.pacienteService.findByFields({
+            where: { dni: req }
+        })
+        this.logger.debug(respont)
+        return respont;
+    }
+
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({
