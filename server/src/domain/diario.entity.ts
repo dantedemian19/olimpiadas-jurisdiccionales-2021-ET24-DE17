@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Entity, Column, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
-import { SintomasTipo } from './enumeration/sintomas-tipo';
+import { SintomasTipo } from './enumeration/Sintomas-Tipo';
 
 /**
  * A Diario.
