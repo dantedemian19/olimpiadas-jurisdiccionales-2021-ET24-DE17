@@ -1,1 +1,0 @@
-module.exports=function(){if("undefined"!=typeof module&&module.exports)return require("path").resolve(__dirname);throw new Error("getAbsoluteFSPath can only be called within a Nodejs environment")};

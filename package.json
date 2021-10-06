@@ -62,6 +62,7 @@
     "mongodb": "^3.6.3",
     "mongodb-cron": "^1.7.1",
     "mongodb-memory-server": "6.9.2",
+    "nestjs": "^0.0.1",
     "nodemailer": "^6.6.5",
     "nodemailer-direct-transport": "^3.3.2",
     "passport": "0.4.1",
