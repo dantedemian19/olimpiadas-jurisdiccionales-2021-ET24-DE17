@@ -2,7 +2,7 @@
 import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
 
-import { EspecialidadesTipo } from './enumeration/especialidades-tipo';
+import { EspecialidadesTipo } from './enumeration/especialidades-tipo.js';
 
 /**
  * A EspecialidadesMedicas.
