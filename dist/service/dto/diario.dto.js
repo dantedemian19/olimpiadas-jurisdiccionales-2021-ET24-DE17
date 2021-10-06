@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const base_dto_1 = require("./base.dto");
-const sintomas_tipo_1 = require("../../domain/enumeration/sintomas-tipo");
+const sintomas_tipo_1 = require("./../../domain/enumeration/sintomas-tipo");
 /**
  * A DiarioDTO object.
  */

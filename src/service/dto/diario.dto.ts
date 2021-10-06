@@ -3,7 +3,7 @@ import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
-import { SintomasTipo } from '../../domain/enumeration/sintomas-tipo';
+import { SintomasTipo } from './../../domain/enumeration/sintomas-tipo';
 import { Paciente } from 'src/domain/paciente.entity';
 
 /**
