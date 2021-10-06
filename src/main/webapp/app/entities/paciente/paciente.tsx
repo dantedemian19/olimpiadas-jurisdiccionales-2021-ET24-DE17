@@ -8,7 +8,6 @@ import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Upload, message } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
 import { getEntity } from './paciente.reducer';
 import { IRootState } from 'app/shared/reducers';
@@ -31,11 +30,6 @@ export const Paciente = (props: IAppProps) => {
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log(inputValue);
-
-    if (inputValue?.length >= 7) {
-      let varrr = props.getEntity(inputValue);
-      console.log(varrr);
-    }
   }, [inputValue]);
 
   return (
@@ -96,7 +90,7 @@ export const Paciente = (props: IAppProps) => {
   );
 };
 
-const mapStateToProps = ({}: IRootState) => ({
+const mapStateToProps = () => ({
   name: 'file',
   multiple: true,
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',

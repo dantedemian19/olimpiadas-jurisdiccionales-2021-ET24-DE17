@@ -6,8 +6,8 @@
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules
-        "plugin:prettier/recommended" // Enables eslint-plugin-prettier
+        "plugin:prettier/recommended", // Enables eslint-plugin-prettier
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
