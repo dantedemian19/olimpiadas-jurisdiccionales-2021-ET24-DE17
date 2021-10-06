@@ -16,6 +16,7 @@ body {
 a {
   color: #533f03;
   font-weight: bold;
+  text-decoration: none !important;
 }
 
 * {
@@ -76,7 +77,7 @@ h3 {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #E63946;
+  background: #e63946;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -101,6 +102,10 @@ h3 {
   font-weight: 300;
   animation: plus-out 0.3s;
   transition: all 0.3s;
+
+  & > svg {
+    margin-bottom: 25px !important;
+  }
 }
 
 #container-floating {
@@ -134,6 +139,7 @@ h3 {
   line-height: 100px;
   transition: all 0.3s;
   animation: close-out 0.3s;
+  margin-bottom: 80px;
 }
 
 #container-floating.is-opened .close {
