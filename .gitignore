@@ -145,3 +145,4 @@ Desktop.ini
 ######################
 .eslintcache
 server/.env
+*.zip

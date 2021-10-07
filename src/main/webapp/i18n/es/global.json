@@ -24,7 +24,8 @@
         "sessions": "Sesiones",
         "login": "Iniciar sesión",
         "logout": "Cerrar la sesión",
-        "register": "Crear una cuenta"
+        "register": "Crear una cuenta",
+        "accountMedico": "Crear médico"
       },
       "admin": {
         "main": "Administración",

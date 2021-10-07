@@ -7,7 +7,7 @@ import sinon from 'sinon';
 
 import reducer, {
   ACTION_TYPES,
-  createEntity,
+  createValoracion,
   deleteEntity,
   getEntities,
   getEntity,
@@ -242,7 +242,7 @@ describe('Entities reducer tests', () => {
           payload: resolvedObject,
         },
       ];
-      await store.dispatch(createEntity({ id: 'CBA' })).then(() => expect(store.getActions()).toEqual(expectedActions));
+      await store.dispatch(createValoracion({ id: 'CBA' })).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
     it('dispatches ACTION_TYPES.UPDATE_VALORACION actions', async () => {

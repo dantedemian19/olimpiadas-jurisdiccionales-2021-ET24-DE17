@@ -24,6 +24,7 @@ import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo
 import { Categoria } from '../../domain/enumeration/categoria';
 import { GetHistoryByIdDTO } from '../../service/dto/historybyid.dto';
 import { count } from 'console';
+import { temp } from '../../repository/turno.repository';
 
 @Controller('api/historia-clinicas')
 // @UseGuards(AuthGuard, RolesGuard)
@@ -61,10 +62,6 @@ export class HistoriaClinicaController {
     async generateReport(@Req() req: Request): Promise<any> {
         // report the cuantity of historiasClinicas, por especialidad y por categoria
         const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
-        class temp {
-            especiality: string;
-            perCategory: number[];
-        }
         const diseaseKindCount: temp[] = [];
         for (let index = 0; index < Object.keys(EspecialidadesTipo).length; index += 1) {
             for (let indexCategory = 0; indexCategory < Object.keys(Categoria).length; indexCategory += 1) {

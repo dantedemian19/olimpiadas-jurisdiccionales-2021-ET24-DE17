@@ -1,6 +1,7 @@
 {
   "register": {
     "title": "Registro",
+    "titleMedico": "Registro médico",
     "form": {
       "button": "Crear la cuenta"
     },

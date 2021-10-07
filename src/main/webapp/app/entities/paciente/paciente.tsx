@@ -1,18 +1,167 @@
 // removed th id primary key
 import './paciente.scss';
 import React, { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSortState, translate } from 'react-jhipster';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Upload, message } from 'antd';
+import { Upload, message, Select } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
+import { getEntity } from './paciente.reducer';
+import { IRootState } from 'app/shared/reducers';
 
 export type IPacienteProps = RouteComponentProps<{ url: string }>;
 
-const props = {
+const { Panel } = Collapse;
+
+export interface IAppProps extends StateProps, DispatchProps {}
+
+export const Paciente = (props: IAppProps) => {
+  const { Dragger } = Upload;
+
+  const [inputValue, setInputValue] = useState(null);
+
+  function handleChange(value) {
+    setInputValue(value.target.defaultValue);
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(inputValue);
+
+    if (inputValue?.length >= 7) {
+      const varrr = props.getEntity(inputValue);
+      // eslint-disable-next-line no-console
+      console.log(varrr);
+    }
+  }, [inputValue]);
+
+  const { Option } = Select;
+
+  return (
+    <div>
+      <section>
+        <div className="banner pacientes">
+          <div className="banner-turnos">
+            <div className="titulo-turnos">
+              <h1>PACIENTES</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="formulario-paciente">
+        <div className="div-pacientes">
+          <div className="formulario-medicos">
+            <AvForm className="form-medico">
+              <AvField
+                className="inputs-turnos"
+                name="dni"
+                type="text"
+                label="DNI"
+                placeholder="Ingrese su DNI"
+                required
+                errorMessage="El DNI no puede estar vacío!"
+                data-cy="dni"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="nombre"
+                type="text"
+                label="Nombre"
+                placeholder="Ingrese su nombre"
+                required
+                errorMessage="El nombre no puede estar vacío!"
+                data-cy="nombre"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="apellido"
+                type="text"
+                label="Apellido"
+                placeholder="Ingrese su apellido"
+                required
+                errorMessage="El apellido no puede estar vacío!"
+                data-cy="apellido"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="telefono"
+                type="text"
+                label="Teléfono"
+                placeholder="Ingrese su teléfono"
+                required
+                errorMessage="El teléfono no puede estar vacío!"
+                data-cy="telefono"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="email"
+                type="email"
+                label={translate('global.form.email.label')}
+                placeholder={translate('global.form.email.placeholder')}
+                required
+                errorMessage="El email no puede estar vacío!"
+                data-cy="email"
+              />
+            </AvForm>
+            <button className="btn button-medico">Registrarse</button>
+          </div>
+          <div className="imagen-medicos pacientitos"></div>
+        </div>
+      </section>
+      <section className="paciente-registrado">
+        <h1>Usuarios registrados</h1>
+        <AvForm className="form-paciente">
+          <AvField
+            // style={{ width: '25%' }}
+            className="inputs-contacto input-dni"
+            name="dni"
+            label="DNI"
+            placeholder="Ingrese su DNI"
+            required
+            errorMessage="Debe ingresar un DNI"
+            data-cy="dni"
+            onChange={handleChange}
+          />
+          <Collapse className="collapse">
+            <Panel header="Actualizar diario de paciente" key="1" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
+              <label htmlFor="entrada">Entrada</label>
+              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946', color: 'white' }}>
+                Actualizar información
+              </button>
+            </Panel>
+            <Panel header="Actualizar historia clínica" key="2" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
+              <AvField
+                className="inputs-contacto"
+                name="medico"
+                type="text"
+                label="Médico autor"
+                placeholder="Médico"
+                required
+                data-cy="medico"
+              />
+              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
+              <label htmlFor="entrada">Entrada</label>
+              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
+              <button className="btn" style={{ marginTop: 15, backgroundColor: '#e63946', color: 'white' }}>
+                Actualizar información
+              </button>
+            </Panel>
+          </Collapse>
+        </AvForm>
+      </section>
+    </div>
+  );
+};
+
+// eslint-disable-next-line no-empty-pattern
+const mapStateToProps = ({}: IRootState) => ({
   name: 'file',
   multiple: true,
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -32,103 +181,13 @@ const props = {
     // eslint-disable-next-line no-console
     console.log('Dropped files', e.dataTransfer.files);
   },
+});
+
+const mapDispatchToProps = {
+  getEntity,
 };
 
-const { Panel } = Collapse;
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
 
-export const Paciente = () => {
-  const { Dragger } = Upload;
-
-  const [inputValue, setInputValue] = useState(null);
-
-  function handleChange(value) {
-    setInputValue(value.target.defaultValue);
-  }
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(inputValue);
-  }, [inputValue]);
-
-  return (
-    <div>
-      <section>
-        <div className="banner pacientes">
-          <div className="banner-turnos">
-            <div className="titulo-turnos">
-              <h1>PACIENTES</h1>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="formulario-paciente">
-        <h1>Diario e Historia clínica</h1>
-        <AvForm className="form-paciente">
-          <AvField
-            style={{ width: '25%' }}
-            className="inputs-contacto"
-            name="dni"
-            label="DNI"
-            placeholder="Ingrese su DNI"
-            required
-            errorMessage="Debe ingresar un DNI"
-            data-cy="dni"
-            onChange={handleChange}
-          />
-          <Collapse className="collapse">
-            <Panel header="Ver diario de paciente" key="1" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
-              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
-              <label htmlFor="entrada">Entrada</label>
-              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
-                Actualizar información
-              </button>
-            </Panel>
-            <Panel header="Ver historia clínica" key="2" className="panel" disabled={inputValue?.length >= 7 ? false : true}>
-              <AvField
-                className="inputs-contacto"
-                name="medico"
-                type="text"
-                label="Médico autor"
-                placeholder="Médico"
-                required
-                data-cy="medico"
-              />
-              <AvField className="inputs-contacto" name="fecha" type="date" label="Fecha" required data-cy="fecha" />
-              <label htmlFor="entrada">Entrada</label>
-              <AvInput type="textarea" name="entrada" style={{ resize: 'none', height: 100 }} placeholder="Entrada" />
-              <button className="btn btn-primary actualizar" style={{ marginTop: 15 }}>
-                Actualizar información
-              </button>
-            </Panel>
-          </Collapse>
-        </AvForm>
-      </section>
-      <section className="recetas">
-        <div className="contenido">
-          <h1>Recetas</h1>
-          <Dragger
-            {...props}
-            beforeUpload={file => {
-              const isJPG = file.type === 'image/jpg' || file.type === 'image/png' || file.type === 'pdf';
-              if (!isJPG) {
-                message.error('You can only upload JPG or PNG file!');
-                return false;
-              } else {
-                return true;
-              }
-            }}
-          >
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Clickea o arrastrá tus recetas</p>
-            <p className="ant-upload-hint">Mantené tus recetas al alcance de tu mano para simepre estar al día.</p>
-          </Dragger>
-        </div>
-      </section>
-    </div>
-  );
-};
-
-export default Paciente;
+export default connect(mapStateToProps, mapDispatchToProps)(Paciente);

@@ -10,9 +10,6 @@ export class Paciente extends BaseEntity {
     @Column({ type: 'integer', name: 'dni', length: 8 })
     dni: number;
 
-    @Column({ name: 'historia_clinica', length: 500, nullable: true })
-    historiaClinica: string;
-
     @Column({ name: 'nombre', length: 100 })
     nombre: string;
 

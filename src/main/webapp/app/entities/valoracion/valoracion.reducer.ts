@@ -101,7 +101,7 @@ export default (state: ValoracionState = initialState, action): ValoracionState 
   }
 };
 
-const apiUrl = 'api/valoracions';
+const apiUrl = 'api/valorations';
 
 // Actions
 

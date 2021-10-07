@@ -32,11 +32,7 @@
   margin: 25px 1.5%;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(180deg, #e16e93 50%, #9d2e7d);
-  // GRADIENTS https://codepen.io/LauraRobertson/pen/eBjrgj?editors=0100
-  // https://codepen.io/Zaku/pen/vzBKWe?editors=0100
-  // https://codepen.io/marcobiedermann/pen/WNGWzYR?editors=0010
-  // background-color: khaki;
+  background-color: #f1faee;
 
   .columna1 {
     width: 70%;
@@ -44,13 +40,15 @@
     padding: 15px;
     // background-color: red;
     & > h1 {
-      color: white;
+      color: black;
+      font-size: 28px;
+      font-weight: 600;
     }
   }
   .columna2 {
     width: 30%;
     // background: linear-gradient(180deg, #E16E93 50%, #9D2E7D);
-    color: white;
+    color: black;
     font-size: 16px;
     display: flex;
     flex-direction: column;
@@ -97,36 +95,59 @@
 }
 
 @media screen and (max-width: 500px) {
-  .ant-picker-calendar {
-    zoom: 70%;
+  .turnos {
+    flex-direction: column;
   }
-  .form-control {
-    font-size: 0.5rem !important;
+
+  .columna1 {
+    width: 100% !important;
+
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
   }
-  .turnos .columna2 > .form-turnos > .button-turnos {
-    font-size: 10px;
-    width: 100%;
-    padding: 9px;
-    margin: 25px 15% 0 0%;
-    border-radius: 5px;
+
+  .columna2 {
+    width: 100% !important;
+
+    & > .form-turnos > .button-turnos {
+      margin-bottom: 15px !important;
+    }
   }
 }
+
 @media screen and (min-width: 500px) and (max-width: 800px) {
-  .ant-picker-calendar {
-    zoom: 90%;
+  .turnos {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .form-control {
-    font-size: 0.7rem !important;
+
+  .columna1 {
+    width: 100% !important;
+
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
   }
-  .turnos .columna2 > .form-turnos > .button-turnos {
-    font-size: 12px;
-    width: 100%;
-    padding: 9px;
-    margin: 25px 15% 0 0%;
-    border-radius: 5px;
+
+  .columna2 {
+    width: 90% !important;
+
+    & > .form-turnos > .button-turnos {
+      margin-bottom: 15px !important;
+    }
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1100px) {
+  .columna1 {
+    & > h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
   .ant-picker-calendar {
     zoom: 90%;
   }

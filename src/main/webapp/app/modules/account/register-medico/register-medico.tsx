@@ -6,14 +6,18 @@ import { Row, Col, Alert, Button } from 'reactstrap';
 
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { IRootState } from 'app/shared/reducers';
-import { handleRegister, reset } from './register.reducer';
+import { handleRegister, reset } from './register-medico.reducer';
+import { Select } from 'antd';
 
-import './register.scss';
+import './register-medico.scss';
 
 export interface IRegisterProps extends StateProps, DispatchProps {}
 
-export const RegisterPage = (props: IRegisterProps) => {
+export const RegisterMedico = (props: IRegisterProps) => {
   const [password, setPassword] = useState('');
+  const [discapacitadosValue, setDiscapacitadosValue] = useState(false);
+
+  const { Option } = Select;
 
   useEffect(
     () => () => {
@@ -22,9 +26,17 @@ export const RegisterPage = (props: IRegisterProps) => {
     []
   );
 
+  const changeSelectValue = value => {
+    // eslint-disable-next-line no-console
+    console.log(value.value);
+    setDiscapacitadosValue(value.value);
+  };
+
   const handleValidSubmit = (event, values) => {
-    props.handleRegister(values.username, values.email, values.firstPassword, props.currentLocale);
-    event.preventDefault();
+    // props.handleRegister(values.username, values.email, values.firstPassword, props.currentLocale);
+    // event.preventDefault();
+    // eslint-disable-next-line no-console
+    console.log(values);
   };
 
   const updatePassword = event => setPassword(event.target.value);
@@ -32,14 +44,14 @@ export const RegisterPage = (props: IRegisterProps) => {
   return (
     <div style={{ margin: '50px 0' }}>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="9">
           <h1 id="register-title" data-cy="registerTitle">
-            <Translate contentKey="register.title">Registration</Translate>
+            <Translate contentKey="register.titleMedico">Registro médico</Translate>
           </h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="9">
           <AvForm id="register-form" onValidSubmit={handleValidSubmit}>
             <div className="mitad-izq">
               <AvField
@@ -82,7 +94,7 @@ export const RegisterPage = (props: IRegisterProps) => {
                 }}
                 data-cy="firstPassword"
               />
-              <div className="fuerza-passsword register-normal">
+              <div className="fuerza-passsword">
                 <PasswordStrengthBar password={password} />
               </div>
               <AvField
@@ -97,6 +109,18 @@ export const RegisterPage = (props: IRegisterProps) => {
                   match: { value: 'firstPassword', errorMessage: translate('global.messages.error.dontmatch') },
                 }}
                 data-cy="secondPassword"
+              />
+              <AvField
+                name="matricula"
+                label="Matrícula"
+                placeholder="Ingrese su matrícula"
+                type="text"
+                validate={{
+                  required: { value: true, errorMessage: 'Debe ingresar una matrícula' },
+                  minLength: { value: 4, errorMessage: 'LA matrícula no puede ser menor a 4 carácteres' },
+                  maxLength: { value: 50, errorMessage: 'LA matrícula no puede ser mayor a 50 carácteres' },
+                }}
+                data-cy="matricula"
               />
             </div>
             <div className="mitad-der">
@@ -154,6 +178,13 @@ export const RegisterPage = (props: IRegisterProps) => {
                 }}
                 data-cy="telefono"
               />
+              <div className="discapacitados">
+                <label htmlFor="">¿Atiende discapacitados?</label>
+                <Select labelInValue placeholder="Seleccione una opción" className="dropdown-select" onChange={changeSelectValue}>
+                  <Option value="true">Si</Option>
+                  <Option value="false">No</Option>
+                </Select>
+              </div>
             </div>
             <Button id="register-submit" className="iniciar-sesion" type="submit" data-cy="submit">
               <Translate contentKey="register.form.button">Register</Translate>
@@ -173,4 +204,4 @@ const mapDispatchToProps = { handleRegister, reset };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterMedico);

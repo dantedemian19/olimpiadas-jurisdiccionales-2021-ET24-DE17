@@ -29,6 +29,7 @@ import { translate } from 'react-jhipster';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Button, Modal } from 'antd';
 import { createValoracion } from './entities/valoracion/valoracion.reducer';
+import { IValoracion } from './shared/model/valoracion.model';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -150,7 +151,7 @@ const mapStateToProps = ({ authentication, applicationProfile, locale }: IRootSt
   isOpenAPIEnabled: applicationProfile.isOpenAPIEnabled,
 });
 
-const mapDispatchToProps = { setLocale, getSession, getProfile };
+const mapDispatchToProps = { setLocale, getSession, getProfile, createValoracion };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

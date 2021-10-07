@@ -3,3 +3,7 @@ import { Turno } from '../domain/turno.entity';
 
 @EntityRepository(Turno)
 export class TurnoRepository extends Repository<Turno> {}
+export class temp {
+    especiality: string;
+    perCategory: number[];
+}
