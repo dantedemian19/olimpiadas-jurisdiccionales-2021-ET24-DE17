@@ -7,8 +7,6 @@ import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './medico.reducer';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { translate } from 'react-jhipster';
-import { BookOutlined } from '@mui/icons-material';
-import { Button } from 'antd';
 import { Select } from 'antd';
 
 import './medico.scss';

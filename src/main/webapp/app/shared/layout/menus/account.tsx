@@ -11,6 +11,9 @@ const accountMenuItemsAuthenticated = (
     <MenuItem icon="lock" to="/account/password" data-cy="passwordItem">
       <Translate contentKey="global.menu.account.password">Password</Translate>
     </MenuItem>
+    <MenuItem icon="user-plus" to="/account/medico" data-cy="accountMedico">
+      <Translate contentKey="global.menu.account.accountMedico">Crear médico</Translate>
+    </MenuItem>
     <MenuItem icon="sign-out-alt" to="/logout" data-cy="logout">
       <Translate contentKey="global.menu.account.logout">Sign out</Translate>
     </MenuItem>

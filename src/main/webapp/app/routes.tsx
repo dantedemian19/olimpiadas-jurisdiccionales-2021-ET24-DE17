@@ -16,6 +16,7 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
 import { Medico } from './entities/medico/medico';
+import { RegisterMedico } from './modules/account/register-medico/register-medico';
 
 const Account = Loadable({
   loader: () => import(/* webpackChunkName: "account" */ 'app/modules/account'),
@@ -34,6 +35,7 @@ const Routes = () => {
         <ErrorBoundaryRoute path="/login" component={Login} />
         <ErrorBoundaryRoute path="/logout" component={Logout} />
         <ErrorBoundaryRoute path="/account/register" component={Register} />
+        <ErrorBoundaryRoute path="/account/medico" component={RegisterMedico} />
         <ErrorBoundaryRoute path="/account/activate/:key?" component={Activate} />
         <ErrorBoundaryRoute path="/account/reset/request" component={PasswordResetInit} />
         <ErrorBoundaryRoute path="/account/reset/finish/:key?" component={PasswordResetFinish} />
