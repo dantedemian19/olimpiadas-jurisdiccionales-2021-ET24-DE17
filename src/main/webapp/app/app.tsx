@@ -74,14 +74,13 @@ export const App = (props: IAppProps) => {
 
             <Modal
               className="modal-valoration"
-              title="¡Valoranos!"
+              title="¡Danos tu opinión!"
               visible={displayValoration}
               onCancel={() => {
                 setDisplayValoration(false);
               }}
             >
               <div className="cont-valoration">
-                <h1>¡Danos tu opinión!</h1>
                 <div className="estrellas">
                   <Rating
                     name="size-large"
@@ -97,7 +96,7 @@ export const App = (props: IAppProps) => {
                     <AvInput
                       type="textarea"
                       name="mensaje"
-                      style={{ resize: 'none', height: 100, width: 250, marginBottom: 10 }}
+                      style={{ resize: 'none', height: 130, width: 250, marginBottom: 10 }}
                       placeholder={translate('global.form.opinion.placeholder')}
                       onChange={value => {
                         setValueDescripcion(value.target.defaultValue);
@@ -121,18 +120,10 @@ export const App = (props: IAppProps) => {
             </Modal>
 
             <div id="floating-button" onClick={() => setDisplayValoration(true)}>
-              {/* {displayValoration === true ? (
-                <CloseOutlined className="close" />
-              ) : (
-                // <p className="plus" style={{ display: 'none' }}>
-                //   <StarOutlined className="plus" />
-                // </p> */}
               <p className="plus">
                 <StarOutlined className="plus" />
               </p>
-
               <p className="texto-v">Valoranos</p>
-              {/* )} */}
             </div>
           </Card>
           <Footer />
