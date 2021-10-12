@@ -222,11 +222,10 @@ h3 {
 .ant-modal {
   width: 300px !important;
   margin: none;
-  top: calc(48% + 3px) !important;
-  left: calc(34% + 3px) !important;
-  position: fixed;
+  position: absolute;
   padding-right: 0 !important;
 }
+
 .ant-modal-footer {
   display: none !important;
 }

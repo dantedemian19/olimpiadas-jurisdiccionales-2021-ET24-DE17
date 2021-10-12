@@ -79,6 +79,7 @@ export const App = (props: IAppProps) => {
               onCancel={() => {
                 setDisplayValoration(false);
               }}
+              style={{ position: 'relative', top: 'calc(100% - 380px)', left: 'calc(50% - 230px)' }}
             >
               <div className="cont-valoration">
                 <div className="estrellas">
@@ -119,7 +120,7 @@ export const App = (props: IAppProps) => {
               </div>
             </Modal>
 
-            <div id="floating-button" onClick={() => setDisplayValoration(true)}>
+            <div id="floating-button" onClick={() => setDisplayValoration(true)} style={{ zIndex: 10 }}>
               <p className="plus">
                 <StarOutlined className="plus" />
               </p>

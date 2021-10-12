@@ -19,8 +19,7 @@ h2 {
 }
 
 .saber {
-
-  &>h1 {
+  & > h1 {
     font-size: 28px;
     font-weight: 600;
   }
@@ -35,8 +34,7 @@ h2 {
 }
 
 .columnas-vacunacion {
-
-  &>ul {
+  & > ul {
     margin: 0;
   }
 
@@ -49,23 +47,42 @@ h2 {
 .inmunidad-colectiva {
   padding: 15px;
 
-  &>.imagenes {
+  & > .imagenes {
     height: 70vh;
     display: flex;
     flex-direction: row;
 
-    &>.inmunidad-solo {
+    & > .inmunidad-solo {
       background: url(../../../content/images/covid/una-proteccion.png) no-repeat 50%;
       background-size: cover;
       height: 100%;
       width: 40%;
     }
 
-    &>.inmunidad-muchos {
+    & > .inmunidad-muchos {
       background: url(../../../content/images/covid/muchas-protecciones.png) no-repeat 50%;
       background-size: cover;
       height: 100%;
       width: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .inmunidad-colectiva {
+    padding: 0;
+
+    & > .imagenes {
+      display: flex;
+      flex-direction: column;
+
+      & > .inmunidad-solo {
+        width: 100%;
+      }
+
+      & > .inmunidad-muchos {
+        width: 100%;
+      }
     }
   }
 }
