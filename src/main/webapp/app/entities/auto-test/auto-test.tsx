@@ -96,10 +96,10 @@ export const AutoTest = (props: IHomeProp) => {
 
   return (
     <div className="screen-turnos">
-      <section className="banner vacunacion">
+      <section className="banner autotest">
         <div className="banner-turnos">
           <div className="titulo-turnos">
-            <h1>Vacunacion</h1>
+            <h1>Auto-Test</h1>
           </div>
         </div>
       </section>

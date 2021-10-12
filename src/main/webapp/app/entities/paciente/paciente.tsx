@@ -49,67 +49,6 @@ export const Paciente = (props: IAppProps) => {
           </div>
         </div>
       </section>
-
-      <section className="formulario-paciente">
-        <div className="div-pacientes">
-          <div className="formulario-medicos">
-            <AvForm className="form-medico">
-              <AvField
-                className="inputs-turnos"
-                name="dni"
-                type="text"
-                label="DNI"
-                placeholder="Ingrese su DNI"
-                required
-                errorMessage="El DNI no puede estar vacío!"
-                data-cy="dni"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="nombre"
-                type="text"
-                label="Nombre"
-                placeholder="Ingrese su nombre"
-                required
-                errorMessage="El nombre no puede estar vacío!"
-                data-cy="nombre"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="apellido"
-                type="text"
-                label="Apellido"
-                placeholder="Ingrese su apellido"
-                required
-                errorMessage="El apellido no puede estar vacío!"
-                data-cy="apellido"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="telefono"
-                type="text"
-                label="Teléfono"
-                placeholder="Ingrese su teléfono"
-                required
-                errorMessage="El teléfono no puede estar vacío!"
-                data-cy="telefono"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="email"
-                type="email"
-                label={translate('global.form.email.label')}
-                placeholder={translate('global.form.email.placeholder')}
-                required
-                errorMessage="El email no puede estar vacío!"
-                data-cy="email"
-              />
-            </AvForm>
-            <button className="btn button-medico">Registrarse</button>
-          </div>
-          <div className="imagen-medicos pacientitos"></div>
-        </div>
-      </section>
       <section className="paciente-registrado">
         <h1>Usuarios registrados</h1>
         <AvForm className="form-paciente">

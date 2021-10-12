@@ -107,10 +107,11 @@ export const Vacunacion = (props: IHomeProp) => {
         </section>
         <div style={{ marginTop: 20, padding: 15 }}>
           <p>
-            Para más información podes visitar las{' '}
+            Para más información podes visitar las&nbsp;
             <a href="https://www.argentina.gob.ar/coronavirus/vacuna/preguntas-frecuentes" target="_blank" rel="noreferrer">
               preguntas frecuentes sobre la vacuna
             </a>
+            ,&nbsp; si desea puede hacerse un <a href="/autotest">autotest de COVID-19</a>
           </p>
         </div>
       </main>
