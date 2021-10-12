@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "relationships": [],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Provincia",
+  "changelogDate": "20211006231321"
+}

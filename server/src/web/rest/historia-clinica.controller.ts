@@ -20,16 +20,11 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-import { EspecialidadesTipo } from '../../domain/enumeration/especialidades-tipo';
-import { Categoria } from '../../domain/enumeration/categoria';
-import { GetHistoryByIdDTO } from '../../service/dto/historybyid.dto';
-import { count } from 'console';
-import { temp } from '../../repository/turno.repository';
 
 @Controller('api/historia-clinicas')
-// @UseGuards(AuthGuard, RolesGuard)
-// @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-// @ApiBearerAuth()
+@UseGuards(AuthGuard, RolesGuard)
+@UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
+@ApiBearerAuth()
 @ApiUseTags('historia-clinicas')
 export class HistoriaClinicaController {
     logger = new Logger('HistoriaClinicaController');
@@ -37,7 +32,7 @@ export class HistoriaClinicaController {
     constructor(private readonly historiaClinicaService: HistoriaClinicaService) {}
 
     @Get('/')
-    @Roles(RoleType.ADMIN)
+    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -53,66 +48,7 @@ export class HistoriaClinicaController {
         HeaderUtil.addPaginationHeaders(req.res, new Page(results, count, pageRequest));
         return results;
     }
-    @Get('/report')
-    @Roles(RoleType.ADMIN)
-    @ApiResponse({
-        status: 200,
-        description: 'List all records',
-    })
-    async generateReport(@Req() req: Request): Promise<any> {
-        // report the cuantity of historiasClinicas, por especialidad y por categoria
-        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
-        const diseaseKindCount: temp[] = [];
-        for (let index = 0; index < Object.keys(EspecialidadesTipo).length; index += 1) {
-            for (let indexCategory = 0; indexCategory < Object.keys(Categoria).length; indexCategory += 1) {
-                const [results, count] = await this.historiaClinicaService.findAndCount({
-                    skip: +pageRequest.page * pageRequest.size,
-                    take: +pageRequest.size,
-                    order: pageRequest.sort.asOrder(),
-                    where: {
-                        categoria: `${Categoria[indexCategory]}`,
-                        EspecialidadTipo: `${EspecialidadesTipo[index]}`,
-                    },
-                });
-                if (diseaseKindCount[index]) {
-                    diseaseKindCount[index].perCategory.push(count);
-                } else {
-                    diseaseKindCount[index] = new temp();
-                    diseaseKindCount[index].perCategory = [count];
-                }
-            }
 
-            this.logger.debug(Object.keys(EspecialidadesTipo)[index]);
-            diseaseKindCount[index].especiality = Object.keys(EspecialidadesTipo)[index];
-        }
-        return {
-            diseaseKindCount,
-        };
-    }
-    @Get('/obtainHistory')
-    @Roles(RoleType.USER, RoleType.MEDICO)
-    @ApiResponse({
-        status: 200,
-        description: 'Results: ',
-    })
-    async obtainHistory(@Req() req: Request, @Body() get: GetHistoryByIdDTO): Promise<any> {
-        // report the cuantity of historiasClinicas, por especialidad y por categoria
-        // this.logger.debug('Here the params get:');
-        // this.logger.debug(get.IsForPaciente);
-        // this.logger.debug(get.ID);
-        const pageRequest: PageRequest = new PageRequest('0', '-1', 'id,ASC');
-        const response: HistoriaClinicaDTO[] = [];
-        let results;
-        let count;
-        if (get.IsForPaciente) {
-            [results, count] = await this.historiaClinicaService.findAndCount({ where: { paciente: get.ID } });
-        } else {
-            [results, count] = await this.historiaClinicaService.findAndCount({ where: { medico: get.ID } });
-        }
-        return {
-            results,
-        };
-    }
     @Get('/:id')
     @Roles(RoleType.USER)
     @ApiResponse({
@@ -125,7 +61,7 @@ export class HistoriaClinicaController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.MEDICO)
+    @Roles(RoleType.ADMIN)
     @ApiOperation({ title: 'Create historiaClinica' })
     @ApiResponse({
         status: 201,

@@ -1,0 +1,20 @@
+{
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "provinciaId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Ciudad",
+  "changelogDate": "20211006231936"
+}

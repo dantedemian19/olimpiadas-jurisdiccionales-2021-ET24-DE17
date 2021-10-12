@@ -14,6 +14,9 @@ export default class MedicoUpdatePage {
   telefonoInput: ElementFinder = element(by.css('input#medico-telefono'));
   mailInput: ElementFinder = element(by.css('input#medico-mail'));
   atiendeDiscapacitadosInput: ElementFinder = element(by.css('input#medico-atiendeDiscapacitados'));
+  especialidadSelect: ElementFinder = element(by.css('select#medico-especialidad'));
+  provinciaIdInput: ElementFinder = element(by.css('input#medico-provinciaId'));
+  ciudadIdInput: ElementFinder = element(by.css('input#medico-ciudadId'));
 
   getPageTitle() {
     return this.pageTitle;
@@ -70,6 +73,33 @@ export default class MedicoUpdatePage {
   getAtiendeDiscapacitadosInput() {
     return this.atiendeDiscapacitadosInput;
   }
+  async setEspecialidadSelect(especialidad) {
+    await this.especialidadSelect.sendKeys(especialidad);
+  }
+
+  async getEspecialidadSelect() {
+    return this.especialidadSelect.element(by.css('option:checked')).getText();
+  }
+
+  async especialidadSelectLastOption() {
+    await this.especialidadSelect.all(by.tagName('option')).last().click();
+  }
+  async setProvinciaIdInput(provinciaId) {
+    await this.provinciaIdInput.sendKeys(provinciaId);
+  }
+
+  async getProvinciaIdInput() {
+    return this.provinciaIdInput.getAttribute('value');
+  }
+
+  async setCiudadIdInput(ciudadId) {
+    await this.ciudadIdInput.sendKeys(ciudadId);
+  }
+
+  async getCiudadIdInput() {
+    return this.ciudadIdInput.getAttribute('value');
+  }
+
   async save() {
     await this.saveButton.click();
   }
@@ -110,6 +140,14 @@ export default class MedicoUpdatePage {
       await this.getAtiendeDiscapacitadosInput().click();
       expect(await this.getAtiendeDiscapacitadosInput().isSelected()).to.be.true;
     }
+    await waitUntilDisplayed(this.saveButton);
+    await this.especialidadSelectLastOption();
+    await waitUntilDisplayed(this.saveButton);
+    await this.setProvinciaIdInput('provinciaId');
+    expect(await this.getProvinciaIdInput()).to.match(/provinciaId/);
+    await waitUntilDisplayed(this.saveButton);
+    await this.setCiudadIdInput('ciudadId');
+    expect(await this.getCiudadIdInput()).to.match(/ciudadId/);
     await this.save();
     await waitUntilHidden(this.saveButton);
     expect(await isVisible(this.saveButton)).to.be.false;

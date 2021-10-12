@@ -9,6 +9,9 @@ import { TurnoService } from './turno.service';
 import { DiarioService } from './diario.service';
 import { AuthService } from './auth.service';
 import { HistoriaClinicaService } from './historia-clinica.service';
+import { MedicoService } from './medico.service';
+import { PacienteService } from './paciente.service';
+import { ciudadeservice } from './ciudad.service';
 
 // DTOs
 import { ValoracionDTO } from './dto/valoracion.dto';
@@ -16,6 +19,8 @@ import { DiarioDTO } from './dto/diario.dto';
 import { TurnoDTO } from './dto/turno.dto';
 import { UserDTO } from './dto/user.dto';
 import { HistoriaClinicaDTO } from './dto/historia-clinica.dto';
+import { MedicoDTO } from './dto/medico.dto';
+import { PacienteDTO } from './dto/paciente.dto';
 
 // Enums
 import { EspecialidadesTipo } from '../../src/domain/enumeration/especialidades-tipo';
@@ -23,10 +28,7 @@ import { SintomasTipo } from '../domain/enumeration/Sintomas-Tipo';
 import { TurnoEstado } from '../domain/enumeration/TurnoEstado';
 import { RoleType } from '../security/role-type-faker';
 import { Categoria } from '../domain/enumeration/categoria';
-import { MedicoDTO } from './dto/medico.dto';
-import { PacienteDTO } from './dto/paciente.dto';
-import { MedicoService } from './medico.service';
-import { PacienteService } from './paciente.service';
+
 
 const faker = require('faker');
 
@@ -43,9 +45,10 @@ export class TasksService {
         private readonly historiaClinicaService: HistoriaClinicaService,
         private readonly medicoService: MedicoService,
         private readonly pacienteService: PacienteService,
-    ) {}
+        private readonly ciudadService: ciudadeservice
+    ) { }
 
-    @Interval(90000)
+    // @Interval(90000)
     async fakeValoracion(): Promise<void> {
         // this.logger.debug("Fake valoration created");
         const newValoration: ValoracionDTO = {
@@ -56,7 +59,7 @@ export class TasksService {
         await this.valoracionService.save(newValoration, 'Faker');
     }
 
-    @Interval(40000)
+    // @Interval(40000)
     async fakeDiario(): Promise<void> {
         // this.logger.debug("Fake diario created");
         const randomPaciente = await this.userService.getRandomUser();
@@ -70,7 +73,7 @@ export class TasksService {
         await this.diarioService.save(newDiario, 'Faker');
     }
 
-    @Interval(80000)
+    @Interval(1000)
     async fakeTurno(): Promise<void> {
         // this.logger.debug("Fake turno created");
         const randomPaciente = await this.userService.getRandomUser({
@@ -96,7 +99,7 @@ export class TasksService {
         await this.turnoService.save(newTurno, 'Faker');
     }
 
-    @Interval(30000)
+    // @Interval(100)
     async fakeHistoriaClinica(): Promise<void> {
         // this.logger.debug("Fake historia clinica created");
         const randomPaciente = await this.userService.getRandomUser({
@@ -123,19 +126,23 @@ export class TasksService {
             },
         });
 
+        const randomHistoriaClinica = await this.turnoService.getRandomTurno();
+
         const newHistoriaClinica: HistoriaClinicaDTO = {
             categoria: this.randomElementOfEnum(Categoria),
             diagnostico: faker.lorem.paragraph(),
             fecha: Date(),
-            medico: randomMedico.id.toString(),
             tratamiento: faker.lorem.paragraph(),
-            paciente: randomPaciente.id.toString(),
+            id_medico: randomMedico.id.toString(),
+            id_paciente: randomPaciente.id.toString(),
+            id_turno: randomHistoriaClinica.id.toString(),
+            sintoma: null
         };
 
         await this.historiaClinicaService.save(newHistoriaClinica, 'Faker');
     }
 
-    @Interval(100)
+    // @Interval(10000)
     async fakeUsers(): Promise<void> {
         // this.logger.debug("Fake user created");
         const aleatoryRol = this.randomElementOfEnum(RoleType);
@@ -160,6 +167,9 @@ export class TasksService {
             this.logger.debug(result)
         } else {
             userAuthorities = [RoleType.MEDICO];
+
+            const randomCity = await this.ciudadService.getRandomCity();
+
             const newMedico: MedicoDTO = {
                 apellido: faker.name.lastName(),
                 nombre: faker.name.lastName(),
@@ -169,6 +179,8 @@ export class TasksService {
                 atiendeDiscapacitados: Math.random() > 0.5,
                 especialidad: this.randomElementOfEnum(EspecialidadesTipo),
                 matricula: faker.phone.phoneNumber(),
+                ciudadId: randomCity.id.toString(),
+                provinciaId: randomCity.provinciaId
             };
             userEntity = newMedico;
             await this.medicoService.save(newMedico, 'Faker');

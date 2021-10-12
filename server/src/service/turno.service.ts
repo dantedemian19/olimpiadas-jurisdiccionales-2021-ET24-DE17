@@ -35,6 +35,13 @@ export class TurnoService {
         return resultList;
     }
 
+    async getRandomTurno(options?: FindManyOptions<TurnoDTO>): Promise<TurnoDTO | undefined> {
+        const [results, count] = await this.turnoRepository.findAndCount(options);
+
+        const randomIndex = Math.floor(Math.random() * count);
+        return TurnoMapper.fromEntityToDTO(results[randomIndex]);
+    }
+
     async save(turnoDTO: TurnoDTO, creator?: string): Promise<TurnoDTO | undefined> {
         const entity = TurnoMapper.fromDTOtoEntity(turnoDTO);
         if (creator) {

@@ -16,6 +16,18 @@ import passwordReset, { PasswordResetState } from 'app/modules/account/password-
 import valoracion, {
   ValoracionState
 } from 'app/entities/valoracion/valoracion.reducer';
+// prettier-ignore
+import provincia, {
+  ProvinciaState
+} from 'app/entities/provincia/provincia.reducer';
+// prettier-ignore
+import ciudad, {
+  ciudadestate
+} from 'app/entities/ciudad/ciudad.reducer';
+// prettier-ignore
+import medico, {
+  MedicoState
+} from 'app/entities/medico/medico.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -31,6 +43,9 @@ export interface IRootState {
   readonly password: PasswordState;
   readonly settings: SettingsState;
   readonly valoracion: ValoracionState;
+  readonly provincia: ProvinciaState;
+  readonly ciudad: ciudadestate;
+  readonly medico: MedicoState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -47,6 +62,9 @@ const rootReducer = combineReducers<IRootState>({
   password,
   settings,
   valoracion,
+  provincia,
+  ciudad,
+  medico,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });

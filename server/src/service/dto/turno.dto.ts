@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
+import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches, IsDate } from 'class-validator';
 import { BaseDTO } from './base.dto';
 import { TurnoEstado } from '../../domain/enumeration/TurnoEstado';
 
@@ -13,8 +13,9 @@ export class TurnoDTO extends BaseDTO {
     estado: TurnoEstado;
 
     @IsNotEmpty()
-    @ApiModelProperty({ description: 'fechaHora field' })
-    fechaHora: any;
+    @IsDate()
+    @ApiModelProperty({ description: 'fechaHora field', required: true, nullable: false })
+    fechaHora: Date;
 
     @IsNotEmpty()
     @Length(1, 500)

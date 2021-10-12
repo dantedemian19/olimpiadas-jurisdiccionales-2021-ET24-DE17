@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
-import { Translate, translate } from 'react-jhipster';
+import { translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
@@ -57,7 +57,7 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="pruebaApp.medico.home.createOrEditLabel" data-cy="MedicoCreateUpdateHeading">
-            <Translate contentKey="pruebaApp.medico.home.createOrEditLabel">Create or edit a Medico</Translate>
+            Create or edit a Medico
           </h2>
         </Col>
       </Row>
@@ -69,15 +69,13 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
             <AvForm model={isNew ? {} : medicoEntity} onSubmit={saveEntity}>
               {!isNew ? (
                 <AvGroup>
-                  <Label for="medico-id">
-                    <Translate contentKey="global.field.id">ID</Translate>
-                  </Label>
+                  <Label for="medico-id">ID</Label>
                   <AvInput id="medico-id" type="text" className="form-control" name="id" required readOnly />
                 </AvGroup>
               ) : null}
               <AvGroup>
                 <Label id="dniLabel" for="medico-dni">
-                  <Translate contentKey="pruebaApp.medico.dni">Dni</Translate>
+                  Dni
                 </Label>
                 <AvField
                   id="medico-dni"
@@ -86,16 +84,16 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   className="form-control"
                   name="dni"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 8, errorMessage: translate('entity.validation.maxlength', { max: 8 }) },
-                    number: { value: true, errorMessage: translate('entity.validation.number') },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 8, errorMessage: 'This field cannot be longer than 8 characters.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="matriculaLabel" for="medico-matricula">
-                  <Translate contentKey="pruebaApp.medico.matricula">Matricula</Translate>
+                  Matricula
                 </Label>
                 <AvField
                   id="medico-matricula"
@@ -103,15 +101,15 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   type="text"
                   name="matricula"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 100, errorMessage: translate('entity.validation.maxlength', { max: 100 }) },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 100, errorMessage: 'This field cannot be longer than 100 characters.' },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="nombreLabel" for="medico-nombre">
-                  <Translate contentKey="pruebaApp.medico.nombre">Nombre</Translate>
+                  Nombre
                 </Label>
                 <AvField
                   id="medico-nombre"
@@ -119,19 +117,16 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   type="text"
                   name="nombre"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 100, errorMessage: translate('entity.validation.maxlength', { max: 100 }) },
-                    pattern: {
-                      value: '^[A-Za-z0-9 ]+$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[A-Za-z0-9 ]+$' }),
-                    },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 100, errorMessage: 'This field cannot be longer than 100 characters.' },
+                    pattern: { value: '^[A-Za-z0-9 ]+$', errorMessage: "This field should follow pattern for '^[A-Za-z0-9 ]+.." },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="apellidoLabel" for="medico-apellido">
-                  <Translate contentKey="pruebaApp.medico.apellido">Apellido</Translate>
+                  Apellido
                 </Label>
                 <AvField
                   id="medico-apellido"
@@ -139,19 +134,16 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   type="text"
                   name="apellido"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 100, errorMessage: translate('entity.validation.maxlength', { max: 100 }) },
-                    pattern: {
-                      value: '^[A-Za-z0-9 ]+$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[A-Za-z0-9 ]+$' }),
-                    },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 100, errorMessage: 'This field cannot be longer than 100 characters.' },
+                    pattern: { value: '^[A-Za-z0-9 ]+$', errorMessage: "This field should follow pattern for '^[A-Za-z0-9 ]+.." },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="telefonoLabel" for="medico-telefono">
-                  <Translate contentKey="pruebaApp.medico.telefono">Telefono</Translate>
+                  Telefono
                 </Label>
                 <AvField
                   id="medico-telefono"
@@ -160,15 +152,15 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   className="form-control"
                   name="telefono"
                   validate={{
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
-                    maxLength: { value: 10, errorMessage: translate('entity.validation.maxlength', { max: 10 }) },
-                    number: { value: true, errorMessage: translate('entity.validation.number') },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
+                    maxLength: { value: 10, errorMessage: 'This field cannot be longer than 10 characters.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>
               <AvGroup>
                 <Label id="mailLabel" for="medico-mail">
-                  <Translate contentKey="pruebaApp.medico.mail">Mail</Translate>
+                  Mail
                 </Label>
                 <AvField
                   id="medico-mail"
@@ -176,11 +168,11 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                   type="text"
                   name="mail"
                   validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                    minLength: { value: 1, errorMessage: translate('entity.validation.minlength', { min: 1 }) },
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    minLength: { value: 1, errorMessage: 'This field is required to be at least 1 characters.' },
                     pattern: {
                       value: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$',
-                      errorMessage: translate('entity.validation.pattern', { pattern: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$' }),
+                      errorMessage: "This field should follow pattern for '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}..",
                     },
                   }}
                 />
@@ -194,21 +186,67 @@ export const MedicoUpdate = (props: IMedicoUpdateProps) => {
                     className="form-check-input"
                     name="atiendeDiscapacitados"
                   />
-                  <Translate contentKey="pruebaApp.medico.atiendeDiscapacitados">Atiende Discapacitados</Translate>
+                  Atiende Discapacitados
                 </Label>
+              </AvGroup>
+              <AvGroup>
+                <Label id="especialidadLabel" for="medico-especialidad">
+                  Especialidad
+                </Label>
+                <AvInput
+                  id="medico-especialidad"
+                  data-cy="especialidad"
+                  type="select"
+                  className="form-control"
+                  name="especialidad"
+                  value={(!isNew && medicoEntity.especialidad) || 'CLINICO'}
+                >
+                  <option value="CLINICO">CLINICO</option>
+                  <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+                  <option value="GINECOLOGIA">GINECOLOGIA</option>
+                  <option value="EMERGENCIAS">EMERGENCIAS</option>
+                  <option value="OFTALMOLOGIA">OFTALMOLOGIA</option>
+                  <option value="OTORRINOLARINGOLOGIA">OTORRINOLARINGOLOGIA</option>
+                  <option value="TRAUMATOLOGIA">TRAUMATOLOGIA</option>
+                  <option value="UROLOGIA">UROLOGIA</option>
+                  <option value="ANATOMIA_PATOLOGIA">ANATOMIA_PATOLOGIA</option>
+                  <option value="BIOQUIMICA">BIOQUIMICA</option>
+                  <option value="FARMACOLOGIA">FARMACOLOGIA</option>
+                  <option value="GENETICA_MEDICA">GENETICA_MEDICA</option>
+                  <option value="INMUNOLOGIA">INMUNOLOGIA</option>
+                  <option value="MEDICINA_NUCLEAR">MEDICINA_NUCLEAR</option>
+                  <option value="RADIOLOGIA">RADIOLOGIA</option>
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
+                <Label id="provinciaIdLabel" for="medico-provinciaId">
+                  Provincia Id
+                </Label>
+                <AvField
+                  id="medico-provinciaId"
+                  data-cy="provinciaId"
+                  type="text"
+                  name="provinciaId"
+                  validate={{
+                    required: { value: true, errorMessage: 'This field is required.' },
+                  }}
+                />
+              </AvGroup>
+              <AvGroup>
+                <Label id="ciudadIdLabel" for="medico-ciudadId">
+                  Ciudad Id
+                </Label>
+                <AvField id="medico-ciudadId" data-cy="ciudadId" type="text" name="ciudadId" />
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/medico" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
+                <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
               <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                 <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
+                &nbsp; Save
               </Button>
             </AvForm>
           )}

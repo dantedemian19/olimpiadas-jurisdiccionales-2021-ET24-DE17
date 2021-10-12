@@ -22,11 +22,6 @@ export class UserService {
     }
 
     async getRandomUser(options?: FindManyOptions<UserDTO>): Promise<UserDTO | undefined> {
-        // const usersCount = await this.userRepository.count(options);
-        // const randomID = Math.floor(Math.random()*usersCount);
-        // const result = await this.userRepository.findOne(options);
-        // return UserMapper.fromEntityToDTO(this.flatAuthorities(result));
-
         const [results, count] = await this.userRepository.findAndCount(options);
 
         const randomIndex = Math.floor(Math.random() * count);

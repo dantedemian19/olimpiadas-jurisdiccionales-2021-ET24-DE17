@@ -50,7 +50,18 @@
     "buildTool": "maven",
     "reactive": false,
     "languages": ["en", "fr"],
-    "entities": ["Paciente", "Medico", "EspecialidadesMedicas", "Turno", "HistoriaClinica", "Diario", "Valoracion", "Historiaclinica"],
-    "lastLiquibaseTimestamp": 1632889509000
+    "entities": [
+      "Paciente",
+      "Medico",
+      "EspecialidadesMedicas",
+      "Turno",
+      "HistoriaClinica",
+      "Diario",
+      "Valoracion",
+      "Historiaclinica",
+      "Provincia",
+      "Ciudad"
+    ],
+    "lastLiquibaseTimestamp": 1633562376000
   }
 }

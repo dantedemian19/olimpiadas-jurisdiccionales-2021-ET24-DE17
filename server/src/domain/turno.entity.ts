@@ -11,8 +11,8 @@ export class Turno extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'estado', enum: TurnoEstado })
     estado: TurnoEstado;
 
-    @Column({ type: 'timestamp', name: 'fecha_hora' })
-    fechaHora: any;
+    @Column({ type: 'date', name: 'fecha_hora' })
+    fechaHora: Date;
 
     @Column({ name: 'motivo', length: 500 })
     motivo: string;

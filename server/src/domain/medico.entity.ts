@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base/base.entity';
+
 import { EspecialidadesTipo } from './enumeration/especialidades-tipo';
 
 /**
@@ -31,6 +32,12 @@ export class Medico extends BaseEntity {
 
     @Column({ type: 'simple-enum', name: 'especialidad', enum: EspecialidadesTipo })
     especialidad: EspecialidadesTipo;
+
+    @Column({ name: 'provincia_id' })
+    provinciaId: string;
+
+    @Column({ name: 'ciudad_id', nullable: true })
+    ciudadId: string;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

@@ -22,9 +22,9 @@ import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
 @Controller('api/medicos')
-// @UseGuards(AuthGuard, RolesGuard)
-// @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-// @ApiBearerAuth()
+@UseGuards(AuthGuard, RolesGuard)
+@UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
+@ApiBearerAuth()
 @ApiUseTags('medicos')
 export class MedicoController {
     logger = new Logger('MedicoController');

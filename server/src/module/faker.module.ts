@@ -8,6 +8,7 @@ import { AuthModule } from './auth.module';
 import { HistoriaClinicaModule } from './historia-clinica.module';
 import { MedicoModule } from './medico.module';
 import { PacienteModule } from './paciente.module';
+import { CiudadModule } from './ciudad.module';
 
 @Module({
     providers: [TasksService],
@@ -20,6 +21,7 @@ import { PacienteModule } from './paciente.module';
         HistoriaClinicaModule,
         MedicoModule,
         PacienteModule,
+        CiudadModule
     ],
 })
 export class FakerModule {}
