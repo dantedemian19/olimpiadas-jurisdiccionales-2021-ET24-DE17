@@ -1,15 +1,12 @@
 // removed th id primary key
 import './paciente.scss';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AUTHORITIES } from 'app/config/constants';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { getSortState, translate } from 'react-jhipster';
-import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
-import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
-import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Upload, message, Select } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { translate } from 'react-jhipster';
+import { AvForm, AvField, AvInput } from 'availity-reactstrap-validation';
+import { message } from 'antd';
 import { Collapse } from 'antd';
 import { getEntity } from './paciente.reducer';
 import { IRootState } from 'app/shared/reducers';

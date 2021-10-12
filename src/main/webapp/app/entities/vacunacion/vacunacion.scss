@@ -1,0 +1,71 @@
+.vacunacion {
+  background: url(../../../content/images/vacuna.jpg) no-repeat 50% !important;
+  background-size: cover !important;
+  height: 50vh;
+}
+
+p {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.saber {
+
+  &>h1 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+}
+
+.guion-vacuna {
+  background-color: #032d57;
+}
+
+.preguntas {
+  padding: 15px;
+}
+
+.columnas-vacunacion {
+
+  &>ul {
+    margin: 0;
+  }
+
+  .lista-vacunacion {
+    width: 95%;
+    // margin: 15px 2.5%;
+  }
+}
+
+.inmunidad-colectiva {
+  padding: 15px;
+
+  &>.imagenes {
+    height: 70vh;
+    display: flex;
+    flex-direction: row;
+
+    &>.inmunidad-solo {
+      background: url(../../../content/images/covid/una-proteccion.png) no-repeat 50%;
+      background-size: cover;
+      height: 100%;
+      width: 40%;
+    }
+
+    &>.inmunidad-muchos {
+      background: url(../../../content/images/covid/muchas-protecciones.png) no-repeat 50%;
+      background-size: cover;
+      height: 100%;
+      width: 60%;
+    }
+  }
+}

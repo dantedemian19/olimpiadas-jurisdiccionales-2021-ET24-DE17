@@ -36,8 +36,8 @@ export const Footer = () => {
                   <a href="#">
                     <div className="logo"></div>
                   </a>
-                  <h4 style={{ fontWeight: 'bolder' }}>Teléfonos útiles</h4>
-                  <p>
+                  <h4 style={{ fontWeight: 'bolder', fontSize: 22 }}>Teléfonos útiles</h4>
+                  <p style={{ fontSize: 20, fontWeight: 400 }}>
                     <a target="_blank" href="https://www.buenosaires.gob.ar/laciudad/telefonosutiles" rel="noreferrer">
                       Ver todos los teléfonos
                     </a>
