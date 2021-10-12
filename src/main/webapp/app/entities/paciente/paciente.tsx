@@ -1,6 +1,7 @@
 // removed th id primary key
 import './paciente.scss';
 import React, { useState, useEffect, useRef } from 'react';
+import { AUTHORITIES } from 'app/config/constants';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSortState, translate } from 'react-jhipster';
@@ -20,8 +21,6 @@ const { Panel } = Collapse;
 export interface IAppProps extends StateProps, DispatchProps {}
 
 export const Paciente = (props: IAppProps) => {
-  const { Dragger } = Upload;
-
   const [inputValue, setInputValue] = useState(null);
 
   function handleChange(value) {
@@ -39,7 +38,8 @@ export const Paciente = (props: IAppProps) => {
     }
   }, [inputValue]);
 
-  const { Option } = Select;
+  // eslint-disable-next-line no-console
+  console.log(AUTHORITIES);
 
   return (
     <div>

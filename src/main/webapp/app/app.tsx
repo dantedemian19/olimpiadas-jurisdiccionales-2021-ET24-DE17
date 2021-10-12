@@ -27,7 +27,7 @@ import $ from 'jquery';
 import Rating from '@mui/material/Rating';
 import { translate } from 'react-jhipster';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Button } from 'antd';
+import { Button, Modal } from 'antd';
 import { createValoracion } from './entities/valoracion/valoracion.reducer';
 import { IValoracion } from './shared/model/valoracion.model';
 
@@ -38,21 +38,11 @@ export interface IAppProps extends StateProps, DispatchProps {}
 export const App = (props: IAppProps) => {
   const [valueRating, setValueRating] = React.useState(0);
   const [valueDescripcion, setValueDescripcion] = React.useState('');
+  const [displayValoration, setDisplayValoration] = useState(false);
 
   useEffect(() => {
     props.getSession();
     props.getProfile();
-
-    $('#floating-button').click(function () {
-      $(this).closest('#container-floating').toggleClass('is-opened');
-      $('.nds').removeClass('is-opened');
-      $('body').toggleClass('is-blur');
-    });
-
-    $('.nds').click(function () {
-      $('.nds').not(this).removeClass('is-opened');
-      $(this).toggleClass('is-opened');
-    });
   }, []);
 
   useEffect(() => {
@@ -81,61 +71,60 @@ export const App = (props: IAppProps) => {
             <ErrorBoundary>
               <AppRoutes />
             </ErrorBoundary>
-            <section className="valoracion-button">
-              <div id="container-floating">
-                <div className="nd1 nds">
-                  <h1>¡Danos tu opinión!</h1>
-                  <div className="estrellas">
-                    <Rating
-                      name="size-large"
-                      defaultValue={1}
-                      className="rating"
-                      onChange={(event, newValue) => {
-                        setValueRating(newValue);
+
+            <Modal
+              className="modal-valoration"
+              title="¡Danos tu opinión!"
+              visible={displayValoration}
+              onCancel={() => {
+                setDisplayValoration(false);
+              }}
+            >
+              <div className="cont-valoration">
+                <div className="estrellas">
+                  <Rating
+                    name="size-large"
+                    defaultValue={1}
+                    className="rating"
+                    onChange={(event, newValue) => {
+                      setValueRating(newValue);
+                    }}
+                  />
+                </div>
+                <div className="descripcion">
+                  <AvForm className="input-valoracion">
+                    <AvInput
+                      type="textarea"
+                      name="mensaje"
+                      style={{ resize: 'none', height: 130, width: 250, marginBottom: 10 }}
+                      placeholder={translate('global.form.opinion.placeholder')}
+                      onChange={value => {
+                        setValueDescripcion(value.target.defaultValue);
                       }}
                     />
-                  </div>
-                  <div className="descripcion">
-                    <AvForm className="input-valoracion">
-                      <AvInput
-                        type="textarea"
-                        name="mensaje"
-                        style={{ resize: 'none', height: 100 }}
-                        placeholder={translate('global.form.opinion.placeholder')}
-                        onChange={value => {
-                          setValueDescripcion(value.target.defaultValue);
-                        }}
-                      />
-                    </AvForm>
-                  </div>
-                  <Button
-                    className="button-valoracion"
-                    type="primary"
-                    danger
-                    disabled={valueRating ? false : true}
-                    onClick={() => {
-                      const newValoracion: IValoracion = {
-                        estrellas: valueRating,
-                        descripcion: valueDescripcion,
-                      };
-
-                      props.createValoracion(newValoracion);
-                    }}
-                  >
-                    Enviar
-                  </Button>
+                  </AvForm>
                 </div>
-
-                <div id="floating-button">
-                  <p className="plus">
-                    <StarOutlined className="plus" />
-                    {/* + */}
-                  </p>
-                  <CloseOutlined className="close" />
-                  {/* <img className="close" src="../content/images/icono-lapiz.png" /> */}
-                </div>
+                <Button
+                  className="button-valoracion"
+                  type="primary"
+                  danger
+                  disabled={valueRating ? false : true}
+                  onClick={() => {
+                    createValoracion({ estrellas: valueRating, descripcion: valueDescripcion });
+                    setDisplayValoration(false);
+                  }}
+                >
+                  Enviar
+                </Button>
               </div>
-            </section>
+            </Modal>
+
+            <div id="floating-button" onClick={() => setDisplayValoration(true)}>
+              <p className="plus">
+                <StarOutlined className="plus" />
+              </p>
+              <p className="texto-v">Valoranos</p>
+            </div>
           </Card>
           <Footer />
         </div>

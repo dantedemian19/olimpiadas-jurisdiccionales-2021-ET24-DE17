@@ -1,199 +1,109 @@
 // removed th id primary key
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './medico.reducer';
-import { IMedico } from 'app/shared/model/medico.model';
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
-import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
-import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
+import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { translate } from 'react-jhipster';
+import { Select } from 'antd';
+
+import './medico.scss';
 
 export interface IMedicoProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Medico = (props: IMedicoProps) => {
-  const [paginationState, setPaginationState] = useState(
-    overridePaginationStateWithQueryParams(getSortState(props.location, ITEMS_PER_PAGE, 'id'), props.location.search)
-  );
+  const { Option } = Select;
 
-  const getAllEntities = () => {
-    props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
-  };
-
-  const sortEntities = () => {
-    getAllEntities();
-    const endURL = `?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`;
-    if (props.location.search !== endURL) {
-      props.history.push(`${props.location.pathname}${endURL}`);
-    }
-  };
-
-  useEffect(() => {
-    sortEntities();
-  }, [paginationState.activePage, paginationState.order, paginationState.sort]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(props.location.search);
-    const page = params.get('page');
-    const sort = params.get('sort');
-    if (page && sort) {
-      const sortSplit = sort.split(',');
-      setPaginationState({
-        ...paginationState,
-        activePage: +page,
-        sort: sortSplit[0],
-        order: sortSplit[1],
-      });
-    }
-  }, [props.location.search]);
-
-  const sort = p => () => {
-    setPaginationState({
-      ...paginationState,
-      order: paginationState.order === 'asc' ? 'desc' : 'asc',
-      sort: p,
-    });
-  };
-
-  const handlePagination = currentPage =>
-    setPaginationState({
-      ...paginationState,
-      activePage: currentPage,
-    });
-
-  const handleSyncList = () => {
-    sortEntities();
-  };
-
-  const { medicoList, match, loading, totalItems } = props;
   return (
     <div>
-      <h2 id="medico-heading" data-cy="MedicoHeading">
-        Medicos
-        <div className="d-flex justify-content-end">
-          <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
-          </Button>
-          <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
-            <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Medico
-          </Link>
+      <section>
+        <div className="banner medicos">
+          <div className="banner-turnos">
+            <div className="titulo-turnos">
+              <h1>MEDICO</h1>
+            </div>
+          </div>
         </div>
-      </h2>
-      <div className="table-responsive">
-        {medicoList && medicoList.length > 0 ? (
-          <Table responsive>
-            <thead>
-              <tr>
-                <th className="hand" onClick={sort('id')}>
-                  ID <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('dni')}>
-                  Dni <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('matricula')}>
-                  Matricula <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('nombre')}>
-                  Nombre <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('apellido')}>
-                  Apellido <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('telefono')}>
-                  Telefono <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('mail')}>
-                  Mail <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('atiendeDiscapacitados')}>
-                  Atiende Discapacitados <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('especialidad')}>
-                  Especialidad <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('provinciaId')}>
-                  Provincia Id <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('ciudadId')}>
-                  Ciudad Id <FontAwesomeIcon icon="sort" />
-                </th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {medicoList.map((medico, i) => (
-                <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>
-                    <Button tag={Link} to={`${match.url}/${medico.id}`} color="link" size="sm">
-                      {medico.id}
-                    </Button>
-                  </td>
-                  <td>{medico.dni}</td>
-                  <td>{medico.matricula}</td>
-                  <td>{medico.nombre}</td>
-                  <td>{medico.apellido}</td>
-                  <td>{medico.telefono}</td>
-                  <td>{medico.mail}</td>
-                  <td>{medico.atiendeDiscapacitados ? 'true' : 'false'}</td>
-                  <td>{medico.especialidad}</td>
-                  <td>{medico.provinciaId}</td>
-                  <td>{medico.ciudadId}</td>
-                  <td className="text-right">
-                    <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${medico.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`${match.url}/${medico.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`${match.url}/${medico.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="danger"
-                        size="sm"
-                        data-cy="entityDeleteButton"
-                      >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        ) : (
-          !loading && <div className="alert alert-warning">No Medicos found</div>
-        )}
-      </div>
-      {props.totalItems ? (
-        <div className={medicoList && medicoList.length > 0 ? '' : 'd-none'}>
-          <Row className="justify-content-center">
-            <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} />
-          </Row>
-          <Row className="justify-content-center">
-            <JhiPagination
-              activePage={paginationState.activePage}
-              onSelect={handlePagination}
-              maxButtons={5}
-              itemsPerPage={paginationState.itemsPerPage}
-              totalItems={props.totalItems}
-            />
-          </Row>
+      </section>
+      <section className="cuerpo-medicos">
+        <div className="div-medicos">
+          <div className="formulario-medicos">
+            <AvForm className="form-medico">
+              <AvField
+                className="inputs-turnos"
+                name="dni"
+                type="text"
+                label="DNI"
+                placeholder="Ingrese su DNI"
+                required
+                errorMessage="El DNI no puede estar vacío!"
+                data-cy="dni"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="matricula"
+                label="Matrícula"
+                placeholder="Ingrese su matrícula"
+                type="text"
+                required
+                errorMessage="La matrícula no puede estar vacía!"
+                data-cy="matricula"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="nombre"
+                type="text"
+                label="Nombre"
+                placeholder="Ingrese su nombre"
+                required
+                errorMessage="El nombre no puede estar vacío!"
+                data-cy="nombre"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="apellido"
+                type="text"
+                label="Apellido"
+                placeholder="Ingrese su apellido"
+                required
+                errorMessage="El apellido no puede estar vacío!"
+                data-cy="apellido"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="telefono"
+                type="text"
+                label="Teléfono"
+                placeholder="Ingrese su teléfono"
+                required
+                errorMessage="El teléfono no puede estar vacío!"
+                data-cy="telefono"
+              />
+              <AvField
+                className="inputs-turnos"
+                name="email"
+                type="email"
+                label={translate('global.form.email.label')}
+                placeholder={translate('global.form.email.placeholder')}
+                required
+                errorMessage="El email no puede estar vacío!"
+                data-cy="email"
+              />
+              <div className="discapacitados">
+                <label htmlFor="">¿Atiende discapacitados?</label>
+                <Select labelInValue placeholder="Seleccione una opción" className="dropdown-select">
+                  <Option value="si">Si</Option>
+                  <Option value="no">No</Option>
+                </Select>
+              </div>
+            </AvForm>
+            <button className="btn button-medico">Registrarse</button>
+          </div>
+          <div className="imagen-medicos"></div>
         </div>
-      ) : (
-        ''
-      )}
+      </section>
     </div>
   );
 };

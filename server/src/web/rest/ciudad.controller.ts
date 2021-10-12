@@ -23,6 +23,7 @@ import { TurnoDTO } from "../../service/dto/turno.dto";
 import { TurnoService } from '../../service/turno.service';
 import { MedicoService } from '../../service/medico.service';
 import { HistoriaClinicaService } from '../../service/historia-clinica.service';
+import { FindManyOptions, FindOneOptions, SimpleConsoleLogger } from 'typeorm';
 var ObjectId = require('mongodb').ObjectId;
 
 @Controller('api/ciudades')
@@ -76,7 +77,9 @@ export class CiudadController {
         description: 'The records found',
         type: CiudadDTO,
     })
-    async getTurnos(@Param('id') id: string): Promise<TurnoDTO[]> {
+    async getTurnos(@Param('id') id: string, @Body() req: Request): Promise<TurnoDTO[]> {
+
+        console.log(req)
 
         // this.logger.debug(id);
 
@@ -90,13 +93,23 @@ export class CiudadController {
         // console.log("Medicos en la provincia");
         // console.log(medicoIds);
 
-        const [historiasResults, historiasCounts] = await this.historiaClinicaService.findAndCount({
+        let queryOptions: FindManyOptions = {
             where: {
                 id_medico: {
                     $in: medicoIds
                 }
             }
-        });
+        }
+
+        if (req["dateMin"]){
+            console.log("minDate deteted")
+        }
+        
+        if (req["dateMax"]){
+            console.log("maxDate deteted")
+        }
+
+        const [historiasResults, historiasCounts] = await this.historiaClinicaService.findAndCount(queryOptions);
 
         const historiasIds = historiasResults.map(historia => new ObjectId(historia.id_turno) );
         
@@ -107,6 +120,9 @@ export class CiudadController {
             where: {
                 _id: {
                     $in: historiasIds
+                },
+                fechaHora:  {
+
                 }
             }
         });

@@ -23,8 +23,9 @@
         "password": "Contraseña",
         "sessions": "Sesiones",
         "login": "Iniciar sesión",
-        "logout": "Cerrar la sesión",
-        "register": "Crear una cuenta"
+        "logout": "Cerrar sesión",
+        "register": "Crear una cuenta",
+        "accountMedico": "Crear médico"
       },
       "admin": {
         "main": "Administración",
