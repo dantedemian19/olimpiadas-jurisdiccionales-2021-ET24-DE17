@@ -11,13 +11,14 @@ import Valoracion from './valoracion';
 import Paciente from './paciente';
 import Turnos from './turnos';
 import Medico from './medico';
+import Vacunacion from './vacunacion/vacunacion';
 
 const Routes = ({ match }) => (
   <div>
     <Switch>
       {/* prettier-ignore */}
       <ErrorBoundaryRoute path={`${match.url}paciente`} component={Paciente} />
-      <ErrorBoundaryRoute path={`${match.url}medico`} component={Medico} />
+      <ErrorBoundaryRoute path={`${match.url}vacunacion`} component={Vacunacion} />
       <ErrorBoundaryRoute path={`${match.url}turnos`} component={Turnos} />
       <ErrorBoundaryRoute path={`${match.url}provincia`} component={Provincia} />
       <ErrorBoundaryRoute path={`${match.url}ciudad`} component={Ciudad} />

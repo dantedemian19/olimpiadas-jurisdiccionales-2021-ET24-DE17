@@ -1,15 +1,12 @@
 // removed th id primary key
 import './paciente.scss';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AUTHORITIES } from 'app/config/constants';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { getSortState, translate } from 'react-jhipster';
-import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
-import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
-import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-import { Upload, message, Select } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { translate } from 'react-jhipster';
+import { AvForm, AvField, AvInput } from 'availity-reactstrap-validation';
+import { message } from 'antd';
 import { Collapse } from 'antd';
 import { getEntity } from './paciente.reducer';
 import { IRootState } from 'app/shared/reducers';
@@ -50,67 +47,6 @@ export const Paciente = (props: IAppProps) => {
               <h1>PACIENTES</h1>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="formulario-paciente">
-        <div className="div-pacientes">
-          <div className="formulario-medicos">
-            <AvForm className="form-medico">
-              <AvField
-                className="inputs-turnos"
-                name="dni"
-                type="text"
-                label="DNI"
-                placeholder="Ingrese su DNI"
-                required
-                errorMessage="El DNI no puede estar vacío!"
-                data-cy="dni"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="nombre"
-                type="text"
-                label="Nombre"
-                placeholder="Ingrese su nombre"
-                required
-                errorMessage="El nombre no puede estar vacío!"
-                data-cy="nombre"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="apellido"
-                type="text"
-                label="Apellido"
-                placeholder="Ingrese su apellido"
-                required
-                errorMessage="El apellido no puede estar vacío!"
-                data-cy="apellido"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="telefono"
-                type="text"
-                label="Teléfono"
-                placeholder="Ingrese su teléfono"
-                required
-                errorMessage="El teléfono no puede estar vacío!"
-                data-cy="telefono"
-              />
-              <AvField
-                className="inputs-turnos"
-                name="email"
-                type="email"
-                label={translate('global.form.email.label')}
-                placeholder={translate('global.form.email.placeholder')}
-                required
-                errorMessage="El email no puede estar vacío!"
-                data-cy="email"
-              />
-            </AvForm>
-            <button className="btn button-medico">Registrarse</button>
-          </div>
-          <div className="imagen-medicos pacientitos"></div>
         </div>
       </section>
       <section className="paciente-registrado">

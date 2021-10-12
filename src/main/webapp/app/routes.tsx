@@ -17,6 +17,7 @@ import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
 import { Medico } from './entities/medico/medico';
 import { RegisterMedico } from './modules/account/register-medico/register-medico';
+import AutoTest from './entities/auto-test/auto-test';
 
 const Account = Loadable({
   loader: () => import(/* webpackChunkName: "account" */ 'app/modules/account'),
@@ -48,6 +49,7 @@ const Routes = () => {
         <ErrorBoundaryRoute path="/" exact component={Home} />
         <ErrorBoundaryRoute path="/covid-19" exact component={Covid} />
         <ErrorBoundaryRoute path="/medico" exact component={Medico} />
+        <ErrorBoundaryRoute path="/autotest" exact component={AutoTest} />
         <PrivateRoute path="/" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
         <ErrorBoundaryRoute component={PageNotFound} />
       </Switch>

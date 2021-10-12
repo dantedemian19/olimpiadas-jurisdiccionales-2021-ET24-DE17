@@ -21,11 +21,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { faApple, faEarlybirds } from '@fortawesome/free-brands-svg-icons';
+import { getUsersAsAdmin, updateUser } from '../administration/user-management/user-management.reducer';
 
-export type IHomeProp = StateProps;
+export interface IHomeProp extends StateProps, DispatchProps {}
 
 export const Home = (props: IHomeProp) => {
   const { account } = props;
+
+  // eslint-disable-next-line no-console
+  console.log('cuentita', account.authorities);
 
   return (
     <div className="home-screen">
@@ -205,6 +209,9 @@ const mapStateToProps = storeState => ({
   isAuthenticated: storeState.authentication.isAuthenticated,
 });
 
+const mapDispatchToProps = { getUsersAsAdmin, updateUser };
+
 type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = typeof mapDispatchToProps;
 
 export default connect(mapStateToProps)(Home);

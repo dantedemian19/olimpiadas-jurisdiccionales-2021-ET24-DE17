@@ -5,9 +5,10 @@
     "menu": {
       "home": "Inicio",
       "covid": "COVID-19",
+      "vacunacion": "Vacunación",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entidades",
+        "main": "Más",
         "paciente": "Paciente",
         "medico": "Medico",
         "especialidadesMedicas": "Especialidades Medicas",
@@ -15,6 +16,7 @@
         "historiaClinica": "Historia Clinica",
         "diario": "Diario",
         "valoracion": "Valoración",
+        "vacunacion": "Vacunación",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

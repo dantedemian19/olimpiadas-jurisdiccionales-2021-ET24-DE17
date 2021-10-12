@@ -6,7 +6,7 @@ import { NavLink as Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import appConfig from 'app/config/constants';
-import { faBacterium } from '@fortawesome/free-solid-svg-icons';
+import { faAsterisk, faBacterium } from '@fortawesome/free-solid-svg-icons';
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
@@ -33,6 +33,12 @@ export const Home = props => (
       <FontAwesomeIcon icon={faBacterium} style={{ marginRight: 2 }} />
       <span>
         <Translate contentKey="global.menu.covid">COVID-19</Translate>
+      </span>
+    </NavLink>
+    <NavLink tag={Link} to="/vacunacion" className="align-items-center">
+      <FontAwesomeIcon icon={faAsterisk} style={{ marginRight: 2 }} />
+      <span>
+        <Translate contentKey="global.menu.vacunacion">Vacunación</Translate>
       </span>
     </NavLink>
   </NavItem>
