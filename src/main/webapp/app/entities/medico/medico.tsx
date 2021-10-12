@@ -99,7 +99,9 @@ export const Medico = (props: IMedicoProps) => {
                 </Select>
               </div>
             </AvForm>
-            <button className="btn button-medico">Registrarse</button>
+            <button className="btn button-medico" onClick={}>
+              Registrarse
+            </button>
           </div>
           <div className="imagen-medicos"></div>
         </div>
