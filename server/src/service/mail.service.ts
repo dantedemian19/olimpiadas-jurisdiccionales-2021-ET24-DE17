@@ -51,7 +51,7 @@ export class mailService {
             from: process.env.MAIL, // server mail address
             to: process.env.MAIL, // receiver
             subject: 'Contacto usuario', // Subject line
-            html: "notificationContactUs", // html body
+            html: "contactanos", // html body
             context: {
                 contxt: Text,
             },
@@ -74,7 +74,7 @@ export class mailService {
             from: process.env.MAIL, // server mail address
             to: user.email, // receiver
             subject: 'Contacto usuario', // Subject line
-            html: "notificationMedic", // html body
+            html: "newMedic", // html body
             context: {
                 name: medic.nombre,
                 surname: medic.apellido,
