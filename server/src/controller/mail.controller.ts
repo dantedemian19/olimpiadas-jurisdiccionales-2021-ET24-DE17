@@ -29,7 +29,7 @@ export class MailController{
     logger = new Logger('MailController');
 
     constructor(private readonly mailService: mailService) {}
-    @Get('/')
+    @Get('/turno')
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
@@ -40,7 +40,7 @@ export class MailController{
         return await this.mailService.mailYourTurn(mail.paciente,mail.medico,mail.turno);
 
     }
-    @Get('/')
+    @Get('/contacto')
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
@@ -52,7 +52,7 @@ export class MailController{
 
     }
 
-    @Get('/')
+    @Get('/nuevomedico')
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
